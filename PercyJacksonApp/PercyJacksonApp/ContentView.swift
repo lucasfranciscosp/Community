@@ -45,7 +45,27 @@ struct ContentView: View {
 //        }
         
         VStack{
-            Text("Bom dia")
+            Text("aa")
+        }
+        .task {
+            do{
+                let service = Service()
+                service.get(cep: "01001000"){ result in
+                    DispatchQueue.main.async {
+                        switch result {
+                        case let .failure(error):
+                            print(error)
+                            print("Coloque denovo")
+                        case let .success(data):
+                            print(data)
+                            var teste : Address
+                            teste = data as! Address
+                            print(teste.bairro)
+                        }
+                    }
+                }
+            }
+
         }
     }
 
@@ -92,4 +112,8 @@ struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView().environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
     }
+}
+
+func returningAdress(address: Address) -> Address {
+    return address
 }

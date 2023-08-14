@@ -13,6 +13,7 @@
 		B67C40202A85106C00820A86 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B67C401F2A85106C00820A86 /* Preview Assets.xcassets */; };
 		B67C40222A85106C00820A86 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = B67C40212A85106C00820A86 /* Persistence.swift */; };
 		B67C40252A85106C00820A86 /* PercyJacksonApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B67C40232A85106C00820A86 /* PercyJacksonApp.xcdatamodeld */; };
+		B67C402D2A8511D400820A86 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = B67C402C2A8511D400820A86 /* API.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,6 +24,8 @@
 		B67C401F2A85106C00820A86 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		B67C40212A85106C00820A86 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		B67C40242A85106C00820A86 /* PercyJacksonApp.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = PercyJacksonApp.xcdatamodel; sourceTree = "<group>"; };
+		B67C402C2A8511D400820A86 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
+		B67C402E2A8A48FD00820A86 /* PercyJacksonApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PercyJacksonApp.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,6 +58,8 @@
 		B67C40172A85106B00820A86 /* PercyJacksonApp */ = {
 			isa = PBXGroup;
 			children = (
+				B67C402E2A8A48FD00820A86 /* PercyJacksonApp.entitlements */,
+				B67C402B2A85118F00820A86 /* Data */,
 				B67C40182A85106B00820A86 /* PercyJacksonAppApp.swift */,
 				B67C401A2A85106B00820A86 /* ContentView.swift */,
 				B67C401C2A85106C00820A86 /* Assets.xcassets */,
@@ -71,6 +76,14 @@
 				B67C401F2A85106C00820A86 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		B67C402B2A85118F00820A86 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				B67C402C2A8511D400820A86 /* API.swift */,
+			);
+			path = Data;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -147,6 +160,7 @@
 				B67C40252A85106C00820A86 /* PercyJacksonApp.xcdatamodeld in Sources */,
 				B67C401B2A85106B00820A86 /* ContentView.swift in Sources */,
 				B67C40192A85106B00820A86 /* PercyJacksonAppApp.swift in Sources */,
+				B67C402D2A8511D400820A86 /* API.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -272,6 +286,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = PercyJacksonApp/PercyJacksonApp.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"PercyJacksonApp/Preview Content\"";
@@ -283,6 +298,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -301,6 +317,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = PercyJacksonApp/PercyJacksonApp.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"PercyJacksonApp/Preview Content\"";
@@ -312,6 +329,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
