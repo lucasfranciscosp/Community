@@ -79,8 +79,16 @@
 			isa = PBXGroup;
 			children = (
 				6144C4112A8CED4100D562FC /* Main.storyboard */,
+				6144C4282A8CF4A100D562FC /* HomeCollectionViewCell */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		6144C4282A8CF4A100D562FC /* HomeCollectionViewCell */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = HomeCollectionViewCell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
