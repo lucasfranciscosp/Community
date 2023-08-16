@@ -7,29 +7,27 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		B67C40192A85106B00820A86 /* PercyJacksonAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B67C40182A85106B00820A86 /* PercyJacksonAppApp.swift */; };
-		B67C401B2A85106B00820A86 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B67C401A2A85106B00820A86 /* ContentView.swift */; };
-		B67C401D2A85106C00820A86 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B67C401C2A85106C00820A86 /* Assets.xcassets */; };
-		B67C40202A85106C00820A86 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B67C401F2A85106C00820A86 /* Preview Assets.xcassets */; };
-		B67C40222A85106C00820A86 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = B67C40212A85106C00820A86 /* Persistence.swift */; };
-		B67C40252A85106C00820A86 /* PercyJacksonApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B67C40232A85106C00820A86 /* PercyJacksonApp.xcdatamodeld */; };
-		B67C402D2A8511D400820A86 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = B67C402C2A8511D400820A86 /* API.swift */; };
+		6144C40C2A8CED4100D562FC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6144C40B2A8CED4100D562FC /* AppDelegate.swift */; };
+		6144C40E2A8CED4100D562FC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6144C40D2A8CED4100D562FC /* SceneDelegate.swift */; };
+		6144C4102A8CED4100D562FC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6144C40F2A8CED4100D562FC /* ViewController.swift */; };
+		6144C4132A8CED4100D562FC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6144C4112A8CED4100D562FC /* Main.storyboard */; };
+		6144C4152A8CED4100D562FC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6144C4142A8CED4100D562FC /* Assets.xcassets */; };
+		6144C4182A8CED4100D562FC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6144C4162A8CED4100D562FC /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		B67C40152A85106B00820A86 /* PercyJacksonApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PercyJacksonApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		B67C40182A85106B00820A86 /* PercyJacksonAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PercyJacksonAppApp.swift; sourceTree = "<group>"; };
-		B67C401A2A85106B00820A86 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		B67C401C2A85106C00820A86 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		B67C401F2A85106C00820A86 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		B67C40212A85106C00820A86 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
-		B67C40242A85106C00820A86 /* PercyJacksonApp.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = PercyJacksonApp.xcdatamodel; sourceTree = "<group>"; };
-		B67C402C2A8511D400820A86 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
-		B67C402E2A8A48FD00820A86 /* PercyJacksonApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PercyJacksonApp.entitlements; sourceTree = "<group>"; };
+		6144C4082A8CED4100D562FC /* Community.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Community.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		6144C40B2A8CED4100D562FC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		6144C40D2A8CED4100D562FC /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		6144C40F2A8CED4100D562FC /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		6144C4122A8CED4100D562FC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		6144C4142A8CED4100D562FC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		6144C4172A8CED4100D562FC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		6144C4192A8CED4100D562FC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		B67C40122A85106B00820A86 /* Frameworks */ = {
+		6144C4052A8CED4100D562FC /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -39,89 +37,72 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		B67C400C2A85106B00820A86 = {
+		6144C3FF2A8CED4000D562FC = {
 			isa = PBXGroup;
 			children = (
-				B67C40172A85106B00820A86 /* PercyJacksonApp */,
-				B67C40162A85106B00820A86 /* Products */,
+				6144C40A2A8CED4100D562FC /* Community */,
+				6144C4092A8CED4100D562FC /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		B67C40162A85106B00820A86 /* Products */ = {
+		6144C4092A8CED4100D562FC /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				B67C40152A85106B00820A86 /* PercyJacksonApp.app */,
+				6144C4082A8CED4100D562FC /* Community.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		B67C40172A85106B00820A86 /* PercyJacksonApp */ = {
+		6144C40A2A8CED4100D562FC /* Community */ = {
 			isa = PBXGroup;
 			children = (
-				B67C402E2A8A48FD00820A86 /* PercyJacksonApp.entitlements */,
-				B67C402B2A85118F00820A86 /* Data */,
-				B67C40182A85106B00820A86 /* PercyJacksonAppApp.swift */,
-				B67C401A2A85106B00820A86 /* ContentView.swift */,
-				B67C401C2A85106C00820A86 /* Assets.xcassets */,
-				B67C40212A85106C00820A86 /* Persistence.swift */,
-				B67C40232A85106C00820A86 /* PercyJacksonApp.xcdatamodeld */,
-				B67C401E2A85106C00820A86 /* Preview Content */,
+				6144C40B2A8CED4100D562FC /* AppDelegate.swift */,
+				6144C40D2A8CED4100D562FC /* SceneDelegate.swift */,
+				6144C40F2A8CED4100D562FC /* ViewController.swift */,
+				6144C4112A8CED4100D562FC /* Main.storyboard */,
+				6144C4142A8CED4100D562FC /* Assets.xcassets */,
+				6144C4162A8CED4100D562FC /* LaunchScreen.storyboard */,
+				6144C4192A8CED4100D562FC /* Info.plist */,
 			);
-			path = PercyJacksonApp;
-			sourceTree = "<group>";
-		};
-		B67C401E2A85106C00820A86 /* Preview Content */ = {
-			isa = PBXGroup;
-			children = (
-				B67C401F2A85106C00820A86 /* Preview Assets.xcassets */,
-			);
-			path = "Preview Content";
-			sourceTree = "<group>";
-		};
-		B67C402B2A85118F00820A86 /* Data */ = {
-			isa = PBXGroup;
-			children = (
-				B67C402C2A8511D400820A86 /* API.swift */,
-			);
-			path = Data;
+			path = Community;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		B67C40142A85106B00820A86 /* PercyJacksonApp */ = {
+		6144C4072A8CED4100D562FC /* Community */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = B67C40282A85106C00820A86 /* Build configuration list for PBXNativeTarget "PercyJacksonApp" */;
+			buildConfigurationList = 6144C41C2A8CED4100D562FC /* Build configuration list for PBXNativeTarget "Community" */;
 			buildPhases = (
-				B67C40112A85106B00820A86 /* Sources */,
-				B67C40122A85106B00820A86 /* Frameworks */,
-				B67C40132A85106B00820A86 /* Resources */,
+				6144C4042A8CED4100D562FC /* Sources */,
+				6144C4052A8CED4100D562FC /* Frameworks */,
+				6144C4062A8CED4100D562FC /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = PercyJacksonApp;
-			productName = PercyJacksonApp;
-			productReference = B67C40152A85106B00820A86 /* PercyJacksonApp.app */;
+			name = Community;
+			productName = Community;
+			productReference = 6144C4082A8CED4100D562FC /* Community.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		B67C400D2A85106B00820A86 /* Project object */ = {
+		6144C4002A8CED4000D562FC /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1430;
 				LastUpgradeCheck = 1430;
 				TargetAttributes = {
-					B67C40142A85106B00820A86 = {
-						CreatedOnToolsVersion = 14.3;
+					6144C4072A8CED4100D562FC = {
+						CreatedOnToolsVersion = 14.3.1;
 					};
 				};
 			};
-			buildConfigurationList = B67C40102A85106B00820A86 /* Build configuration list for PBXProject "PercyJacksonApp" */;
+			buildConfigurationList = 6144C4032A8CED4000D562FC /* Build configuration list for PBXProject "Community" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -129,45 +110,63 @@
 				en,
 				Base,
 			);
-			mainGroup = B67C400C2A85106B00820A86;
-			productRefGroup = B67C40162A85106B00820A86 /* Products */;
+			mainGroup = 6144C3FF2A8CED4000D562FC;
+			productRefGroup = 6144C4092A8CED4100D562FC /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				B67C40142A85106B00820A86 /* PercyJacksonApp */,
+				6144C4072A8CED4100D562FC /* Community */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		B67C40132A85106B00820A86 /* Resources */ = {
+		6144C4062A8CED4100D562FC /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B67C40202A85106C00820A86 /* Preview Assets.xcassets in Resources */,
-				B67C401D2A85106C00820A86 /* Assets.xcassets in Resources */,
+				6144C4182A8CED4100D562FC /* LaunchScreen.storyboard in Resources */,
+				6144C4152A8CED4100D562FC /* Assets.xcassets in Resources */,
+				6144C4132A8CED4100D562FC /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		B67C40112A85106B00820A86 /* Sources */ = {
+		6144C4042A8CED4100D562FC /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B67C40222A85106C00820A86 /* Persistence.swift in Sources */,
-				B67C40252A85106C00820A86 /* PercyJacksonApp.xcdatamodeld in Sources */,
-				B67C401B2A85106B00820A86 /* ContentView.swift in Sources */,
-				B67C40192A85106B00820A86 /* PercyJacksonAppApp.swift in Sources */,
-				B67C402D2A8511D400820A86 /* API.swift in Sources */,
+				6144C4102A8CED4100D562FC /* ViewController.swift in Sources */,
+				6144C40C2A8CED4100D562FC /* AppDelegate.swift in Sources */,
+				6144C40E2A8CED4100D562FC /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXVariantGroup section */
+		6144C4112A8CED4100D562FC /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				6144C4122A8CED4100D562FC /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		6144C4162A8CED4100D562FC /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				6144C4172A8CED4100D562FC /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
 /* Begin XCBuildConfiguration section */
-		B67C40262A85106C00820A86 /* Debug */ = {
+		6144C41A2A8CED4100D562FC /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -227,7 +226,7 @@
 			};
 			name = Debug;
 		};
-		B67C40272A85106C00820A86 /* Release */ = {
+		6144C41B2A8CED4100D562FC /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -281,30 +280,27 @@
 			};
 			name = Release;
 		};
-		B67C40292A85106C00820A86 /* Debug */ = {
+		6144C41D2A8CED4100D562FC /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = PercyJacksonApp/PercyJacksonApp.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"PercyJacksonApp/Preview Content\"";
-				DEVELOPMENT_TEAM = Q7Z5S76S2J;
-				ENABLE_PREVIEWS = YES;
+				DEVELOPMENT_TEAM = 56QA9FYA3V;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_FILE = Community/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.lucasfrancisco.PercyJacksonApp;
+				PRODUCT_BUNDLE_IDENTIFIER = br.com.alura.Community;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -312,30 +308,27 @@
 			};
 			name = Debug;
 		};
-		B67C402A2A85106C00820A86 /* Release */ = {
+		6144C41E2A8CED4100D562FC /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = PercyJacksonApp/PercyJacksonApp.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"PercyJacksonApp/Preview Content\"";
-				DEVELOPMENT_TEAM = Q7Z5S76S2J;
-				ENABLE_PREVIEWS = YES;
+				DEVELOPMENT_TEAM = 56QA9FYA3V;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_FILE = Community/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.lucasfrancisco.PercyJacksonApp;
+				PRODUCT_BUNDLE_IDENTIFIER = br.com.alura.Community;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -346,38 +339,25 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		B67C40102A85106B00820A86 /* Build configuration list for PBXProject "PercyJacksonApp" */ = {
+		6144C4032A8CED4000D562FC /* Build configuration list for PBXProject "Community" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				B67C40262A85106C00820A86 /* Debug */,
-				B67C40272A85106C00820A86 /* Release */,
+				6144C41A2A8CED4100D562FC /* Debug */,
+				6144C41B2A8CED4100D562FC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		B67C40282A85106C00820A86 /* Build configuration list for PBXNativeTarget "PercyJacksonApp" */ = {
+		6144C41C2A8CED4100D562FC /* Build configuration list for PBXNativeTarget "Community" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				B67C40292A85106C00820A86 /* Debug */,
-				B67C402A2A85106C00820A86 /* Release */,
+				6144C41D2A8CED4100D562FC /* Debug */,
+				6144C41E2A8CED4100D562FC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCVersionGroup section */
-		B67C40232A85106C00820A86 /* PercyJacksonApp.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				B67C40242A85106C00820A86 /* PercyJacksonApp.xcdatamodel */,
-			);
-			currentVersion = B67C40242A85106C00820A86 /* PercyJacksonApp.xcdatamodel */;
-			path = PercyJacksonApp.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
-	rootObject = B67C400D2A85106B00820A86 /* Project object */;
+	rootObject = 6144C4002A8CED4000D562FC /* Project object */;
 }
