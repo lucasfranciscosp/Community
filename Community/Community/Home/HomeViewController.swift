@@ -7,7 +7,7 @@
 
 import UIKit
 
-class HomeViewController: UIViewController {
+class HomeViewController: UICollectionViewController {
     let stackView = UIStackView()
     let label = UILabel()
     
@@ -16,29 +16,21 @@ class HomeViewController: UIViewController {
         setupAppBar()
         style()
         layout()
+        collectionViewConfig()
+        
     }
+    
 }
+
+//MARK: - Styling
 
 extension HomeViewController {
     private func style() {
-        stackView.translatesAutoresizingMaskIntoConstraints = false
-        stackView.axis = .vertical
-        stackView.spacing = 20
         
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "Welcome"
-        label.font = UIFont.preferredFont(forTextStyle: .title1)
     }
     
     private func layout() {
-        stackView.addArrangedSubview(label)
         
-        view.addSubview(stackView)
-        
-        NSLayoutConstraint.activate([
-            stackView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            stackView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-        ])
     }
     
     private func setupAppBar() {
@@ -46,11 +38,40 @@ extension HomeViewController {
         
         title = "Comunidades"
         navigationController?.navigationBar.prefersLargeTitles = true
-
+        
         
     }
     
     @objc private func add() {
         print("clicou em adicionar")
+    }
+}
+
+// MARK: - UICollection implementations
+
+extension HomeViewController: UICollectionViewDelegateFlowLayout {
+    func collectionViewConfig() {
+        // indica o tipo de celula - neste caso e aplicado o padrao UIColletionViewCell
+        collectionView?.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "id") // 1
+    }
+    
+    override func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 1
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 50
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "id", for: indexPath)
+        
+        cell.backgroundColor = .systemTeal
+        
+        return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: collectionView.frame.width - 32, height: 550)
     }
 }

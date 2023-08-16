@@ -16,7 +16,7 @@ class ScaffoldViewController: UITabBarController {
     }
 
     private func setupViews() {
-        let homeVC = HomeViewController()
+        let homeVC = HomeViewController(collectionViewLayout: UICollectionViewFlowLayout())
         let leafVC = LeafViewController()
         let profile = ProfileViewController()
 
