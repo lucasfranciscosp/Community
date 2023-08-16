@@ -11,6 +11,7 @@
         <!--Home View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
                 <viewController id="BYZ-38-t0r" customClass="HomeViewController" customModule="Community" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
@@ -25,14 +26,13 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="95" y="-27"/>
         </scene>
-        <!--View Controller-->
+        <!--Community Description Controller-->
         <scene sceneID="koY-ay-fWM">
             <objects>
-                <viewController id="lib-gW-IoF" sceneMemberID="viewController">
+                <viewController restorationIdentifier="CommunityDescriptionController" storyboardIdentifier="CommunityDescriptionController" id="lib-gW-IoF" customClass="CommunityDescriptionController" customModule="Community" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Cbd-I7-UBo">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -129,6 +129,13 @@
                             <constraint firstItem="iH7-1A-UfB" firstAttribute="bottom" secondItem="Thu-og-H3D" secondAttribute="bottom" id="iKy-JA-tJP"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="communityImage" destination="0Vu-wL-PWA" id="fFb-YA-o0E"/>
+                        <outlet property="descricaoLabel" destination="jGc-RY-85o" id="6p3-Ve-xIP"/>
+                        <outlet property="descritivoLabel" destination="zdh-Uq-ee3" id="5ga-6t-gUN"/>
+                        <outlet property="localLabel" destination="iph-Cb-wAo" id="UMp-Aq-G5u"/>
+                        <outlet property="tituloLabel" destination="JLS-ud-SlP" id="Ar4-B6-RI5"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kgG-qd-Ffp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
