@@ -44,6 +44,8 @@ extension HomeViewController {
     
     @objc private func add() {
         print("clicou em adicionar")
+        Localization().testLocal()
+        
     }
 }
 
