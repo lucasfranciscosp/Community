@@ -54,7 +54,10 @@ extension HomeViewController: UICollectionViewDelegateFlowLayout {
         // indica o tipo de celula - neste caso e aplicado o padrao UIColletionViewCell
         collectionView?.register(UINib(nibName: "HomeCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "HomeCollectionViewCell")
         collectionView?.delegate = self
-        // 1
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        print("clicou")
     }
     
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -62,12 +65,13 @@ extension HomeViewController: UICollectionViewDelegateFlowLayout {
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 50
+        return mockComunidades.count
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "HomeCollectionViewCell", for: indexPath) as? HomeCollectionViewCell else { return UICollectionViewCell() }
-        cell.setCell(data: HomeCollectionViewCellData(image: "images", tags: "#xadrez", name: "Nome", location: "UNICAMP"))
+        let comunidade = mockComunidades[indexPath.row]
+        cell.setCell(data: HomeCollectionViewCellData(image: comunidade.image, tags: comunidade.tags, name: comunidade.name, location: comunidade.location))
         return cell
       }
     
