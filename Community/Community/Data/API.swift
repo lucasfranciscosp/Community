@@ -54,3 +54,31 @@ class Service {
     }
     
 }
+
+
+/*
+ Para usar a API:
+ 
+ dentro da view usar isso:
+ 
+ .task {
+             do{
+                 let service = Service()
+                 service.get(cep: "01001000"){ result in
+                     DispatchQueue.main.async {
+                         switch result {
+                         case let .failure(error):
+                             print(error)
+                             print("Coloque denovo")
+                         case let .success(data):
+                             print(data)
+                             var teste : Address
+                             teste = data as! Address
+                             print(teste.bairro)
+                         }
+                     }
+                 }
+             }
+ 
+ pelo menos tava printando no outro arquivo, agora é fazer a lógica de como usar isso pra criar comunidade e afins
+ */
