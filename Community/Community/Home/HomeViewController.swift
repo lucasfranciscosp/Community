@@ -1,8 +1,8 @@
 //
-//  HomeViewController.swift
+//  ControllerView.swift
 //  Community
 //
-//  Created by Caio Melloni dos Santos on 16/08/23.
+//  Created by Pamella Alvarenga on 16/08/23.
 //
 
 import UIKit
