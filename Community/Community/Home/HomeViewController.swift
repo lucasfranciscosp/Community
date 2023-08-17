@@ -57,7 +57,14 @@ extension HomeViewController: UICollectionViewDelegateFlowLayout {
     }
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print("clicou")
+        let storyBoard: UIStoryboard = UIStoryboard(name: "Comunity-Details", bundle: nil)
+        
+        let storyScreen = storyBoard.instantiateViewController(withIdentifier: "CommunityDescriptionController") as! CommunityDescriptionController
+        storyScreen.comunidade = mockComunidades[indexPath.row]
+
+        self.present(storyScreen, animated: true, completion: nil)
+    
+
     }
     
     override func numberOfSections(in collectionView: UICollectionView) -> Int {

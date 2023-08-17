@@ -13,10 +13,22 @@ class CommunityDescriptionController: UIViewController {
     @IBOutlet weak var descritivoLabel: UILabel!
     @IBOutlet weak var localLabel: UILabel!
     @IBOutlet weak var descricaoLabel: UILabel!
+    var comunidade: Comunidade?
     
-    func configuraView() {
+    override func viewDidLoad() {
+        configuraView()
         communityImage.layer.cornerRadius = 10
         communityImage.layer.masksToBounds = true
+    }
+    
+    func configuraView() {
+        guard let comunidade = comunidade else { return }
+        
+        
+        communityImage.image = UIImage(named: comunidade.image)
+        tituloLabel.text = comunidade.name
+        localLabel.text = comunidade.location
+        descritivoLabel.text = comunidade.tags
     }
     
     
