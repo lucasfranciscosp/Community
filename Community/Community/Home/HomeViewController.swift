@@ -52,7 +52,9 @@ extension HomeViewController {
 extension HomeViewController: UICollectionViewDelegateFlowLayout {
     func collectionViewConfig() {
         // indica o tipo de celula - neste caso e aplicado o padrao UIColletionViewCell
-        collectionView?.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "id") // 1
+        collectionView?.register(UINib(nibName: "HomeCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "HomeCollectionViewCell")
+        collectionView?.delegate = self
+        // 1
     }
     
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -64,12 +66,10 @@ extension HomeViewController: UICollectionViewDelegateFlowLayout {
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "id", for: indexPath)
-        
-        cell.backgroundColor = .systemTeal
-        
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "HomeCollectionViewCell", for: indexPath) as? HomeCollectionViewCell else { return UICollectionViewCell() }
+        cell.setCell(data: HomeCollectionViewCellData(image: "images", tags: "#xadrez", name: "Nome", location: "UNICAMP"))
         return cell
-    }
+      }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: collectionView.frame.width - 32, height: 550)
