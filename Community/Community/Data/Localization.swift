@@ -36,28 +36,32 @@ class Localization {
                             var teste : Address
                             teste = data as! Address
                             print(teste.address.cityDistrict)
+                            print(teste.address.state)
+                            print(teste.address.country)
+                            print(teste.address.city)
+                            print(teste.address.municipality)
                             
-                            do{
-                                
-                                let service = Service()
-                                service.getByAddress(address: teste.address.cityDistrict){ result in
-                                    DispatchQueue.main.async {
-                                        switch result {
-                                        case let .failure(error):
-                                            print(error)
-                                            print("Coloque denovo")
-                                        case let .success(data):
-                                            // Dentro daqui printamos os dados da API mandando o endereço
-                                            print(data)
-                                            var receber : Location
-                                            receber = data as! Location
-                                            print(receber)
-                                            print("entrei aqui dnv")
-                                            
-                                        }
-                                    }
-                                }
-                            }
+//                            do{
+//
+//                                let service = Service()
+//                                service.getByAddress(address: teste.address.cityDistrict){ result in
+//                                    DispatchQueue.main.async {
+//                                        switch result {
+//                                        case let .failure(error):
+//                                            print(error)
+//                                            print("Coloque denovo")
+//                                        case let .success(data):
+//                                            // Dentro daqui printamos os dados da API mandando o endereço
+//                                            print(data)
+//                                            var receber : Location
+//                                            receber = data as! Location
+//                                            print(receber)
+//                                            print("entrei aqui dnv")
+//
+//                                        }
+//                                    }
+//                                }
+//                            }
 
                         }
                     }
