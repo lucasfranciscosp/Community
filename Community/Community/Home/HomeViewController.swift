@@ -8,8 +8,6 @@
 import UIKit
 
 class HomeViewController: UICollectionViewController {
-    let stackView = UIStackView()
-    let label = UILabel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -17,9 +15,8 @@ class HomeViewController: UICollectionViewController {
         style()
         layout()
         collectionViewConfig()
-        
+        collectionView.backgroundColor = PaleteColor.color2
     }
-    
 }
 
 //MARK: - Styling
