@@ -15,7 +15,7 @@ struct Comunidade {
 }
 
 var mockComunidades = [
-    Comunidade(image: "images", tags: "#xadrez", name: "Reis do Gado", location: "Barão Geraldo"),
+    Comunidade(image: "Image", tags: "#xadrez", name: "Reis do Gado", location: "Barão Geraldo"),
     Comunidade(image: "images", tags: "#pintura", name: "Arte Viva", location: "Centro da Cidade"),
     Comunidade(image: "images", tags: "#corrida", name: "Runners Unidos", location: "Parque da Cidade"),
     Comunidade(image: "images", tags: "#culinaria", name: "Sabores do Mundo", location: "Bairro Alegre"),
