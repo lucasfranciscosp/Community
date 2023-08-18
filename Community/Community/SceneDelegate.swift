@@ -17,7 +17,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         window = UIWindow(frame: windowScene.coordinateSpace.bounds)
         window?.windowScene = windowScene
-        window?.backgroundColor = PaleteColor.accentLight
+        window?.backgroundColor = PaleteColor.color4
         window?.rootViewController = ScaffoldViewController()
         window?.makeKeyAndVisible()
     }
