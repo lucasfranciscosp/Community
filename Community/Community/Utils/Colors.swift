@@ -28,5 +28,16 @@ extension UIColor {
 }
 
 class PaleteColor {
-    static var primary: UIColor = UIColor(hex: 0x6F150C)
+    static var accentLight: UIColor = UIColor(hex: 0x3E6B2D)
+    static var accentDark: UIColor = UIColor(hex: 0x55943E)
+    static var color1: UIColor = UIColor(hex: 0xF6EEE9)
+    static var color2: UIColor = UIColor(hex: 0xEAD8D4)
+    static var color3: UIColor = UIColor(hex: 0x928684)
+    static var color4: UIColor = UIColor(hex: 0x221E1E)
+    static var primary1: UIColor = UIColor(hex: 0x546F31)
+    static var primary2: UIColor = UIColor(hex: 0x738B39)
+    static var primary3: UIColor = UIColor(hex: 0x9CB26C)
+    static var secondary1: UIColor = UIColor(hex: 0xF0754F)
+    static var secondary2: UIColor = UIColor(hex: 0x913E24)
+    static var secondary3: UIColor = UIColor(hex: 0xCE5239)
 }

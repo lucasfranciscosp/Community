@@ -13,6 +13,7 @@ class ScaffoldViewController: UITabBarController {
         super.viewDidLoad()
         setupViews()
         setupTabBar()
+        UITabBar.appearance().barTintColor = PaleteColor.color2
     }
 
     private func setupViews() {
@@ -41,7 +42,6 @@ class ScaffoldViewController: UITabBarController {
     }
     
     private func setupTabBar() {
-        //tabBar.tintColor = appColor
         tabBar.isTranslucent = false
     }
 }
