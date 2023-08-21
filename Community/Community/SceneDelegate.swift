@@ -8,24 +8,6 @@
 import UIKit
 import CloudKit
 
-func save()  {
-    let record = CKRecord(recordType: "test")
-    record.setValuesForKeys(["mockValue": "mockKey"])
-
-    
-    CKContainer(identifier: "iCloud.br.com.Community").publicCloudDatabase.save(record) { newRecord, error in
-        if let error = error {
-            print(error)
-        } else {
-            if let _ = newRecord {
-                print("SAVED")
-            }
-        }
-    
-        
-    }
-   
-}
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
@@ -40,7 +22,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window?.backgroundColor = PaleteColor.color4
         window?.rootViewController = ScaffoldViewController()
         window?.makeKeyAndVisible()
-        save()
+
     }
 
 }
