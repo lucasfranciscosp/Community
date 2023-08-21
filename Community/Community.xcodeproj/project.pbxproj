@@ -32,6 +32,7 @@
 		6144C42E2A8D2CCC00D562FC /* CommunityDescriptionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityDescriptionController.swift; sourceTree = "<group>"; };
 		6144C4362A8E52F300D562FC /* Comunidade.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comunidade.swift; sourceTree = "<group>"; };
 		B67C40332A8E3CEF00820A86 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
+		F86F5C9A2A938E52008B7940 /* Community.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Community.entitlements; sourceTree = "<group>"; };
 		F8AA73E52A8E3C5600AEC8E8 /* HomeCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeCollectionViewCell.swift; sourceTree = "<group>"; };
 		F8AA73E62A8E3C5600AEC8E8 /* HomeCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HomeCollectionViewCell.xib; sourceTree = "<group>"; };
 		F8AA73E82A8E3C5600AEC8E8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = "Base.lproj/Comunity-Details.storyboard"; sourceTree = "<group>"; };
@@ -72,6 +73,7 @@
 		6144C40A2A8CED4100D562FC /* Community */ = {
 			isa = PBXGroup;
 			children = (
+				F86F5C9A2A938E52008B7940 /* Community.entitlements */,
 				6144C4352A8E52C700D562FC /* Model */,
 				F8E7A6802A8D11AA002C686D /* Home */,
 				F8E7A6792A8CF10E002C686D /* Scaffold */,
@@ -379,9 +381,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Community/Community.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 56QA9FYA3V;
+				DEVELOPMENT_TEAM = A7BY7494NB;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Community/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -394,7 +397,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = br.com.alura.Community;
+				PRODUCT_BUNDLE_IDENTIFIER = br.com.Community;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
@@ -410,9 +413,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Community/Community.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 56QA9FYA3V;
+				DEVELOPMENT_TEAM = A7BY7494NB;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Community/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -425,7 +429,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = br.com.alura.Community;
+				PRODUCT_BUNDLE_IDENTIFIER = br.com.Community;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
