@@ -59,9 +59,32 @@ extension HomeViewController: UICollectionViewDelegateFlowLayout {
         let storyScreen = storyBoard.instantiateViewController(withIdentifier: "CommunityDescriptionController") as! CommunityDescriptionController
         storyScreen.comunidade = mockComunidades[indexPath.row]
 
-        self.present(storyScreen, animated: true, completion: nil)
+        // Personalize a barra de navegação do controlador de destino (modal)
+           let navigationController = UINavigationController(rootViewController: storyScreen)
+           navigationController.modalPresentationStyle = .automatic  // Define o estilo de apresentação modal (tela cheia)
+           
+        // Crie uma view para simular a linha no bottom da barra de navegação
+        let bottomLineView = UIView(frame: CGRect(x: 0, y: navigationController.navigationBar.frame.height, width: navigationController.navigationBar.frame.width, height: 0.2))
+        bottomLineView.backgroundColor = .lightGray  // Cor da linha
+            
+            navigationController.navigationBar.addSubview(bottomLineView)
+        
+        
+           // Crie um botão "back" com título
+           let backButton = UIBarButtonItem(title: "Voltar", style: .plain, target: self, action: #selector(backButtonTapped))
+           
+           // Defina o botão "back" como o botão esquerdo da barra de navegação
+           storyScreen.navigationItem.leftBarButtonItem = backButton
+           
+        
+        backButton.target = self
+        backButton.action = #selector(backButtonTapped)
+        
+        self.present(navigationController, animated: true, completion: nil)
+    }
     
-
+    @objc func backButtonTapped() {
+        self.dismiss(animated: true, completion: nil)
     }
     
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
