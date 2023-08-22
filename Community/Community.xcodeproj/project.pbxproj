@@ -17,12 +17,14 @@
 		6144C42F2A8D2CCC00D562FC /* CommunityDescriptionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6144C42E2A8D2CCC00D562FC /* CommunityDescriptionController.swift */; };
 		6144C4372A8E52F300D562FC /* Comunidade.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6144C4362A8E52F300D562FC /* Comunidade.swift */; };
 		B67C40342A8E3CEF00820A86 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = B67C40332A8E3CEF00820A86 /* API.swift */; };
+		B67C40362A8E4D2D00820A86 /* Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = B67C40352A8E4D2D00820A86 /* Localization.swift */; };
 		F8AA73E92A8E3C5600AEC8E8 /* HomeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8AA73E52A8E3C5600AEC8E8 /* HomeCollectionViewCell.swift */; };
 		F8AA73EA2A8E3C5600AEC8E8 /* HomeCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F8AA73E62A8E3C5600AEC8E8 /* HomeCollectionViewCell.xib */; };
 		F8AA73EB2A8E3C5600AEC8E8 /* Comunity-Details.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F8AA73E72A8E3C5600AEC8E8 /* Comunity-Details.storyboard */; };
 		F8B7CA712A8F947B002F2C74 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8B7CA702A8F947B002F2C74 /* Colors.swift */; };
 		F8E7A67B2A8CF135002C686D /* ScaffoldViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8E7A67A2A8CF135002C686D /* ScaffoldViewController.swift */; };
 		F8E7A67E2A8D074C002C686D /* UIViewControllerUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8E7A67D2A8D074C002C686D /* UIViewControllerUtil.swift */; };
+		F8E7A6822A8D11BC002C686D /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8E7A6812A8D11BC002C686D /* HomeViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +38,8 @@
 		6144C42E2A8D2CCC00D562FC /* CommunityDescriptionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityDescriptionController.swift; sourceTree = "<group>"; };
 		6144C4362A8E52F300D562FC /* Comunidade.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comunidade.swift; sourceTree = "<group>"; };
 		B67C40332A8E3CEF00820A86 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
+		B67C40352A8E4D2D00820A86 /* Localization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Localization.swift; sourceTree = "<group>"; };
+		F86F5C9A2A938E52008B7940 /* Community.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Community.entitlements; sourceTree = "<group>"; };
 		F8AA73E52A8E3C5600AEC8E8 /* HomeCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeCollectionViewCell.swift; sourceTree = "<group>"; };
 		F8AA73E62A8E3C5600AEC8E8 /* HomeCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HomeCollectionViewCell.xib; sourceTree = "<group>"; };
 		F8AA73E82A8E3C5600AEC8E8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = "Base.lproj/Comunity-Details.storyboard"; sourceTree = "<group>"; };
@@ -84,6 +88,7 @@
 		6144C40A2A8CED4100D562FC /* Community */ = {
 			isa = PBXGroup;
 			children = (
+				F86F5C9A2A938E52008B7940 /* Community.entitlements */,
 				6144C4352A8E52C700D562FC /* Model */,
 				F8E7A6802A8D11AA002C686D /* Home */,
 				0804CEC92A938C1C003CBA96 /* Create Community */,
@@ -120,6 +125,7 @@
 			isa = PBXGroup;
 			children = (
 				B67C40332A8E3CEF00820A86 /* API.swift */,
+				B67C40352A8E4D2D00820A86 /* Localization.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -256,6 +262,7 @@
 				F8E7A67E2A8D074C002C686D /* UIViewControllerUtil.swift in Sources */,
 				F8AA73E92A8E3C5600AEC8E8 /* HomeCollectionViewCell.swift in Sources */,
 				080FE0D82A8E4D1400F2CBDA /* HomeViewController.swift in Sources */,
+				B67C40362A8E4D2D00820A86 /* Localization.swift in Sources */,
 				B67C40342A8E3CEF00820A86 /* API.swift in Sources */,
 				0804CECB2A938C4F003CBA96 /* CreateCommunityViewController.swift in Sources */,
 				080FE0D92A8E4D1D00F2CBDA /* HomeCollectionViewCell.swift in Sources */,
@@ -395,11 +402,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Community/Community.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 56QA9FYA3V;
+				DEVELOPMENT_TEAM = A7BY7494NB;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Community/Info.plist;
+				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = test2;
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = test1;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -410,7 +420,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = br.com.alura.Community;
+				PRODUCT_BUNDLE_IDENTIFIER = br.com.Community;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
@@ -426,11 +436,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Community/Community.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 56QA9FYA3V;
+				DEVELOPMENT_TEAM = A7BY7494NB;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Community/Info.plist;
+				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = test2;
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = test1;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -441,7 +454,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = br.com.alura.Community;
+				PRODUCT_BUNDLE_IDENTIFIER = br.com.Community;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;

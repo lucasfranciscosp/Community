@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import CloudKit
+
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
@@ -20,6 +22,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window?.backgroundColor = PaleteColor.color4
         window?.rootViewController = ScaffoldViewController()
         window?.makeKeyAndVisible()
+
     }
 
 }
