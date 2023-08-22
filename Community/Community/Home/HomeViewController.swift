@@ -40,7 +40,10 @@ extension HomeViewController {
     }
     
     @objc private func add() {
-        print("clicou em adicionar")
+        let storyBoard: UIStoryboard = UIStoryboard(name: "Create-Community", bundle: nil)
+        let storyScreen = storyBoard.instantiateViewController(withIdentifier: "CreateCommunityViewController") as! CreateCommunityViewController
+        let navController = UINavigationController(rootViewController: storyScreen)
+        self.present(navController, animated: true, completion: nil)
     }
 }
 

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0804CECB2A938C4F003CBA96 /* CreateCommunityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0804CECA2A938C4F003CBA96 /* CreateCommunityViewController.swift */; };
+		0804CECD2A938DDD003CBA96 /* Create-Community.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0804CECC2A938DDD003CBA96 /* Create-Community.storyboard */; };
 		080FE0D82A8E4D1400F2CBDA /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8E7A6812A8D11BC002C686D /* HomeViewController.swift */; };
 		080FE0D92A8E4D1D00F2CBDA /* HomeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8AA73E52A8E3C5600AEC8E8 /* HomeCollectionViewCell.swift */; };
 		6144C40C2A8CED4100D562FC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6144C40B2A8CED4100D562FC /* AppDelegate.swift */; };
@@ -24,6 +26,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0804CECA2A938C4F003CBA96 /* CreateCommunityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateCommunityViewController.swift; sourceTree = "<group>"; };
+		0804CECC2A938DDD003CBA96 /* Create-Community.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Create-Community.storyboard"; sourceTree = "<group>"; };
 		6144C4082A8CED4100D562FC /* Community.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Community.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6144C40B2A8CED4100D562FC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6144C40D2A8CED4100D562FC /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -52,6 +56,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0804CEC92A938C1C003CBA96 /* Create Community */ = {
+			isa = PBXGroup;
+			children = (
+				0804CECA2A938C4F003CBA96 /* CreateCommunityViewController.swift */,
+			);
+			path = "Create Community";
+			sourceTree = "<group>";
+		};
 		6144C3FF2A8CED4000D562FC = {
 			isa = PBXGroup;
 			children = (
@@ -74,6 +86,7 @@
 			children = (
 				6144C4352A8E52C700D562FC /* Model */,
 				F8E7A6802A8D11AA002C686D /* Home */,
+				0804CEC92A938C1C003CBA96 /* Create Community */,
 				F8E7A6792A8CF10E002C686D /* Scaffold */,
 				B67C40322A8E3CDF00820A86 /* Data */,
 				6144C40B2A8CED4100D562FC /* AppDelegate.swift */,
@@ -116,6 +129,7 @@
 			children = (
 				F8AA73E42A8E3C5600AEC8E8 /* HomeCollectionViewCell */,
 				F8AA73E72A8E3C5600AEC8E8 /* Comunity-Details.storyboard */,
+				0804CECC2A938DDD003CBA96 /* Create-Community.storyboard */,
 			);
 			path = View;
 			sourceTree = SOURCE_ROOT;
@@ -219,6 +233,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0804CECD2A938DDD003CBA96 /* Create-Community.storyboard in Resources */,
 				F8AA73EB2A8E3C5600AEC8E8 /* Comunity-Details.storyboard in Resources */,
 				6144C4152A8CED4100D562FC /* Assets.xcassets in Resources */,
 				F8AA73EA2A8E3C5600AEC8E8 /* HomeCollectionViewCell.xib in Resources */,
@@ -242,6 +257,7 @@
 				F8AA73E92A8E3C5600AEC8E8 /* HomeCollectionViewCell.swift in Sources */,
 				080FE0D82A8E4D1400F2CBDA /* HomeViewController.swift in Sources */,
 				B67C40342A8E3CEF00820A86 /* API.swift in Sources */,
+				0804CECB2A938C4F003CBA96 /* CreateCommunityViewController.swift in Sources */,
 				080FE0D92A8E4D1D00F2CBDA /* HomeCollectionViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -310,7 +326,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.1;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -364,7 +380,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -388,7 +404,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -419,7 +435,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
