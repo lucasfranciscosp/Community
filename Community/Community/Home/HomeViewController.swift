@@ -41,6 +41,12 @@ extension HomeViewController {
     
     @objc private func add() {
         print("clicou em adicionar")
+        
+        let comunidade = Comunidade(description: "Os reis do gado juntos reunidos", name: "Rei do Gado", tags: "Gadisse", image: "images", country: "Brazil", city: "Campinas", state: "São Paulo", city_district: "Barão Geraldo")
+        Task {
+            await comunidade.saveInDatabase()
+        }
+        
     }
 }
 
@@ -98,7 +104,7 @@ extension HomeViewController: UICollectionViewDelegateFlowLayout {
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "HomeCollectionViewCell", for: indexPath) as? HomeCollectionViewCell else { return UICollectionViewCell() }
         let comunidade = mockComunidades[indexPath.row]
-        cell.setCell(data: HomeCollectionViewCellData(image: comunidade.image, tags: comunidade.tags, name: comunidade.name, location: comunidade.location))
+        cell.setCell(data: HomeCollectionViewCellData(image: comunidade.image, tags: comunidade.tags, name: comunidade.name, location: "place holder"))
         return cell
       }
     

@@ -5,28 +5,56 @@
 //  Created by Pamella Alvarenga on 17/08/23.
 //
 
-import Foundation
+import CloudKit
 
-struct Comunidade {
-    let image: String
-    let tags: String
+class Comunidade: CloudKitSchema {
+    let description: String
     let name: String
-    let location: String
+    let tags: String
+    let image: String
+    let country: String
+    let city: String
+    let state: String
+    let city_district: String
+    
+    func updateRecordValues() {
+        super.setRecordValues([
+            "description": description,
+            "name": name,
+            "tags": tags,
+            "image": image,
+            "country": country,
+            "city": city,
+            "state": state,
+            "city_district": city_district
+        ])
+    }
+    
+    func saveInDatabase() async {
+        updateRecordValues()
+        do {
+            let savedCommunity = try await CloudKit.defaultContainer.publicCloudDatabase.save(record)
+        } catch {
+           // falta tratar os erros aqui
+            print("**DEU ERRO!!!!!!!!**")
+        }
+    }
+    
+    init(description: String, name: String, tags: String, image: String, country: String, city: String, state: String, city_district: String) {
+        self.description = description
+        self.name = name
+        self.tags = tags
+        self.image = image
+        self.country = country
+        self.city = city
+        self.state = state
+        self.city_district = city_district
+        super.init(recordName: "comunidade")
+    }
 }
 
 var mockComunidades = [
-    Comunidade(image: "Image", tags: "#xadrez", name: "Reis do Gado", location: "Barão Geraldo"),
-    Comunidade(image: "images", tags: "#pintura", name: "Arte Viva", location: "Centro da Cidade"),
-    Comunidade(image: "images", tags: "#corrida", name: "Runners Unidos", location: "Parque da Cidade"),
-    Comunidade(image: "images", tags: "#culinaria", name: "Sabores do Mundo", location: "Bairro Alegre"),
-    Comunidade(image: "images", tags: "#teatro", name: "Palco Criativo", location: "Teatro Municipal"),
-    Comunidade(image: "images", tags: "#fotografia", name: "Olhares Capturados", location: "Galeria de Arte"),
-    Comunidade(image: "images", tags: "#yoga", name: "Equilíbrio Interior", location: "Estúdio Zen"),
-    Comunidade(image: "images", tags: "#leitura", name: "Amantes dos Livros", location: "Biblioteca Central"),
-    Comunidade(image: "images", tags: "#esporte", name: "Esportistas da Ação", location: "Quadra Esportiva"),
-    Comunidade(image: "images", tags: "#musica", name: "Harmonia Sonora", location: "Casa de Shows"),
-    Comunidade(image: "images", tags: "#jardinagem", name: "Jardineiros Urbanos", location: "Praça Verde"),
-    Comunidade(image: "images", tags: "#danca", name: "Passos Rítmicos", location: "Estúdio de Dança"),
-    Comunidade(image: "images", tags: "#caridade", name: "Mãos Solidárias", location: "Centro Comunitário")
+    Comunidade(description: "Os reis do gado juntos reunidos", name: "Rei do Gado", tags: "Gadisse", image: "Image", country: "Brazil", city: "Campinas", state: "São Paulo", city_district: "Barão Geraldo"),
+    Comunidade(description: "Os reis do gado juntos reunidos", name: "Rei do Gado", tags: "Gadisse", image: "images", country: "Brazil", city: "Campinas", state: "São Paulo", city_district: "Barão Geraldo")
 ]
 

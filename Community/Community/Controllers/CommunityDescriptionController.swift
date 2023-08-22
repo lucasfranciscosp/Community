@@ -30,7 +30,7 @@ class CommunityDescriptionController: UIViewController {
         
         communityImage.image = UIImage(named: comunidade.image)
         tituloLabel.text = comunidade.name
-        localLabel.text = comunidade.location
+//        localLabel.text = comunidade.location
         descritivoLabel.text = comunidade.tags
         
      
