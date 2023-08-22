@@ -12,8 +12,8 @@ class CreateCommunityViewController: UIViewController {
     @IBOutlet weak var imagePicker: UIView!
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var tagTextField: UITextField!
-    @IBOutlet weak var locationButton: UIButton!
     @IBOutlet weak var descriptionTextField: UITextField!
+    @IBOutlet weak var locationLabel: UIView!
     @IBOutlet weak var symbolView: UIView!
     @IBOutlet weak var image: UIImageView!
     
@@ -31,6 +31,7 @@ class CreateCommunityViewController: UIViewController {
     }
     
     private func setLayout() {
+       // locationLabel.text = logica de pegar loc
         imagePicker.layer.cornerRadius = 10
         imagePicker.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMinXMinYCorner]
         image.layer.cornerRadius = 10
