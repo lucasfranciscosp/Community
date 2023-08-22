@@ -14,62 +14,37 @@ class Localization {
     var currentLocation: CLLocation!
     
 
-    func testLocal() {
+    func getAddress(completion: @escaping (Address?) -> Void) {
         locManager.requestWhenInUseAuthorization()
 
-        if (CLLocationManager.authorizationStatus() == CLAuthorizationStatus.authorizedWhenInUse ||
-            CLLocationManager.authorizationStatus() == CLAuthorizationStatus.authorizedAlways){
+        if CLLocationManager.authorizationStatus() == .authorizedWhenInUse ||
+           CLLocationManager.authorizationStatus() == .authorizedAlways {
+            
             guard let currentLocation = locManager.location else {
+                completion(nil)
                 return
             }
             
-            do{
-                let service = Service()
-                service.getByLatAndLon(latitude: currentLocation.coordinate.latitude, longitude: currentLocation.coordinate.longitude){ result in
-                    DispatchQueue.main.async {
-                        switch result {
-                        case let .failure(error):
-                            print(error)
-                        case let .success(data):
-                            // Dentro daqui printamos os dados da API mandando lat e lon
-                            //print(data)
-                            var teste : Address
-                            teste = data as! Address
-                            print(teste.address.cityDistrict)
-                            print(teste.address.state)
-                            print(teste.address.country)
-                            print(teste.address.city)
-                            print(teste.address.municipality)
-                            
-//                            do{
-//
-//                                let service = Service()
-//                                service.getByAddress(address: teste.address.cityDistrict){ result in
-//                                    DispatchQueue.main.async {
-//                                        switch result {
-//                                        case let .failure(error):
-//                                            print(error)
-//                                            print("Coloque denovo")
-//                                        case let .success(data):
-//                                            // Dentro daqui printamos os dados da API mandando o endereço
-//                                            print(data)
-//                                            var receber : Location
-//                                            receber = data as! Location
-//                                            print(receber)
-//                                            print("entrei aqui dnv")
-//
-//                                        }
-//                                    }
-//                                }
-//                            }
-
+            let service = Service()
+            service.getByLatAndLon(latitude: currentLocation.coordinate.latitude, longitude: currentLocation.coordinate.longitude) { result in
+                DispatchQueue.main.async {
+                    switch result {
+                    case let .failure(error):
+                        print(error)
+                        completion(nil)
+                    case let .success(data):
+                        if let endereco = data as? Address {
+                            completion(endereco)
+                        } else {
+                            completion(nil)
                         }
                     }
                 }
             }
-            
-            print(currentLocation.coordinate.latitude)
-            print(currentLocation.coordinate.longitude)
+        } else {
+            completion(nil)
         }
     }
+
+    
 }

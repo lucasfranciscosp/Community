@@ -20,7 +20,7 @@ struct Address: Codable {
     }
 }
 
-struct InnerAddress: Codable {
+struct InnerAddress : Codable {
     let road: String
     let cityDistrict: String
     let city: String

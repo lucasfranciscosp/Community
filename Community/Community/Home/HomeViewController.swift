@@ -45,7 +45,16 @@ extension HomeViewController {
         let navController = UINavigationController(rootViewController: storyScreen)
         self.present(navController, animated: true, completion: nil)
         print("clicou em adicionar")
-        Localization().testLocal()
+        Localization().getAddress() { endereco in
+            if let endereco = endereco {
+                // Usar os dados de endereço aqui
+                print(endereco.address.city)
+                print(endereco.address.cityDistrict)
+            } else {
+                // Caso onde não achar o endereço baseado na latitude e longitude
+            }
+        }
+
     }
 }
 
