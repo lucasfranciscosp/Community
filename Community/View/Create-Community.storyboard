@@ -136,7 +136,7 @@
                         <outlet property="descriptionTextField" destination="TYG-bX-WdX" id="cxq-Lu-lVe"/>
                         <outlet property="image" destination="ECG-6u-ZGD" id="8jl-s7-eHj"/>
                         <outlet property="imagePicker" destination="DOf-47-tmX" id="n99-OM-wci"/>
-                        <outlet property="locationLabel" destination="y9o-MU-fXX" id="jSY-jx-KJA"/>
+                        <outlet property="locationLabel" destination="jMO-Xq-7pr" id="7kG-lo-Wd7"/>
                         <outlet property="nameTextField" destination="fsc-RM-em1" id="2NW-dc-RIa"/>
                         <outlet property="symbolView" destination="C42-oL-QMi" id="rML-4P-SJ8"/>
                         <outlet property="tagTextField" destination="DFx-hZ-U6v" id="Pv6-wK-13X"/>

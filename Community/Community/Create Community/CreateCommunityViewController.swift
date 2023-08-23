@@ -13,7 +13,7 @@ class CreateCommunityViewController: UIViewController {
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var tagTextField: UITextField!
     @IBOutlet weak var descriptionTextField: UITextField!
-    @IBOutlet weak var locationLabel: UIView!
+    @IBOutlet weak var locationLabel: UILabel!
     @IBOutlet weak var symbolView: UIView!
     @IBOutlet weak var image: UIImageView!
     private var fetchedAddress: Address?
@@ -21,9 +21,6 @@ class CreateCommunityViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setNavigationBar()
-        setLayout()
-        addImageAction()
         Localization().getAddress() { endereco in
             if let endereco = endereco {
                 // Usar os dados de endereço aqui
@@ -34,7 +31,9 @@ class CreateCommunityViewController: UIViewController {
                 // Caso onde não achar o endereço baseado na latitude e longitude
             }
         }
-
+        setNavigationBar()
+        setLayout()
+        addImageAction()
     }
     
     private func setNavigationBar() {
@@ -44,7 +43,7 @@ class CreateCommunityViewController: UIViewController {
     }
     
     private func setLayout() {
-       // locationLabel.text = logica de pegar loc
+        locationLabel.text = fetchedAddress?.address.cityDistrict
         imagePicker.layer.cornerRadius = 10
         imagePicker.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMinXMinYCorner]
         image.layer.cornerRadius = 10
@@ -79,7 +78,7 @@ class CreateCommunityViewController: UIViewController {
                 description: description,
                 name: name,
                 tags: tag,
-                image: "",
+                image: image.description,
                 country: fetchedAddress.address.country,
                 city: fetchedAddress.address.city,
                 state: fetchedAddress.address.state,
