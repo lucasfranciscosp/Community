@@ -28,7 +28,6 @@ class Comunidade: CloudKitSchema {
         
         try data?.write(to: imagePath!)
         return imagePath!
-        
     }
     
     func updateRecordValues() {
@@ -48,7 +47,7 @@ class Comunidade: CloudKitSchema {
             print("***ERRO ao dar update no record***")
             print(error)
         }
-       
+        
     }
     
     func saveInDatabase() async {
@@ -60,6 +59,12 @@ class Comunidade: CloudKitSchema {
             print("**DEU ERRO!!!!!!!!**")
             print(error)
         }
+    }
+    
+    func fetchNearCommunities() async throws -> [Comunidade]{
+        try await Task.sleep(nanoseconds: 2_000_000_000)
+        return mockComunidades
+        
     }
     
     init(description: String, name: String, tags: String, image: UIImage, country: String, city: String, state: String, city_district: String) {
