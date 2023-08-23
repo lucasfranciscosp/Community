@@ -16,6 +16,7 @@ class CreateCommunityViewController: UIViewController {
     @IBOutlet weak var locationLabel: UIView!
     @IBOutlet weak var symbolView: UIView!
     @IBOutlet weak var image: UIImageView!
+    private var fetchedAddress: Address?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,6 +26,7 @@ class CreateCommunityViewController: UIViewController {
         Localization().getAddress() { endereco in
             if let endereco = endereco {
                 // Usar os dados de endereço aqui
+                self.fetchedAddress = endereco
                 print(endereco.address.city)
                 print(endereco.address.cityDistrict)
             } else {
@@ -69,7 +71,13 @@ class CreateCommunityViewController: UIViewController {
             showAllert()
         } else {
             //salvar
+            //aqui esta printando em optional
+            if let address = fetchedAddress {
+                print(address.address.postcode)
+            }
             //Comunidade(image: "", tags: tag, name: name, location: "", description: description)
+            // aqui só printando optional
+            print(fetchedAddress?.address.country)
             self.dismiss(animated: true)
         }
     }
