@@ -9,6 +9,8 @@ import UIKit
 
 class HomeViewController: UICollectionViewController {
     
+    var addressBegin: Address?
+
     override func viewDidLoad() {
         super.viewDidLoad()
         setupAppBar()
@@ -16,6 +18,17 @@ class HomeViewController: UICollectionViewController {
         layout()
         collectionViewConfig()
         collectionView.backgroundColor = PaleteColor.color2
+        Localization().getAddress() { endereco in
+            if let endereco = endereco {
+                // Usar os dados de endereço aqui
+                self.addressBegin = endereco
+                print(endereco.address.city)
+                print(endereco.address.cityDistrict)
+            } else {
+                // Caso onde não achar o endereço baseado na latitude e longitude
+            }
+        }
+
     }
 }
 
@@ -42,6 +55,7 @@ extension HomeViewController {
     @objc private func add() {
         let storyBoard: UIStoryboard = UIStoryboard(name: "Create-Community", bundle: nil)
         let storyScreen = storyBoard.instantiateViewController(withIdentifier: "CreateCommunityViewController") as! CreateCommunityViewController
+        storyScreen.fetchedAddress = addressBegin
         let navController = UINavigationController(rootViewController: storyScreen)
         self.present(navController, animated: true, completion: nil)
         

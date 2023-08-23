@@ -18,7 +18,7 @@ class CreateCommunityViewController: UIViewController {
     @IBOutlet weak var image: UIImageView!
     @IBOutlet weak var loadingView: UIView!
     @IBOutlet weak var loading: UIActivityIndicatorView!
-    private var fetchedAddress: Address?
+    var fetchedAddress: Address?
     var isSaving: Bool = false {
         didSet {
             isSaving ? showLoading() : dismissLoading()
@@ -27,17 +27,7 @@ class CreateCommunityViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        Localization().getAddress() { endereco in
-            if let endereco = endereco {
-                // Usar os dados de endereço aqui
-                self.fetchedAddress = endereco
-                print(endereco.address.city)
-                print(endereco.address.cityDistrict)
-            } else {
-                // Caso onde não achar o endereço baseado na latitude e longitude
-            }
-        }
-        setNavigationBar()
+                setNavigationBar()
         setLayout()
         addImageAction()
     }
