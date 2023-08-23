@@ -17,6 +17,7 @@ class CreateCommunityViewController: UIViewController {
     @IBOutlet weak var symbolView: UIView!
     @IBOutlet weak var image: UIImageView!
     private var fetchedAddress: Address?
+    var isSaving: Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -58,27 +59,37 @@ class CreateCommunityViewController: UIViewController {
     
     private func showAllert() {
         let missingInformationAlert = UIAlertController(title: "Campos não preenchidos",
-                                                       message: "Por favor, preencha todos os campos antes de continuar!",
+                                                       message: "Por favor, preencha todos os campos e selecione uma imagem antes de continuar!",
                                               preferredStyle: .alert)
         let cancelAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
         missingInformationAlert.addAction(cancelAction)
         self.present(missingInformationAlert, animated: true, completion: nil)
     }
     
+    private func saveCommunity(_ community: Comunidade) async {
+        await community.saveInDatabase()
+    }
+    
     @objc private func create() {
-        guard let name = nameTextField.text, let tag = tagTextField.text, let description = descriptionTextField.text else { return }
-        if name == "" || tag == "" || description == "" {
+        guard let name = nameTextField.text, let tag = tagTextField.text, let description = descriptionTextField.text, let fetchedAddress = fetchedAddress else { return }
+        if name == "" || tag == "" || description == "" || image.image == nil {
             showAllert()
         } else {
-            //salvar
-            //aqui esta printando em optional
-            if let address = fetchedAddress {
-                print(address.address.postcode)
+            let community = Comunidade(
+                description: description,
+                name: name,
+                tags: tag,
+                image: "",
+                country: fetchedAddress.address.country,
+                city: fetchedAddress.address.city,
+                state: fetchedAddress.address.state,
+                city_district: fetchedAddress.address.cityDistrict)
+            Task.init(priority: .high) {
+                await saveCommunity(community)
+                isSaving = false
+                self.dismiss(animated: true)
             }
-            //Comunidade(image: "", tags: tag, name: name, location: "", description: description)
-            // aqui só printando optional
-            print(fetchedAddress?.address.country)
-            self.dismiss(animated: true)
+            isSaving = true
         }
     }
     
