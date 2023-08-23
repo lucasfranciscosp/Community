@@ -28,7 +28,7 @@ class CommunityDescriptionController: UIViewController {
         
         guard let comunidade = comunidade else { return }
         
-        communityImage.image = UIImage(named: comunidade.image)
+//        communityImage.image = UIImage(named: comunidade.image)
         tituloLabel.text = comunidade.name
 //        localLabel.text = comunidade.location
         descritivoLabel.text = comunidade.tags
