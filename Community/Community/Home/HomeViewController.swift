@@ -40,13 +40,12 @@ extension HomeViewController {
     }
     
     @objc private func add() {
+        let storyBoard: UIStoryboard = UIStoryboard(name: "Create-Community", bundle: nil)
+        let storyScreen = storyBoard.instantiateViewController(withIdentifier: "CreateCommunityViewController") as! CreateCommunityViewController
+        let navController = UINavigationController(rootViewController: storyScreen)
+        self.present(navController, animated: true, completion: nil)
         print("clicou em adicionar")
-        
-        let comunidade = Comunidade(description: "Os reis do gado juntos reunidos", name: "Rei do Gado", tags: "Gadisse", image: "images", country: "Brazil", city: "Campinas", state: "São Paulo", city_district: "Barão Geraldo")
-        Task {
-            await comunidade.saveInDatabase()
-        }
-        
+        Localization().testLocal()
     }
 }
 
