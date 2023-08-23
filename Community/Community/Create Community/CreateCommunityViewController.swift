@@ -22,6 +22,16 @@ class CreateCommunityViewController: UIViewController {
         setNavigationBar()
         setLayout()
         addImageAction()
+        Localization().getAddress() { endereco in
+            if let endereco = endereco {
+                // Usar os dados de endereço aqui
+                print(endereco.address.city)
+                print(endereco.address.cityDistrict)
+            } else {
+                // Caso onde não achar o endereço baseado na latitude e longitude
+            }
+        }
+
     }
     
     private func setNavigationBar() {
