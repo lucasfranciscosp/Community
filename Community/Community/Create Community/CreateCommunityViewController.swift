@@ -61,16 +61,29 @@ class CreateCommunityViewController: UIViewController {
         self.present(missingInformationAlert, animated: true, completion: nil)
     }
     
-    private func saveCommunity(_ community: Comunidade) async {
-        await community.saveInDatabase()
-    }
-    
     private func showLoading () {
         loadingView.isHidden = false
     }
-    
+
     private func dismissLoading () {
         loadingView.isHidden = true
+    }
+
+    private func isDataValid(_ name: String, _ tag: String, _ description: String) -> Bool {
+        if name == "" || tag == "" || description == "" {
+            return false
+        } else {
+            return true
+        }
+    }
+
+    private func saveCommunity(_ community: Comunidade) {
+        Task.init(priority: .high) {
+            await community.saveInDatabase()
+            isSaving = false
+            self.dismiss(animated: true)
+        }
+        isSaving = true
     }
 
     @objc private func create() {
@@ -78,7 +91,10 @@ class CreateCommunityViewController: UIViewController {
             showAllert()
             return
         }
-        if name == "" || tag == "" || description == "" {
+
+        view.endEditing(true)
+
+        if !isDataValid(name, tag, description) {
             showAllert()
         } else {
             let community = Comunidade(
@@ -90,12 +106,7 @@ class CreateCommunityViewController: UIViewController {
                 city: fetchedAddress.address.city,
                 state: fetchedAddress.address.state,
                 city_district: fetchedAddress.address.cityDistrict)
-            Task.init(priority: .high) {
-                await saveCommunity(community)
-                isSaving = false
-                self.dismiss(animated: true)
-            }
-            isSaving = true
+            saveCommunity(community)
         }
     }
     
