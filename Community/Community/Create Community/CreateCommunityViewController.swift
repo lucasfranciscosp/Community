@@ -16,8 +16,14 @@ class CreateCommunityViewController: UIViewController {
     @IBOutlet weak var locationLabel: UILabel!
     @IBOutlet weak var symbolView: UIView!
     @IBOutlet weak var image: UIImageView!
+    @IBOutlet weak var loadingView: UIView!
+    @IBOutlet weak var loading: UIActivityIndicatorView!
     private var fetchedAddress: Address?
-    var isSaving: Bool = false
+    var isSaving: Bool = false {
+        didSet {
+            isSaving ? showLoading() : dismissLoading()
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -69,6 +75,14 @@ class CreateCommunityViewController: UIViewController {
         await community.saveInDatabase()
     }
     
+    private func showLoading () {
+        loadingView.isHidden = false
+    }
+    
+    private func dismissLoading () {
+        loadingView.isHidden = true
+    }
+
     @objc private func create() {
         guard let name = nameTextField.text, let tag = tagTextField.text, let description = descriptionTextField.text, let fetchedAddress = fetchedAddress else { return }
         if name == "" || tag == "" || description == "" || image.image == nil {

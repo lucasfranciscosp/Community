@@ -111,12 +111,34 @@
                                     <constraint firstItem="DFx-hZ-U6v" firstAttribute="leading" secondItem="y9o-MU-fXX" secondAttribute="leading" constant="8" id="wXb-bb-YkA"/>
                                 </constraints>
                             </view>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="S7S-US-dIG" userLabel="Loading View">
+                                <rect key="frame" x="0.0" y="59" width="393" height="759"/>
+                                <subviews>
+                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="Gda-x8-jfF">
+                                        <rect key="frame" x="178" y="361" width="37" height="37"/>
+                                        <color key="color" red="0.24313725489999999" green="0.41960784309999999" blue="0.1764705882" alpha="1" colorSpace="calibratedRGB"/>
+                                    </activityIndicatorView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Criando comunidade..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="81M-N9-Bbg">
+                                        <rect key="frame" x="97.666666666666671" y="414" width="197.66666666666663" height="24"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                        <color key="textColor" red="0.24313725489999999" green="0.41960784309999999" blue="0.1764705882" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="81M-N9-Bbg" firstAttribute="top" secondItem="Gda-x8-jfF" secondAttribute="bottom" constant="16" id="6l6-So-Z1X"/>
+                                    <constraint firstItem="81M-N9-Bbg" firstAttribute="centerX" secondItem="Gda-x8-jfF" secondAttribute="centerX" id="P9q-Pj-c51"/>
+                                    <constraint firstItem="Gda-x8-jfF" firstAttribute="centerY" secondItem="S7S-US-dIG" secondAttribute="centerY" id="cjV-C5-ZPm"/>
+                                    <constraint firstItem="Gda-x8-jfF" firstAttribute="centerX" secondItem="S7S-US-dIG" secondAttribute="centerX" id="k8L-HK-Eiz"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="DOf-47-tmX" firstAttribute="width" secondItem="ECG-6u-ZGD" secondAttribute="width" id="6OG-pR-DfE"/>
                             <constraint firstAttribute="bottom" secondItem="y9o-MU-fXX" secondAttribute="bottom" id="9z7-tA-JdI"/>
+                            <constraint firstItem="S7S-US-dIG" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="A3H-cC-MI8"/>
                             <constraint firstItem="y9o-MU-fXX" firstAttribute="top" secondItem="ECG-6u-ZGD" secondAttribute="bottom" id="Clg-dO-0Ct"/>
                             <constraint firstItem="ECG-6u-ZGD" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="16" id="Ijl-wJ-EPo"/>
                             <constraint firstItem="C42-oL-QMi" firstAttribute="centerY" secondItem="DOf-47-tmX" secondAttribute="centerY" id="KjC-e6-T5B"/>
@@ -125,17 +147,22 @@
                             <constraint firstItem="y9o-MU-fXX" firstAttribute="leading" secondItem="5EZ-qb-Rvc" secondAttribute="leading" constant="16" id="R6M-ZD-EZR"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="y9o-MU-fXX" secondAttribute="trailing" constant="16" id="TBh-Wd-ISS"/>
                             <constraint firstItem="C42-oL-QMi" firstAttribute="height" secondItem="DOf-47-tmX" secondAttribute="height" id="Ufk-yL-F2e"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="S7S-US-dIG" secondAttribute="bottom" id="WqM-Ui-V4g"/>
                             <constraint firstItem="DOf-47-tmX" firstAttribute="centerY" secondItem="ECG-6u-ZGD" secondAttribute="centerY" id="l5n-mb-XEo"/>
                             <constraint firstItem="C42-oL-QMi" firstAttribute="width" secondItem="DOf-47-tmX" secondAttribute="width" id="owP-h1-eiQ"/>
                             <constraint firstItem="ECG-6u-ZGD" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="16" id="pIe-4x-FiM"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="S7S-US-dIG" secondAttribute="trailing" id="pZb-aT-YrO"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="ECG-6u-ZGD" secondAttribute="trailing" constant="16" id="phJ-Op-lOU"/>
                             <constraint firstItem="C42-oL-QMi" firstAttribute="centerX" secondItem="DOf-47-tmX" secondAttribute="centerX" id="vZV-eT-iwQ"/>
+                            <constraint firstItem="S7S-US-dIG" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="xpk-sf-i6D"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="descriptionTextField" destination="TYG-bX-WdX" id="cxq-Lu-lVe"/>
                         <outlet property="image" destination="ECG-6u-ZGD" id="8jl-s7-eHj"/>
                         <outlet property="imagePicker" destination="DOf-47-tmX" id="n99-OM-wci"/>
+                        <outlet property="loading" destination="Gda-x8-jfF" id="vgO-4V-Reh"/>
+                        <outlet property="loadingView" destination="S7S-US-dIG" id="kzF-ZS-qRH"/>
                         <outlet property="locationLabel" destination="jMO-Xq-7pr" id="7kG-lo-Wd7"/>
                         <outlet property="nameTextField" destination="fsc-RM-em1" id="2NW-dc-RIa"/>
                         <outlet property="symbolView" destination="C42-oL-QMi" id="rML-4P-SJ8"/>
@@ -144,7 +171,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="123" y="-27"/>
+            <point key="canvasLocation" x="122.90076335877862" y="-27.464788732394368"/>
         </scene>
     </scenes>
     <resources>
