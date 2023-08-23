@@ -40,12 +40,15 @@ extension HomeViewController {
     }
     
     @objc private func add() {
-        let storyBoard: UIStoryboard = UIStoryboard(name: "Create-Community", bundle: nil)
-        let storyScreen = storyBoard.instantiateViewController(withIdentifier: "CreateCommunityViewController") as! CreateCommunityViewController
-        let navController = UINavigationController(rootViewController: storyScreen)
-        self.present(navController, animated: true, completion: nil)
-        print("clicou em adicionar")
-        Localization().testLocal()
+//        let storyBoard: UIStoryboard = UIStoryboard(name: "Create-Community", bundle: nil)
+//        let storyScreen = storyBoard.instantiateViewController(withIdentifier: "CreateCommunityViewController") as! CreateCommunityViewController
+//        let navController = UINavigationController(rootViewController: storyScreen)
+//        self.present(navController, animated: true, completion: nil)
+//        print("clicou em adicionar")
+//        Localization().testLocal()
+        Task {
+            await mockComunidades[0].saveInDatabase()
+        }
     }
 }
 
@@ -103,7 +106,7 @@ extension HomeViewController: UICollectionViewDelegateFlowLayout {
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "HomeCollectionViewCell", for: indexPath) as? HomeCollectionViewCell else { return UICollectionViewCell() }
         let comunidade = mockComunidades[indexPath.row]
-        cell.setCell(data: HomeCollectionViewCellData(image: comunidade.image, tags: comunidade.tags, name: comunidade.name, location: "place holder"))
+        cell.setCell(data: HomeCollectionViewCellData(image: comunidade.imageUrl, tags: comunidade.tags, name: comunidade.name, location: "place holder"))
         return cell
       }
     
