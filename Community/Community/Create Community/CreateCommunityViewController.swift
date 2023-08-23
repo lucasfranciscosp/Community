@@ -84,15 +84,18 @@ class CreateCommunityViewController: UIViewController {
     }
 
     @objc private func create() {
-        guard let name = nameTextField.text, let tag = tagTextField.text, let description = descriptionTextField.text, let fetchedAddress = fetchedAddress else { return }
-        if name == "" || tag == "" || description == "" || image.image == nil {
+        guard let name = nameTextField.text, let tag = tagTextField.text, let description = descriptionTextField.text, let fetchedAddress = fetchedAddress, let image = image.image else {
+            showAllert()
+            return
+        }
+        if name == "" || tag == "" || description == "" {
             showAllert()
         } else {
             let community = Comunidade(
                 description: description,
                 name: name,
                 tags: tag,
-                image: image.description,
+                image: image,
                 country: fetchedAddress.address.country,
                 city: fetchedAddress.address.city,
                 state: fetchedAddress.address.state,
