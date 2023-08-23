@@ -44,8 +44,7 @@ extension HomeViewController {
         let storyScreen = storyBoard.instantiateViewController(withIdentifier: "CreateCommunityViewController") as! CreateCommunityViewController
         let navController = UINavigationController(rootViewController: storyScreen)
         self.present(navController, animated: true, completion: nil)
-        print("clicou em adicionar")
-        Localization().testLocal()
+        
     }
 }
 
