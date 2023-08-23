@@ -55,6 +55,7 @@ class Comunidade: CloudKitSchema {
 
 var mockComunidades = [
     Comunidade(description: "Os reis do gado juntos reunidos", name: "Rei do Gado", tags: "Gadisse", image: "Image", country: "Brazil", city: "Campinas", state: "São Paulo", city_district: "Barão Geraldo"),
-    Comunidade(description: "Os reis do gado juntos reunidos", name: "Rei do Gado", tags: "Gadisse", image: "images", country: "Brazil", city: "Campinas", state: "São Paulo", city_district: "Barão Geraldo")
+    Comunidade(description: "Os reis do gado juntos reunidos", name: "Rei do Gado", tags: "Gadisse", image: "images", country: "Brazil", city: "Campinas", state: "São Paulo", city_district: "Barão Geraldo"),
+    Comunidade(description: "hasuhsauhsauhusahusa", name: "Os COnfeiteiros", tags: "Culinária", image: "images", country: "Brazil", city: "Campinas", state: "São Paulo", city_district: "Jardim Santa Genebra")
 ]
 
