@@ -61,7 +61,7 @@ class Comunidade: CloudKitSchema {
         }
     }
     
-    func fetchNearCommunities() async throws -> [Comunidade]{
+    static func fetchNearCommunities() async throws -> [Comunidade]{
         try await Task.sleep(nanoseconds: 2_000_000_000)
         return mockComunidades
         
