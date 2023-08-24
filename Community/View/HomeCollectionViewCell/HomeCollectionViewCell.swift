@@ -25,7 +25,6 @@ class HomeCollectionViewCell: UICollectionViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
     }
 
     func setCell(data: HomeCollectionViewCellData) {
@@ -42,6 +41,5 @@ class HomeCollectionViewCell: UICollectionViewCell {
     
     private func setCellLayout() {
         self.layer.cornerRadius = 15
-        self.layer.borderWidth = 1
     }
 }

@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21679"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -25,52 +26,50 @@
                         <rect key="frame" x="0.0" y="0.0" width="358" height="550"/>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rainha do Bairro" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="snk-0u-SCt">
-                        <rect key="frame" x="15.999999999999986" y="434" width="250.66666666666663" height="43"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="36"/>
-                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <nil key="highlightedColor"/>
-                    </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="#xadrez" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yyg-GH-FXF">
-                        <rect key="frame" x="16" y="481" width="83.666666666666671" height="28.666666666666686"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                        <rect key="frame" x="16.000000000000014" y="445.66666666666669" width="250.33333333333337" height="40.666666666666686"/>
+                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="34"/>
                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <stackView opaque="NO" contentMode="scaleToFill" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="SW8-3c-OYk">
-                        <rect key="frame" x="16" y="513.66666666666663" width="141.66666666666666" height="20.333333333333371"/>
+                        <rect key="frame" x="16" y="490.33333333333331" width="145.66666666666666" height="20.333333333333314"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rua dos Cocais" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="giO-Ki-dc8">
-                                <rect key="frame" x="0.0" y="0.0" width="117.66666666666667" height="20.333333333333332"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <rect key="frame" x="0.0" y="0.0" width="122" height="20.333333333333332"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="location.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="utA-wA-i40">
-                                <rect key="frame" x="121.66666666666666" y="0.99999999999999822" width="20" height="18.666666666666664"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="location" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="utA-wA-i40">
+                                <rect key="frame" x="126.00000000000001" y="0.99999999999999822" width="19.666666666666671" height="18.666666666666664"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </imageView>
                         </subviews>
                     </stackView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="#xadrez" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yyg-GH-FXF">
+                        <rect key="frame" x="15.999999999999996" y="514.66666666666663" width="58.666666666666657" height="19.333333333333371"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
             </view>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <constraints>
                 <constraint firstItem="5CZ-SZ-ULA" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="32c-ZP-D7o"/>
-                <constraint firstItem="yyg-GH-FXF" firstAttribute="top" secondItem="snk-0u-SCt" secondAttribute="bottom" constant="4" id="5Z6-VZ-7dZ"/>
-                <constraint firstItem="SW8-3c-OYk" firstAttribute="top" secondItem="yyg-GH-FXF" secondAttribute="bottom" constant="4" id="7LE-AN-7xY"/>
                 <constraint firstItem="TGE-X4-U3E" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="Aet-Xo-P3I"/>
+                <constraint firstItem="SW8-3c-OYk" firstAttribute="top" secondItem="snk-0u-SCt" secondAttribute="bottom" constant="4" id="FmB-t3-aXa"/>
                 <constraint firstAttribute="bottom" secondItem="TGE-X4-U3E" secondAttribute="bottom" id="GHx-3C-fNd"/>
-                <constraint firstItem="SW8-3c-OYk" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="16" id="GUV-gU-1hA"/>
-                <constraint firstItem="SW8-3c-OYk" firstAttribute="top" secondItem="yyg-GH-FXF" secondAttribute="bottom" constant="4" id="Ga9-d5-cJ5"/>
+                <constraint firstAttribute="bottom" secondItem="yyg-GH-FXF" secondAttribute="bottom" constant="16" id="JTJ-oa-xUi"/>
                 <constraint firstItem="yyg-GH-FXF" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="16" id="KXE-s0-sRb"/>
                 <constraint firstItem="TGE-X4-U3E" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="OD8-Zu-hNO"/>
                 <constraint firstAttribute="bottom" secondItem="5CZ-SZ-ULA" secondAttribute="bottom" id="XbP-Ce-HnN"/>
+                <constraint firstItem="SW8-3c-OYk" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="16" id="Ysp-1V-B0x"/>
                 <constraint firstAttribute="trailing" secondItem="5CZ-SZ-ULA" secondAttribute="trailing" id="bGg-Jh-fsh"/>
                 <constraint firstItem="snk-0u-SCt" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="16" id="bfC-Ci-M1I"/>
+                <constraint firstItem="yyg-GH-FXF" firstAttribute="top" secondItem="SW8-3c-OYk" secondAttribute="bottom" constant="4" id="cAF-j8-UXA"/>
                 <constraint firstItem="5CZ-SZ-ULA" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="dMo-T5-89m"/>
                 <constraint firstAttribute="trailing" secondItem="TGE-X4-U3E" secondAttribute="trailing" id="nit-xn-QVy"/>
-                <constraint firstItem="SW8-3c-OYk" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="16" id="wIT-ah-HUe"/>
-                <constraint firstAttribute="bottom" secondItem="SW8-3c-OYk" secondAttribute="bottom" constant="16" id="xOW-Pk-SuB"/>
                 <constraint firstItem="5CZ-SZ-ULA" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="snk-0u-SCt" secondAttribute="trailing" id="yv8-PA-FsX"/>
             </constraints>
             <size key="customSize" width="267" height="369"/>
@@ -81,12 +80,12 @@
                 <outlet property="tags" destination="yyg-GH-FXF" id="UVI-3k-N5W"/>
                 <outlet property="view" destination="TGE-X4-U3E" id="5Nm-hz-A8U"/>
             </connections>
-            <point key="canvasLocation" x="43.511450381679388" y="29.929577464788736"/>
+            <point key="canvasLocation" x="42.748091603053432" y="29.577464788732396"/>
         </collectionViewCell>
     </objects>
     <resources>
         <image name="images" width="173" height="130"/>
-        <image name="location.fill" catalog="system" width="128" height="119"/>
+        <image name="location" catalog="system" width="128" height="121"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

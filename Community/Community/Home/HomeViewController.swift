@@ -73,28 +73,26 @@ extension HomeViewController: UICollectionViewDelegateFlowLayout {
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let storyBoard: UIStoryboard = UIStoryboard(name: "Comunity-Details", bundle: nil)
-        
+
         let storyScreen = storyBoard.instantiateViewController(withIdentifier: "CommunityDescriptionController") as! CommunityDescriptionController
         storyScreen.comunidade = mockComunidades[indexPath.row]
 
         // Personalize a barra de navegação do controlador de destino (modal)
            let navigationController = UINavigationController(rootViewController: storyScreen)
            navigationController.modalPresentationStyle = .automatic  // Define o estilo de apresentação modal (tela cheia)
-           
+
         // Crie uma view para simular a linha no bottom da barra de navegação
         let bottomLineView = UIView(frame: CGRect(x: 0, y: navigationController.navigationBar.frame.height, width: navigationController.navigationBar.frame.width, height: 0.2))
         bottomLineView.backgroundColor = .lightGray  // Cor da linha
-            
-            navigationController.navigationBar.addSubview(bottomLineView)
-        
-        
-           // Crie um botão "back" com título
-           let backButton = UIBarButtonItem(title: "Voltar", style: .plain, target: self, action: #selector(backButtonTapped))
-           
-           // Defina o botão "back" como o botão esquerdo da barra de navegação
-           storyScreen.navigationItem.leftBarButtonItem = backButton
-           
-        
+
+        navigationController.navigationBar.addSubview(bottomLineView)
+
+        // Crie um botão "back" com título
+        let backButton = UIBarButtonItem(title: "Voltar", style: .plain, target: self, action: #selector(backButtonTapped))
+       
+        // Defina o botão "back" como o botão esquerdo da barra de navegação
+        storyScreen.navigationItem.leftBarButtonItem = backButton
+
         backButton.target = self
         backButton.action = #selector(backButtonTapped)
         
@@ -116,7 +114,7 @@ extension HomeViewController: UICollectionViewDelegateFlowLayout {
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "HomeCollectionViewCell", for: indexPath) as? HomeCollectionViewCell else { return UICollectionViewCell() }
         let comunidade = mockComunidades[indexPath.row]
-        cell.setCell(data: HomeCollectionViewCellData(image: comunidade.imageUrl, tags: comunidade.tags, name: comunidade.name, location: "place holder"))
+        cell.setCell(data: HomeCollectionViewCellData(image: comunidade.imageUrl, tags: "#\(comunidade.tags)", name: comunidade.name, location: "Localização"))
         return cell
       }
     
