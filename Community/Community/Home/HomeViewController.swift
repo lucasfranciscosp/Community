@@ -93,11 +93,11 @@ extension HomeViewController: UICollectionViewDelegateFlowLayout {
         let bottomLineView = UIView(frame: CGRect(x: 0, y: navigationController.navigationBar.frame.height, width: navigationController.navigationBar.frame.width, height: 0.2))
         bottomLineView.backgroundColor = .lightGray  // Cor da linha
             
-            navigationController.navigationBar.addSubview(bottomLineView)
+            //navigationController.navigationBar.addSubview(bottomLineView)
         
         
            // Crie um botão "back" com título
-           let backButton = UIBarButtonItem(title: "Voltar", style: .plain, target: self, action: #selector(backButtonTapped))
+           let backButton = UIBarButtonItem(title: "Fechar", style: .plain, target: self, action: #selector(backButtonTapped))
            
            // Defina o botão "back" como o botão esquerdo da barra de navegação
            storyScreen.navigationItem.leftBarButtonItem = backButton
