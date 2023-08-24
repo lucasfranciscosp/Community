@@ -8,7 +8,7 @@
 import UIKit
 
 struct HomeCollectionViewCellData {
-    let image: String
+    let image: UIImage
     let tags: String
     let name: String
     let location: String
@@ -37,7 +37,7 @@ class HomeCollectionViewCell: UICollectionViewCell {
         self.name.text = data.name
         self.tags.text = data.tags
         self.location.text = data.location
-        self.image.image = UIImage(named: data.image)
+        self.image.image = data.image
     }
     
     private func setCellLayout() {

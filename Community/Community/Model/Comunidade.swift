@@ -12,15 +12,12 @@ class Comunidade: CloudKitSchema {
     let description: String
     let name: String
     let tags: String
-    private let image: UIImage
+    let image: UIImage
     let country: String
     let city: String
     let state: String
     let city_district: String
     
-    var imageUrl: String {
-        "Image"
-    }
     
     private func getLocalImageUrl() throws -> URL {
         let imagePath = FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask).first?.appendingPathComponent("communityCover.jpg")
@@ -62,8 +59,22 @@ class Comunidade: CloudKitSchema {
     }
     
     static func fetchNearCommunities() async throws -> [Comunidade]{
-        try await Task.sleep(nanoseconds: 2_000_000_000)
-        return mockComunidades
+        let query = CKQuery(recordType: "comunidade", predicate: NSPredicate(value: true))
+        let fetchResult = try await CloudKit.defaultContainer.publicCloudDatabase.records(matching: query)
+       var comunidades = [Comunidade]()
+        // [(CKRecord.ID, Result<CKRecord, Error>)]
+        fetchResult.matchResults.forEach {tupleResult in
+            let recordId = tupleResult.0
+            let result: Result<CKRecord, Error> = tupleResult.1
+            switch result {
+            case .success(let success):
+                comunidades.append(Comunidade(fromCloudKit: success))
+            case .failure(let failure):
+                print("**** ERRO AO PUXAR COMUNIDADES PROXIMAS => func fetchNearCommunities")
+                print(failure)
+            }
+        }
+        return comunidades
         
     }
     
@@ -78,6 +89,26 @@ class Comunidade: CloudKitSchema {
         self.city_district = city_district
         super.init(recordName: "comunidade")
     }
+    
+    init(fromCloudKit record: CKRecord) {
+        self.description = record.value(forKey: "description") as! String
+        self.name = record.value(forKey: "name") as! String
+        self.tags = record.value(forKey: "tags") as! String
+        self.country = record.value(forKey: "country") as! String
+        self.city = record.value(forKey: "city") as! String
+        self.state = record.value(forKey: "state") as! String
+        self.city_district = record.value(forKey: "city_district") as! String
+        
+        let imageUrl: URL = (record.value(forKey: "image") as! CKAsset).fileURL!
+        if let data = try? Data(contentsOf: imageUrl), let image = UIImage(data: data) {
+            self.image = image
+        } else {
+            self.image = UIImage(named: "images")!
+        }
+
+        super.init(recordName: "comunidade")
+    }
+    
 }
 
 var mockComunidades = [

@@ -10,9 +10,15 @@ import UIKit
 class HomeViewController: UICollectionViewController {
     
     var addressBegin: Address?
+    var arrayCommunity : [Comunidade] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        Task.init(priority: .high){
+            try arrayCommunity = await Comunidade.fetchNearCommunities()
+            collectionView.reloadData()
+            
+        }
         setupAppBar()
         style()
         layout()
@@ -28,6 +34,8 @@ class HomeViewController: UICollectionViewController {
                 // Caso onde não achar o endereço baseado na latitude e longitude
             }
         }
+        
+        
 
     }
 }
@@ -75,7 +83,7 @@ extension HomeViewController: UICollectionViewDelegateFlowLayout {
         let storyBoard: UIStoryboard = UIStoryboard(name: "Comunity-Details", bundle: nil)
         
         let storyScreen = storyBoard.instantiateViewController(withIdentifier: "CommunityDescriptionController") as! CommunityDescriptionController
-        storyScreen.comunidade = mockComunidades[indexPath.row]
+        storyScreen.comunidade = arrayCommunity[indexPath.row]
 
         // Personalize a barra de navegação do controlador de destino (modal)
            let navigationController = UINavigationController(rootViewController: storyScreen)
@@ -110,13 +118,14 @@ extension HomeViewController: UICollectionViewDelegateFlowLayout {
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return mockComunidades.count
+        return arrayCommunity.count
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "HomeCollectionViewCell", for: indexPath) as? HomeCollectionViewCell else { return UICollectionViewCell() }
-        let comunidade = mockComunidades[indexPath.row]
-        cell.setCell(data: HomeCollectionViewCellData(image: comunidade.imageUrl, tags: comunidade.tags, name: comunidade.name, location: "place holder"))
+
+        cell.setCell(data: HomeCollectionViewCellData(image: arrayCommunity[indexPath.row].image, tags: arrayCommunity[indexPath.row].tags, name: arrayCommunity[indexPath.row].name, location: "\(arrayCommunity[indexPath.row].city), \(arrayCommunity[indexPath.row].city_district)"))
+        
         return cell
       }
     
