@@ -103,8 +103,11 @@ class Comunidade: CloudKitSchema {
         self.city_district = record.value(forKey: "city_district") as! String
         
         let imageUrl: URL = (record.value(forKey: "image") as! CKAsset).fileURL!
-        print("image url: \(imageUrl.absoluteString)")
-        self.image = UIImage(named: "Image")!
+        if let data = try? Data(contentsOf: imageUrl), let image = UIImage(data: data) {
+            self.image = image
+        } else {
+            self.image = UIImage(named: "images")!
+        }
 
         super.init(recordName: "comunidade")
     }
