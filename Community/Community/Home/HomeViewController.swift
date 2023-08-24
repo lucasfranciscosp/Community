@@ -83,7 +83,7 @@ extension HomeViewController: UICollectionViewDelegateFlowLayout {
         let storyBoard: UIStoryboard = UIStoryboard(name: "Comunity-Details", bundle: nil)
         
         let storyScreen = storyBoard.instantiateViewController(withIdentifier: "CommunityDescriptionController") as! CommunityDescriptionController
-        storyScreen.comunidade = mockComunidades[indexPath.row]
+        storyScreen.comunidade = arrayCommunity[indexPath.row]
 
         // Personalize a barra de navegação do controlador de destino (modal)
            let navigationController = UINavigationController(rootViewController: storyScreen)
