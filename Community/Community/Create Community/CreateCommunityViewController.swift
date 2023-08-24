@@ -33,17 +33,13 @@ class CreateCommunityViewController: UIViewController {
     }
     
     private func setNavigationBar() {
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Create", style: .plain, target: self, action: #selector(create))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Concluir", style: .plain, target: self, action: #selector(create))
         navigationItem.title = "Comunidade"
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Voltar", style: .plain, target: self, action: #selector(close))
     }
     
     private func setLayout() {
         locationLabel.text = fetchedAddress?.address.cityDistrict
-        imagePicker.layer.cornerRadius = 10
-        imagePicker.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMinXMinYCorner]
-        image.layer.cornerRadius = 10
-        image.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMinXMinYCorner]
         view.backgroundColor = PaleteColor.color2
     }
     
