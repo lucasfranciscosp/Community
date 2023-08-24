@@ -11,6 +11,7 @@ class HomeViewController: UICollectionViewController {
     
     var addressBegin: Address?
     var arrayCommunity : [Comunidade] = []
+    var refreshControl: UIRefreshControl!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,9 +35,20 @@ class HomeViewController: UICollectionViewController {
                 // Caso onde não achar o endereço baseado na latitude e longitude
             }
         }
+        refreshControl = UIRefreshControl()
+                refreshControl.attributedTitle = NSAttributedString(string: "Refreshing...")
+                refreshControl.addTarget(self, action: #selector(refreshData), for: .valueChanged)
+                collectionView.addSubview(refreshControl)
         
-        
-
+    }
+    @objc func refreshData() {
+        // Carrega os dados atualizados
+        Task.init(priority: .high){
+            try arrayCommunity = await Comunidade.fetchNearCommunities()
+            collectionView.reloadData()
+            refreshControl.endRefreshing()
+            
+        }
     }
 }
 
