@@ -12,15 +12,12 @@ class Comunidade: CloudKitSchema {
     let description: String
     let name: String
     let tags: String
-    private let image: UIImage
+    let image: UIImage
     let country: String
     let city: String
     let state: String
     let city_district: String
     
-    var imageUrl: String {
-        "Image"
-    }
     
     private func getLocalImageUrl() throws -> URL {
         let imagePath = FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask).first?.appendingPathComponent("communityCover.jpg")
