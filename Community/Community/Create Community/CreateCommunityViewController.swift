@@ -12,7 +12,7 @@ class CreateCommunityViewController: UIViewController {
     @IBOutlet weak var imagePicker: UIView!
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var tagTextField: UITextField!
-    @IBOutlet weak var descriptionTextField: UITextField!
+    @IBOutlet weak var descriptionTextField: UITextView!
     @IBOutlet weak var locationLabel: UILabel!
     @IBOutlet weak var symbolView: UIView!
     @IBOutlet weak var image: UIImageView!
@@ -24,39 +24,46 @@ class CreateCommunityViewController: UIViewController {
             isSaving ? showLoading() : dismissLoading()
         }
     }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
                 setNavigationBar()
         setLayout()
         addImageAction()
     }
-    
+
     private func setNavigationBar() {
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Concluir", style: .plain, target: self, action: #selector(create))
         navigationItem.title = "Comunidade"
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Voltar", style: .plain, target: self, action: #selector(close))
     }
-    
+
     private func setLayout() {
         locationLabel.text = fetchedAddress?.address.cityDistrict
+        nameTextField.delegate = self
+        tagTextField.delegate = self
+        descriptionTextField.delegate = self
+        descriptionTextField.clipsToBounds = true
+        descriptionTextField.layer.cornerRadius = 10
+        descriptionTextField.text = "Descrição"
+        descriptionTextField.textColor = UIColor.lightGray
         view.backgroundColor = PaleteColor.color2
     }
-    
+
     private func addImageAction() {
         let action = UITapGestureRecognizer(target: self, action: #selector(selectImage))
         symbolView.addGestureRecognizer(action)
     }
-    
+
     private func showAllert() {
-        let missingInformationAlert = UIAlertController(title: "Campos não preenchidos",
+        let missingInformationAlert = UIAlertController(title: "Imagem",
                                                        message: "Por favor, preencha todos os campos e selecione uma imagem antes de continuar!",
                                               preferredStyle: .alert)
         let cancelAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
         missingInformationAlert.addAction(cancelAction)
         self.present(missingInformationAlert, animated: true, completion: nil)
     }
-    
+
     private func showLoading () {
         loadingView.isHidden = false
     }
@@ -66,11 +73,47 @@ class CreateCommunityViewController: UIViewController {
     }
 
     private func isDataValid(_ name: String, _ tag: String, _ description: String) -> Bool {
-        if name == "" || tag == "" || description == "" {
+        let isNameValid = isTextValid(name)
+        let isTagValid = isTextValid(tag)
+        let isDescriptionValid = isDescriptionValid(description)
+
+        if !isNameValid || !isTagValid || !isDescriptionValid {
+            textFieldErrorMessage(isNameValid, isTagValid, isDescriptionValid)
             return false
         } else {
             return true
         }
+    }
+
+    private func textFieldErrorMessage(_ isNameValid: Bool , _ isTagValid: Bool, _ isDescriptionValid: Bool) {
+        if !isNameValid {
+            nameTextField.text = "Insira um Nome"
+            nameTextField.textColor = UIColor.red
+        }
+
+        if !isTagValid {
+            tagTextField.text = "Insira uma Tag"
+            tagTextField.textColor = UIColor.red
+        }
+
+        if !isDescriptionValid {
+            descriptionTextField.text = "Insira uma Descrição"
+            descriptionTextField.textColor = UIColor.red
+        }
+    }
+
+    private func isTextValid(_ text: String) -> Bool {
+        if text == "" {
+            return false
+        }
+        return true
+    }
+
+    private func isDescriptionValid(_ text: String) -> Bool {
+        if !isTextValid(text) || text == "Descrição" {
+            return false
+        }
+        return true
     }
 
     private func saveCommunity(_ community: Comunidade) {
@@ -84,15 +127,14 @@ class CreateCommunityViewController: UIViewController {
 
     @objc private func create() {
         guard let name = nameTextField.text, let tag = tagTextField.text, let description = descriptionTextField.text, let fetchedAddress = fetchedAddress, let image = image.image else {
+            _ = isDataValid(nameTextField.text ?? "", tagTextField.text ?? "", descriptionTextField.text ?? "")
             showAllert()
             return
         }
 
         view.endEditing(true)
 
-        if !isDataValid(name, tag, description) {
-            showAllert()
-        } else {
+        if isDataValid(name, tag, description)  {
             let community = Comunidade(
                 description: description,
                 name: name,
@@ -105,11 +147,11 @@ class CreateCommunityViewController: UIViewController {
             saveCommunity(community)
         }
     }
-    
+
     @objc private func close() {
         self.dismiss(animated: true)
     }
-    
+
     @objc private func selectImage() {
         let viewController = UIImagePickerController()
         viewController.sourceType = .photoLibrary
@@ -130,5 +172,30 @@ extension CreateCommunityViewController: UIImagePickerControllerDelegate & UINav
 
         imagePicker.isHidden = true
         self.dismiss(animated: true)
+    }
+}
+
+extension CreateCommunityViewController: UITextViewDelegate {
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        if textView.textColor == UIColor.lightGray || textView.textColor == .red {
+            textView.text = nil
+            textView.textColor = UIColor.black
+        }
+    }
+
+    func textViewDidEndEditing(_ textView: UITextView) {
+        if textView.text.isEmpty {
+            textView.text = "Descrição"
+            textView.textColor = UIColor.lightGray
+        }
+    }
+}
+
+extension CreateCommunityViewController: UITextFieldDelegate {
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        if textField.text == "Insira um Nome" || textField.text == "Insira uma Tag" || textField.text == "Insira um Nome" {
+            textField.text = ""
+            textField.textColor = .black
+        }
     }
 }
