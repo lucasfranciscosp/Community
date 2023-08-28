@@ -45,6 +45,13 @@ class Localization {
             completion(nil)
         }
     }
-
+    
+    func getAddress() async -> Address? {
+        return await withCheckedContinuation { continuation in
+            getAddress { endereco in
+                continuation.resume(returning: endereco)
+            }
+        }
+    }
     
 }

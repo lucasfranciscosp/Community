@@ -12,7 +12,6 @@ class ScaffoldViewController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViews()
-        setupTabBar()
         UITabBar.appearance().barTintColor = PaleteColor.color2
     }
 
@@ -33,17 +32,7 @@ class ScaffoldViewController: UITabBarController {
 
         viewControllers = tabBarList
     }
-    
-    private func hideNavigationBarLine(_ navigationBar: UINavigationBar) {
-        let img = UIImage()
-        navigationBar.shadowImage = img
-        navigationBar.setBackgroundImage(img, for: .default)
-        navigationBar.isTranslucent = false
-    }
-    
-    private func setupTabBar() {
-        tabBar.isTranslucent = false
-    }
+
 }
 
 

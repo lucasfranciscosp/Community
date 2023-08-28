@@ -10,9 +10,16 @@ import UIKit
 class HomeViewController: UICollectionViewController {
     
     var addressBegin: Address?
+    var arrayCommunity : [Comunidade] = []
+    var refreshControl: UIRefreshControl!
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        Task.init(priority: .high){
+            try arrayCommunity = await Comunidade.fetchNearCommunities()
+            collectionView.reloadData()
+            
+        }
         setupAppBar()
         style()
         layout()
@@ -28,7 +35,20 @@ class HomeViewController: UICollectionViewController {
                 // Caso onde não achar o endereço baseado na latitude e longitude
             }
         }
-
+        refreshControl = UIRefreshControl()
+                refreshControl.attributedTitle = NSAttributedString(string: "Refreshing...")
+                refreshControl.addTarget(self, action: #selector(refreshData), for: .valueChanged)
+                collectionView.addSubview(refreshControl)
+        
+    }
+    @objc func refreshData() {
+        // Carrega os dados atualizados
+        Task.init(priority: .high){
+            try arrayCommunity = await Comunidade.fetchNearCommunities()
+            collectionView.reloadData()
+            refreshControl.endRefreshing()
+            
+        }
     }
 }
 
@@ -75,7 +95,7 @@ extension HomeViewController: UICollectionViewDelegateFlowLayout {
         let storyBoard: UIStoryboard = UIStoryboard(name: "Comunity-Details", bundle: nil)
 
         let storyScreen = storyBoard.instantiateViewController(withIdentifier: "CommunityDescriptionController") as! CommunityDescriptionController
-        storyScreen.comunidade = mockComunidades[indexPath.row]
+        storyScreen.comunidade = arrayCommunity[indexPath.row]
 
         // Personalize a barra de navegação do controlador de destino (modal)
            let navigationController = UINavigationController(rootViewController: storyScreen)
@@ -84,14 +104,16 @@ extension HomeViewController: UICollectionViewDelegateFlowLayout {
         // Crie uma view para simular a linha no bottom da barra de navegação
         let bottomLineView = UIView(frame: CGRect(x: 0, y: navigationController.navigationBar.frame.height, width: navigationController.navigationBar.frame.width, height: 0.2))
         bottomLineView.backgroundColor = .lightGray  // Cor da linha
-
-        navigationController.navigationBar.addSubview(bottomLineView)
-
-        // Crie um botão "back" com título
-        let backButton = UIBarButtonItem(title: "Voltar", style: .plain, target: self, action: #selector(backButtonTapped))
-       
-        // Defina o botão "back" como o botão esquerdo da barra de navegação
-        storyScreen.navigationItem.leftBarButtonItem = backButton
+            
+            //navigationController.navigationBar.addSubview(bottomLineView)
+        
+        
+           // Crie um botão "back" com título
+           let backButton = UIBarButtonItem(title: "Fechar", style: .plain, target: self, action: #selector(backButtonTapped))
+           
+           // Defina o botão "back" como o botão esquerdo da barra de navegação
+           storyScreen.navigationItem.leftBarButtonItem = backButton
+           
 
         backButton.target = self
         backButton.action = #selector(backButtonTapped)
@@ -108,15 +130,17 @@ extension HomeViewController: UICollectionViewDelegateFlowLayout {
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return mockComunidades.count
+        return arrayCommunity.count
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "HomeCollectionViewCell", for: indexPath) as? HomeCollectionViewCell else { return UICollectionViewCell() }
-        let comunidade = mockComunidades[indexPath.row]
-        cell.setCell(data: HomeCollectionViewCellData(image: comunidade.imageUrl, tags: "#\(comunidade.tags)", name: comunidade.name, location: "Localização"))
+
+        cell.setCell(data: HomeCollectionViewCellData(image: arrayCommunity[indexPath.row].image, tags: arrayCommunity[indexPath.row].tags, name: arrayCommunity[indexPath.row].name, location: "\(arrayCommunity[indexPath.row].city), \(arrayCommunity[indexPath.row].city_district)"))
+
         return cell
       }
+    
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: collectionView.frame.width - 32, height: 550)

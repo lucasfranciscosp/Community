@@ -13,7 +13,7 @@ class CommunityDescriptionController: UIViewController {
     @IBOutlet weak var descritivoLabel: UILabel!
     @IBOutlet weak var localLabel: UILabel!
     @IBOutlet weak var descricaoLabel: UILabel!
-    @IBOutlet weak var navBar: UINavigationBar!
+
     
     var comunidade: Comunidade?
     
@@ -28,12 +28,18 @@ class CommunityDescriptionController: UIViewController {
         
         guard let comunidade = comunidade else { return }
         
-//        communityImage.image = UIImage(named: comunidade.image)
-        tituloLabel.text = comunidade.name
-//        localLabel.text = comunidade.location
-        descritivoLabel.text = comunidade.tags
+//        communityImage.image = arrayCommunity[indexPath.row].image
         
-     
+        communityImage.image = comunidade.image
+        tituloLabel.text = comunidade.name
+        descritivoLabel.text = comunidade.tags
+        localLabel.text = comunidade.city_district
+        descricaoLabel.text = comunidade.description
+        
+//
+        
+        
+//        sfSymbolImagemView.tintColor = UIColor(red: CGFloat(62)/255.0, green: CGFloat(107)/255.0, blue: CGFloat(45)/255.0, alpha: 1.0)
         
     }
     
