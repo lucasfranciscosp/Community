@@ -67,6 +67,7 @@ class Comunidade: CloudKitSchema {
         
         repeat {
             localization = await Localization().getAddress()
+            try await Task.sleep(nanoseconds: 1_000_000_000)
         } while localization == nil
         
         let address = localization!.address
