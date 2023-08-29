@@ -26,6 +26,8 @@
 		F8B7CA712A8F947B002F2C74 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8B7CA702A8F947B002F2C74 /* Colors.swift */; };
 		F8E7A67B2A8CF135002C686D /* ScaffoldViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8E7A67A2A8CF135002C686D /* ScaffoldViewController.swift */; };
 		F8E7A67E2A8D074C002C686D /* UIViewControllerUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8E7A67D2A8D074C002C686D /* UIViewControllerUtil.swift */; };
+		F8E8FA732A9CD4CD00A0C177 /* FetchCommunityDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8E8FA722A9CD4CD00A0C177 /* FetchCommunityDelegate.swift */; };
+		F8E8FA772A9E2F9F00A0C177 /* NoCommunityFoundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8E8FA762A9E2F9F00A0C177 /* NoCommunityFoundView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,6 +52,9 @@
 		F8E7A67A2A8CF135002C686D /* ScaffoldViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScaffoldViewController.swift; sourceTree = "<group>"; };
 		F8E7A67D2A8D074C002C686D /* UIViewControllerUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerUtil.swift; sourceTree = "<group>"; };
 		F8E7A6812A8D11BC002C686D /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		F8E8FA722A9CD4CD00A0C177 /* FetchCommunityDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchCommunityDelegate.swift; sourceTree = "<group>"; };
+		F8E8FA742A9E15E600A0C177 /* Location.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Location.gpx; sourceTree = "<group>"; };
+		F8E8FA762A9E2F9F00A0C177 /* NoCommunityFoundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoCommunityFoundView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,6 +97,7 @@
 			isa = PBXGroup;
 			children = (
 				F86F5C9A2A938E52008B7940 /* Community.entitlements */,
+				F8E8FA712A9CD4A800A0C177 /* Delegates */,
 				6144C4352A8E52C700D562FC /* Model */,
 				F8E7A6802A8D11AA002C686D /* Home */,
 				0804CEC92A938C1C003CBA96 /* Create Community */,
@@ -102,7 +108,6 @@
 				6144C4142A8CED4100D562FC /* Assets.xcassets */,
 				6144C4192A8CED4100D562FC /* Info.plist */,
 				6144C42D2A8D2C6A00D562FC /* Controllers */,
-				F8E7A67C2A8D0738002C686D /* Utils */,
 				F8E7A67F2A8D0B35002C686D /* Files */,
 			);
 			path = Community;
@@ -174,6 +179,8 @@
 		F8E7A67F2A8D0B35002C686D /* Files */ = {
 			isa = PBXGroup;
 			children = (
+				F8E7A67C2A8D0738002C686D /* Utils */,
+				F8E8FA742A9E15E600A0C177 /* Location.gpx */,
 			);
 			name = Files;
 			sourceTree = "<group>";
@@ -181,9 +188,26 @@
 		F8E7A6802A8D11AA002C686D /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				F8E8FA752A9E2F8500A0C177 /* Components */,
 				F8E7A6812A8D11BC002C686D /* HomeViewController.swift */,
 			);
 			path = Home;
+			sourceTree = "<group>";
+		};
+		F8E8FA712A9CD4A800A0C177 /* Delegates */ = {
+			isa = PBXGroup;
+			children = (
+				F8E8FA722A9CD4CD00A0C177 /* FetchCommunityDelegate.swift */,
+			);
+			path = Delegates;
+			sourceTree = "<group>";
+		};
+		F8E8FA752A9E2F8500A0C177 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				F8E8FA762A9E2F9F00A0C177 /* NoCommunityFoundView.swift */,
+			);
+			path = Components;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -259,7 +283,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				6144C42F2A8D2CCC00D562FC /* CommunityDescriptionController.swift in Sources */,
+				F8E8FA732A9CD4CD00A0C177 /* FetchCommunityDelegate.swift in Sources */,
 				F8B7CA712A8F947B002F2C74 /* Colors.swift in Sources */,
+				F8E8FA772A9E2F9F00A0C177 /* NoCommunityFoundView.swift in Sources */,
 				F8E7A67B2A8CF135002C686D /* ScaffoldViewController.swift in Sources */,
 				F80FDA6F2A94ECB700248123 /* CloudKitSchema.swift in Sources */,
 				6144C40C2A8CED4100D562FC /* AppDelegate.swift in Sources */,

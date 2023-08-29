@@ -65,11 +65,16 @@ class Comunidade: CloudKitSchema {
         var state: String = ""
         var localization: Address?
         
-        repeat {
-            localization = await Localization().getAddress()
-        } while localization == nil
+        localization = await Localization().getAddress()
         
+        while localization == nil {
+            localization = await Localization().getAddress()
+            try await Task.sleep(nanoseconds: 4_000_000_000)
+        }
+
         let address = localization!.address
+
+    
         city = address.city
         district = address.cityDistrict
         country = address.country
@@ -127,9 +132,4 @@ class Comunidade: CloudKitSchema {
     }
     
 }
-
-var mockComunidades = [
-    Comunidade(description: "Imagens teste", name: "Rei do Gado", tags: "Gadisse", image: UIImage(named: "Image")!, country: "Brazil", city: "Campinas", state: "São Paulo", city_district: "Barão Geraldo"),
-    Comunidade(description: "Os reis do gado juntos reunidos", name: "Rei do Gado", tags: "Gadisse", image: UIImage(named: "Image")!, country: "Brazil", city: "Campinas", state: "São Paulo", city_district: "Barão Geraldo")
-]
 
