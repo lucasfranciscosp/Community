@@ -50,7 +50,7 @@ class CreateCommunityViewController: UIViewController {
         tagTextField.delegate = self
         descriptionTextField.delegate = self
         descriptionTextField.clipsToBounds = true
-        descriptionTextField.layer.cornerRadius = 10
+        descriptionTextField.layer.cornerRadius = 5
         descriptionTextField.text = "Descrição"
         descriptionTextField.textColor = UIColor.lightGray
         view.backgroundColor = PaleteColor.color2
