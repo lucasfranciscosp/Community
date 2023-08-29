@@ -15,25 +15,8 @@ class HomeViewController: UICollectionViewController {
     var arrayCommunity: [Comunidade] {
         communityDataManager.communitiesArray
     }
-    let noCommunityFoundView: UIStackView = {
-        let text = UILabel()
-        text.text = "Nenhuma Comunidade encontrada."
-        text.numberOfLines = 0
-        text.textColor = .secondaryLabel
-        let icon = UIImageView(image: UIImage(systemName:  "arrow.clockwise.circle"))
-        icon.translatesAutoresizingMaskIntoConstraints = true
-        icon.heightAnchor.constraint(equalToConstant: 40).isActive = true
-        icon.widthAnchor.constraint(equalToConstant: 40).isActive = true
-        let stack = UIStackView()
-        stack.axis = .vertical
-        stack.distribution = .equalCentering
-        stack.alignment = .center
-        stack.addArrangedSubview(icon)
-        stack.addArrangedSubview(text)
-        stack.translatesAutoresizingMaskIntoConstraints = false
-        
-        return stack
-    }()
+    
+    let noCommunityFoundView = NoCommunityFoundView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,6 +27,7 @@ class HomeViewController: UICollectionViewController {
         setupPageRefresh()
         communityDataManager.delegate = self
         communityDataManager.fetchCommunities()
+        noCommunityFoundView.configure(self)
     }
     
 }
@@ -80,14 +64,7 @@ extension HomeViewController {
     }
     
     @objc func refreshData() {
-        // Carrega os dados atualizados
-//        Task.init(priority: .high){
-//            try arrayCommunity = await Comunidade.fetchNearCommunities()
-//            collectionView.reloadData()
-//            refreshControl.endRefreshing()
-//
-//        }
-        communityDataManager.refreshCommunities()
+        print("refresh!")
     }
     
     func insertSpinner() {
@@ -110,8 +87,11 @@ extension HomeViewController {
     
     func insertNoCommunityFoundText() {
         let vw = noCommunityFoundView
+        vw.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(vw)
         NSLayoutConstraint.activate([
+            vw.widthAnchor.constraint(equalTo: view.widthAnchor),
+            vw.heightAnchor.constraint(equalToConstant: 65),
             vw.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             vw.centerYAnchor.constraint(equalTo: view.centerYAnchor)
         ])
