@@ -64,13 +64,16 @@ class Comunidade: CloudKitSchema {
         var country: String = ""
         var state: String = ""
         var localization: Address?
-        
-        repeat {
-            localization = await Localization().getAddress()
-            try await Task.sleep(nanoseconds: 1_000_000_000)
-        } while localization == nil
-        
-        let address = localization!.address
+        //MARK:- descomentar
+        //
+//        repeat {
+//            localization = await Localization().getAddress()
+//            try await Task.sleep(nanoseconds: 4_000_000_000)
+//        } while localization == nil
+//
+//        let address = localization!.address
+        let address = Address(lat: "0", lon: "0", displayName: "0", address: InnerAddress(road: "mock", cityDistrict: "mock", city: "mock", municipality: "mock", county: "mock", stateDistrict: "mock", state: "mock", region: "mock", postcode: "mock", country: "mock", countryCode: "mock")).address
+    
         city = address.city
         district = address.cityDistrict
         country = address.country

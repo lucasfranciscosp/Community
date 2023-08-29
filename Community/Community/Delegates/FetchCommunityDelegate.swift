@@ -8,21 +8,51 @@
 import Foundation
 
 protocol FetchCommunityDelegate {
-    func didFetchCommunities(communities: [Comunidade])
+    func didInitialFetchCommunities(communities: [Comunidade])
+    func didRefreshCommunities(communities: [Comunidade])
     func errorFetchingCommunities()
 }
 
 class CommunityDataManager {
-    var community: [Comunidade] = []
+    private var community: [Comunidade] = []
     var delegate: FetchCommunityDelegate?
+    var communitiesArray: [Comunidade] {
+        return community
+    }
     
     
-    func fetchCommunities() async {
+    private func fetchCommunitiesInternal() async {
         do {
             community = try await Comunidade.fetchNearCommunities()
-            delegate?.didFetchCommunities(communities: community)
+            DispatchQueue.main.async {
+                self.delegate?.didInitialFetchCommunities(communities: self.community)
+            }
         } catch {
             delegate?.errorFetchingCommunities()
+        }
+    }
+    
+    private func refreshCommunitiesInternal() async {
+        do {
+            community = try await Comunidade.fetchNearCommunities()
+            DispatchQueue.main.async {
+                self.delegate?.didRefreshCommunities(communities: self.community)
+            }
+        } catch {
+            delegate?.errorFetchingCommunities()
+        }
+    }
+    
+    //MARK: - funcoes de casca
+    func fetchCommunities() {
+        Task {
+            await fetchCommunitiesInternal()
+        }
+    }
+    
+    func refreshCommunities() {
+        Task {
+            await refreshCommunitiesInternal()
         }
     }
 }

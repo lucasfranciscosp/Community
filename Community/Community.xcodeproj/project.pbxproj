@@ -52,6 +52,7 @@
 		F8E7A67D2A8D074C002C686D /* UIViewControllerUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerUtil.swift; sourceTree = "<group>"; };
 		F8E7A6812A8D11BC002C686D /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		F8E8FA722A9CD4CD00A0C177 /* FetchCommunityDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchCommunityDelegate.swift; sourceTree = "<group>"; };
+		F8E8FA742A9E15E600A0C177 /* Location.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Location.gpx; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,7 +106,6 @@
 				6144C4142A8CED4100D562FC /* Assets.xcassets */,
 				6144C4192A8CED4100D562FC /* Info.plist */,
 				6144C42D2A8D2C6A00D562FC /* Controllers */,
-				F8E7A67C2A8D0738002C686D /* Utils */,
 				F8E7A67F2A8D0B35002C686D /* Files */,
 			);
 			path = Community;
@@ -177,6 +177,8 @@
 		F8E7A67F2A8D0B35002C686D /* Files */ = {
 			isa = PBXGroup;
 			children = (
+				F8E7A67C2A8D0738002C686D /* Utils */,
+				F8E8FA742A9E15E600A0C177 /* Location.gpx */,
 			);
 			name = Files;
 			sourceTree = "<group>";

@@ -9,10 +9,31 @@ import UIKit
 
 class HomeViewController: UICollectionViewController {
     
-    var arrayCommunity : [Comunidade] = []
     var refreshControl: UIRefreshControl!
     let communityDataManager = CommunityDataManager()
     let spinner = UIActivityIndicatorView(style: .large)
+    var arrayCommunity: [Comunidade] {
+        communityDataManager.communitiesArray
+    }
+    let noCommunityFoundView: UIStackView = {
+        let text = UILabel()
+        text.text = "Nenhuma Comunidade encontrada."
+        text.numberOfLines = 0
+        text.textColor = .secondaryLabel
+        let icon = UIImageView(image: UIImage(systemName:  "arrow.clockwise.circle"))
+        icon.translatesAutoresizingMaskIntoConstraints = true
+        icon.heightAnchor.constraint(equalToConstant: 40).isActive = true
+        icon.widthAnchor.constraint(equalToConstant: 40).isActive = true
+        let stack = UIStackView()
+        stack.axis = .vertical
+        stack.distribution = .equalCentering
+        stack.alignment = .center
+        stack.addArrangedSubview(icon)
+        stack.addArrangedSubview(text)
+        stack.translatesAutoresizingMaskIntoConstraints = false
+        
+        return stack
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,9 +43,7 @@ class HomeViewController: UICollectionViewController {
         collectionViewConfig()
         setupPageRefresh()
         communityDataManager.delegate = self
-        Task {
-            await communityDataManager.fetchCommunities()
-        }
+        communityDataManager.fetchCommunities()
     }
     
 }
@@ -56,19 +75,19 @@ extension HomeViewController {
     
     func setupPageRefresh() {
         refreshControl = UIRefreshControl()
-        refreshControl.attributedTitle = NSAttributedString(string: "Refreshing...")
         refreshControl.addTarget(self, action: #selector(refreshData), for: .valueChanged)
         collectionView.addSubview(refreshControl)
     }
     
     @objc func refreshData() {
         // Carrega os dados atualizados
-        Task.init(priority: .high){
-            try arrayCommunity = await Comunidade.fetchNearCommunities()
-            collectionView.reloadData()
-            refreshControl.endRefreshing()
-            
-        }
+//        Task.init(priority: .high){
+//            try arrayCommunity = await Comunidade.fetchNearCommunities()
+//            collectionView.reloadData()
+//            refreshControl.endRefreshing()
+//
+//        }
+        communityDataManager.refreshCommunities()
     }
     
     func insertSpinner() {
@@ -87,6 +106,19 @@ extension HomeViewController {
         spinner.stopAnimating()
         self.spinner.removeFromSuperview()
         
+    }
+    
+    func insertNoCommunityFoundText() {
+        let vw = noCommunityFoundView
+        view.addSubview(vw)
+        NSLayoutConstraint.activate([
+            vw.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            vw.centerYAnchor.constraint(equalTo: view.centerYAnchor)
+        ])
+    }
+    
+    func removeNoCommunityFoundText() {
+        noCommunityFoundView.removeFromSuperview()
     }
     
 }
@@ -159,17 +191,22 @@ extension HomeViewController: UICollectionViewDelegateFlowLayout {
 
 // MARK: - Data handling
 extension HomeViewController: FetchCommunityDelegate {
-    func didFetchCommunities(communities: [Comunidade]) {
-        DispatchQueue.main.async {
-            self.removeSpinner()
-            self.arrayCommunity = communities
-            self.collectionView.reloadData()
+    func didRefreshCommunities(communities: [Comunidade]) {
+        print("fez refresh")
+    }
+    
+    func didInitialFetchCommunities(communities: [Comunidade]) {
+        removeNoCommunityFoundText()
+        removeSpinner()
+        collectionView.reloadData()
+        if communities.isEmpty {
+            insertNoCommunityFoundText()
         }
         
     }
     
     func errorFetchingCommunities() {
-        
+        //handle errors
     }
     
     

@@ -27,6 +27,8 @@ class Localization {
             
             let service = Service()
             service.getByLatAndLon(latitude: currentLocation.coordinate.latitude, longitude: currentLocation.coordinate.longitude) { result in
+                print(currentLocation.coordinate.latitude)
+                print(currentLocation.coordinate.longitude)
                 DispatchQueue.main.async {
                     switch result {
                     case let .failure(error):
@@ -42,10 +44,10 @@ class Localization {
                 }
             }
         } else {
-            completion(nil)
+//            completion(nil)
         }
     }
-    
+
     func getAddress() async -> Address? {
         return await withCheckedContinuation { continuation in
             getAddress { endereco in
