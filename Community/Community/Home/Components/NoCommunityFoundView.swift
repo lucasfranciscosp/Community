@@ -17,14 +17,31 @@ class NoCommunityFoundView: UIView {
         return label
     }()
     
-    private var icon: UIImageView = {
-        let icon = UIImageView(image: UIImage(systemName:  "arrow.clockwise.circle"))
-        icon.translatesAutoresizingMaskIntoConstraints = true
-        icon.heightAnchor.constraint(equalToConstant: 40).isActive = true
-        icon.widthAnchor.constraint(equalToConstant: 40).isActive = true
-        icon.isUserInteractionEnabled = true
-        return icon
+    private let button: UIView = {
+
+        let btn = UIButton(type: .system)
+        let image = UIImage(systemName: "arrow.clockwise.circle")
+        let imageView = UIImageView(image: image)
+        
+        
+//        btn.setImage(image, for: .normal)
+//        btn.imageView?.contentMode = .scaleToFill
+        btn.addSubview(imageView)
+        btn.translatesAutoresizingMaskIntoConstraints = false
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+       
+        NSLayoutConstraint.activate([
+            btn.heightAnchor.constraint(equalToConstant: 40),
+            btn.widthAnchor.constraint(equalToConstant: 40),
+            
+            imageView.leadingAnchor.constraint(equalTo: btn.leadingAnchor),
+            imageView.trailingAnchor.constraint(equalTo: btn.trailingAnchor),
+            imageView.topAnchor.constraint(equalTo: btn.topAnchor),
+            imageView.bottomAnchor.constraint(equalTo: btn.bottomAnchor),
+        ])
+        return btn
     }()
+    
     
     let stack = UIStackView()
     
@@ -42,7 +59,7 @@ class NoCommunityFoundView: UIView {
         stack.axis = .vertical
         stack.distribution = .equalCentering
         stack.alignment = .center
-        stack.addArrangedSubview(icon)
+        stack.addArrangedSubview(button)
         stack.addArrangedSubview(text)
         stack.translatesAutoresizingMaskIntoConstraints = false
         addSubview(stack)

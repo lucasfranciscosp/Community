@@ -64,7 +64,9 @@ extension HomeViewController {
     }
     
     @objc func refreshData() {
-        print("refresh!")
+        removeNoCommunityFoundText()
+        insertSpinner()
+        communityDataManager.refreshCommunities()
     }
     
     func insertSpinner() {
@@ -172,7 +174,13 @@ extension HomeViewController: UICollectionViewDelegateFlowLayout {
 // MARK: - Data handling
 extension HomeViewController: FetchCommunityDelegate {
     func didRefreshCommunities(communities: [Comunidade]) {
-        print("fez refresh")
+        collectionView.reloadData()
+        if communities.isEmpty {
+            Task {
+                removeSpinner()
+                insertNoCommunityFoundText()
+            }
+        }
     }
     
     func didInitialFetchCommunities(communities: [Comunidade]) {
