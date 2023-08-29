@@ -70,11 +70,11 @@
                                             <constraint firstAttribute="height" constant="1" id="nMq-gt-32n"/>
                                         </constraints>
                                     </view>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="2tm-h0-Ddb">
-                                        <rect key="frame" x="16" y="181.33333333333331" width="361" height="300"/>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="2tm-h0-Ddb">
+                                        <rect key="frame" x="16" y="181.33333333333331" width="361" height="200"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" priority="750" constant="300" id="ZhD-EZ-bjV"/>
+                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" priority="750" constant="200" id="ZhD-EZ-bjV"/>
                                         </constraints>
                                         <color key="textColor" systemColor="labelColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -113,6 +113,7 @@
                                     <constraint firstItem="2tm-h0-Ddb" firstAttribute="leading" secondItem="y9o-MU-fXX" secondAttribute="leading" constant="16" id="MiM-0N-Q1s"/>
                                     <constraint firstAttribute="trailing" secondItem="YPH-e5-9vJ" secondAttribute="trailing" constant="16" id="XW8-Op-atD"/>
                                     <constraint firstAttribute="trailing" secondItem="DFx-hZ-U6v" secondAttribute="trailing" constant="16" id="YIA-hE-N06"/>
+                                    <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="2tm-h0-Ddb" secondAttribute="bottom" constant="8" id="ZuZ-oe-kUG"/>
                                     <constraint firstItem="A5X-gr-pU9" firstAttribute="top" secondItem="y9o-MU-fXX" secondAttribute="top" constant="16" id="fo8-Ce-w5Y"/>
                                     <constraint firstItem="YPH-e5-9vJ" firstAttribute="top" secondItem="DFx-hZ-U6v" secondAttribute="bottom" constant="16" id="kpN-Tx-Auo"/>
                                     <constraint firstItem="fsc-RM-em1" firstAttribute="leading" secondItem="y9o-MU-fXX" secondAttribute="leading" constant="16" id="mHd-Qb-pIe"/>
