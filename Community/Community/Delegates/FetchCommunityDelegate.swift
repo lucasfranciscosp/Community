@@ -45,14 +45,14 @@ class CommunityDataManager {
     
     //MARK: - funcoes de casca
     func fetchCommunities() {
-        Task {
-            await fetchCommunitiesInternal()
+        Task.detached(priority: .high) {
+            await self.fetchCommunitiesInternal()
         }
     }
     
     func refreshCommunities() {
-        Task {
-            await refreshCommunitiesInternal()
+        Task.detached(priority: .high) {
+            await self.refreshCommunitiesInternal()
         }
     }
 }

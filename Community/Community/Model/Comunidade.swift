@@ -133,8 +133,3 @@ class Comunidade: CloudKitSchema {
     
 }
 
-var mockComunidades = [
-    Comunidade(description: "Imagens teste", name: "Rei do Gado", tags: "Gadisse", image: UIImage(named: "Image")!, country: "Brazil", city: "Campinas", state: "São Paulo", city_district: "Barão Geraldo"),
-    Comunidade(description: "Os reis do gado juntos reunidos", name: "Rei do Gado", tags: "Gadisse", image: UIImage(named: "Image")!, country: "Brazil", city: "Campinas", state: "São Paulo", city_district: "Barão Geraldo")
-]
-

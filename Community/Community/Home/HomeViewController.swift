@@ -65,9 +65,16 @@ extension HomeViewController {
     
     @objc func refreshData() {
         removeNoCommunityFoundText()
+        communityDataManager.refreshCommunities()
+    }
+    
+    @objc func refreshDataFromButtom() {
+        removeNoCommunityFoundText()
         insertSpinner()
         communityDataManager.refreshCommunities()
     }
+    
+    
     
     func insertSpinner() {
         spinner.translatesAutoresizingMaskIntoConstraints = false
@@ -175,11 +182,10 @@ extension HomeViewController: UICollectionViewDelegateFlowLayout {
 extension HomeViewController: FetchCommunityDelegate {
     func didRefreshCommunities(communities: [Comunidade]) {
         collectionView.reloadData()
+        refreshControl.endRefreshing()
         if communities.isEmpty {
-            Task {
-                removeSpinner()
-                insertNoCommunityFoundText()
-            }
+            removeSpinner()
+            insertNoCommunityFoundText()
         }
     }
     

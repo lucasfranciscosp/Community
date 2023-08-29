@@ -73,7 +73,8 @@ class NoCommunityFoundView: UIView {
         ])
     }
     
+    
     func configure(_ controller: HomeViewController) {
-        stack.arrangedSubviews[0].addGestureRecognizer(UITapGestureRecognizer(target: controller, action: #selector(controller.refreshData)))
+        stack.arrangedSubviews[0].addGestureRecognizer(UITapGestureRecognizer(target: controller, action: #selector(controller.refreshDataFromButtom)))
     }
 }
