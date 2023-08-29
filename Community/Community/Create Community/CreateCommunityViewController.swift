@@ -9,6 +9,7 @@ import UIKit
 
 class CreateCommunityViewController: UIViewController {
 
+    @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var imagePicker: UIView!
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var tagTextField: UITextField!
@@ -27,9 +28,14 @@ class CreateCommunityViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-                setNavigationBar()
+        setNavigationBar()
+        dismissKeyboardView()
         setLayout()
         addImageAction()
+    }
+
+    override func viewDidAppear(_ animated: Bool) {
+        scrollView.contentSize = CGSize(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height+300)
     }
 
     private func setNavigationBar() {
@@ -48,6 +54,15 @@ class CreateCommunityViewController: UIViewController {
         descriptionTextField.text = "Descrição"
         descriptionTextField.textColor = UIColor.lightGray
         view.backgroundColor = PaleteColor.color2
+    }
+    
+    private func dismissKeyboardView() {
+        let tap = UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard))
+        view.addGestureRecognizer(tap)
+    }
+
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
     }
 
     private func addImageAction() {
@@ -188,6 +203,13 @@ extension CreateCommunityViewController: UITextViewDelegate {
             textView.text = "Descrição"
             textView.textColor = UIColor.lightGray
         }
+    }
+    
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        let currentText = textView.text ?? ""
+        guard let stringRange = Range(range, in: currentText) else { return false }
+        let updatedText = currentText.replacingCharacters(in: stringRange, with: text)
+        return updatedText.count <= 850
     }
 }
 
