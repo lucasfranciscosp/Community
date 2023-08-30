@@ -27,10 +27,11 @@ class ScaffoldViewController: UITabBarController {
         let homeNC = UINavigationController(rootViewController: homeVC)
         let leafNC = UINavigationController(rootViewController: leafVC)
         let profileNC = UINavigationController(rootViewController: profile)
-
+        
         let tabBarList = [homeNC, leafNC, profileNC]
 
         viewControllers = tabBarList
+
     }
 
 }
@@ -39,11 +40,5 @@ class ScaffoldViewController: UITabBarController {
 class LeafViewController: UIViewController {
     override func viewDidLoad() {
         view.backgroundColor = .systemOrange
-    }
-}
-
-class ProfileViewController: UIViewController {
-    override func viewDidLoad() {
-        view.backgroundColor = .systemPurple
     }
 }

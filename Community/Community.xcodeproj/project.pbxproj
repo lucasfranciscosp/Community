@@ -16,6 +16,7 @@
 		6144C4152A8CED4100D562FC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6144C4142A8CED4100D562FC /* Assets.xcassets */; };
 		6144C42F2A8D2CCC00D562FC /* CommunityDescriptionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6144C42E2A8D2CCC00D562FC /* CommunityDescriptionController.swift */; };
 		6144C4372A8E52F300D562FC /* Comunidade.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6144C4362A8E52F300D562FC /* Comunidade.swift */; };
+		6173C6422A98D05B00A45C4D /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6173C6412A98D05B00A45C4D /* ProfileViewController.swift */; };
 		B67C40342A8E3CEF00820A86 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = B67C40332A8E3CEF00820A86 /* API.swift */; };
 		B67C40362A8E4D2D00820A86 /* Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = B67C40352A8E4D2D00820A86 /* Localization.swift */; };
 		F80FDA6D2A94EC4100248123 /* CloudKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = F80FDA6C2A94EC4100248123 /* CloudKit.swift */; };
@@ -40,6 +41,7 @@
 		6144C4192A8CED4100D562FC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6144C42E2A8D2CCC00D562FC /* CommunityDescriptionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityDescriptionController.swift; sourceTree = "<group>"; };
 		6144C4362A8E52F300D562FC /* Comunidade.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comunidade.swift; sourceTree = "<group>"; };
+		6173C6412A98D05B00A45C4D /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		B67C40332A8E3CEF00820A86 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		B67C40352A8E4D2D00820A86 /* Localization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Localization.swift; sourceTree = "<group>"; };
 		F80FDA6C2A94EC4100248123 /* CloudKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudKit.swift; sourceTree = "<group>"; };
@@ -96,6 +98,7 @@
 		6144C40A2A8CED4100D562FC /* Community */ = {
 			isa = PBXGroup;
 			children = (
+				6173C6402A98C38A00A45C4D /* Profile */,
 				F86F5C9A2A938E52008B7940 /* Community.entitlements */,
 				F8E8FA712A9CD4A800A0C177 /* Delegates */,
 				6144C4352A8E52C700D562FC /* Model */,
@@ -129,6 +132,14 @@
 				F80FDA6C2A94EC4100248123 /* CloudKit.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		6173C6402A98C38A00A45C4D /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				6173C6412A98D05B00A45C4D /* ProfileViewController.swift */,
+			);
+			path = Profile;
 			sourceTree = "<group>";
 		};
 		B67C40322A8E3CDF00820A86 /* Data */ = {
@@ -293,6 +304,7 @@
 				6144C40E2A8CED4100D562FC /* SceneDelegate.swift in Sources */,
 				6144C4372A8E52F300D562FC /* Comunidade.swift in Sources */,
 				F8E7A67E2A8D074C002C686D /* UIViewControllerUtil.swift in Sources */,
+				6173C6422A98D05B00A45C4D /* ProfileViewController.swift in Sources */,
 				F8AA73E92A8E3C5600AEC8E8 /* HomeCollectionViewCell.swift in Sources */,
 				080FE0D82A8E4D1400F2CBDA /* HomeViewController.swift in Sources */,
 				B67C40362A8E4D2D00820A86 /* Localization.swift in Sources */,
