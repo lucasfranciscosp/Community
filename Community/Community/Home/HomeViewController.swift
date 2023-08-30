@@ -28,6 +28,7 @@ class HomeViewController: UICollectionViewController {
         communityDataManager.delegate = self
         communityDataManager.fetchCommunities()
         noCommunityFoundView.configure(self)
+        collectionView.alwaysBounceVertical = true
     }
     
 }
@@ -110,6 +111,7 @@ extension HomeViewController {
         noCommunityFoundView.removeFromSuperview()
     }
     
+    
 }
 
 // MARK: - UICollection implementations
@@ -165,9 +167,13 @@ extension HomeViewController: UICollectionViewDelegateFlowLayout {
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "HomeCollectionViewCell", for: indexPath) as? HomeCollectionViewCell else { return UICollectionViewCell() }
+        guard var cell = collectionView.dequeueReusableCell(withReuseIdentifier: "HomeCollectionViewCell", for: indexPath) as? HomeCollectionViewCell else { return UICollectionViewCell() }
         
         cell.setCell(data: HomeCollectionViewCellData(image: arrayCommunity[indexPath.row].image, tags: arrayCommunity[indexPath.row].tags, name: arrayCommunity[indexPath.row].name, location: "\(arrayCommunity[indexPath.row].city), \(arrayCommunity[indexPath.row].city_district)"))
+        
+        if indexPath.row == arrayCommunity.count - 1 {
+            
+        }
 
         return cell
     }
@@ -196,7 +202,6 @@ extension HomeViewController: FetchCommunityDelegate {
         if communities.isEmpty {
             insertNoCommunityFoundText()
         }
-        
     }
     
     func errorFetchingCommunities() {
