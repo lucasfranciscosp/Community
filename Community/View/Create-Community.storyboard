@@ -23,27 +23,6 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nwr-oH-X18">
                                         <rect key="frame" x="0.0" y="0.0" width="393" height="759"/>
                                         <subviews>
-                                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="S7S-US-dIG" userLabel="Loading View">
-                                                <rect key="frame" x="0.0" y="0.0" width="393" height="759"/>
-                                                <subviews>
-                                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="Gda-x8-jfF">
-                                                        <rect key="frame" x="178" y="361" width="37" height="37"/>
-                                                        <color key="color" red="0.24313725489999999" green="0.41960784309999999" blue="0.1764705882" alpha="1" colorSpace="calibratedRGB"/>
-                                                    </activityIndicatorView>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Criando comunidade..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="81M-N9-Bbg">
-                                                        <rect key="frame" x="97.666666666666671" y="414" width="197.66666666666663" height="24"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                                        <color key="textColor" red="0.24313725489999999" green="0.41960784309999999" blue="0.1764705882" alpha="1" colorSpace="calibratedRGB"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
-                                                </subviews>
-                                                <constraints>
-                                                    <constraint firstItem="81M-N9-Bbg" firstAttribute="top" secondItem="Gda-x8-jfF" secondAttribute="bottom" constant="16" id="6l6-So-Z1X"/>
-                                                    <constraint firstItem="81M-N9-Bbg" firstAttribute="centerX" secondItem="Gda-x8-jfF" secondAttribute="centerX" id="P9q-Pj-c51"/>
-                                                    <constraint firstItem="Gda-x8-jfF" firstAttribute="centerY" secondItem="S7S-US-dIG" secondAttribute="centerY" id="cjV-C5-ZPm"/>
-                                                    <constraint firstItem="Gda-x8-jfF" firstAttribute="centerX" secondItem="S7S-US-dIG" secondAttribute="centerX" id="k8L-HK-Eiz"/>
-                                                </constraints>
-                                            </view>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ECG-6u-ZGD">
                                                 <rect key="frame" x="0.0" y="0.0" width="393" height="160"/>
                                                 <constraints>
@@ -150,6 +129,27 @@
                                                     <constraint firstItem="YPH-e5-9vJ" firstAttribute="leading" secondItem="y9o-MU-fXX" secondAttribute="leading" constant="16" id="rx6-yU-Wo0"/>
                                                     <constraint firstItem="DFx-hZ-U6v" firstAttribute="top" secondItem="fsc-RM-em1" secondAttribute="bottom" constant="8" id="snm-v9-VIi"/>
                                                     <constraint firstItem="DFx-hZ-U6v" firstAttribute="leading" secondItem="y9o-MU-fXX" secondAttribute="leading" constant="16" id="wXb-bb-YkA"/>
+                                                </constraints>
+                                            </view>
+                                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="S7S-US-dIG" userLabel="Loading View">
+                                                <rect key="frame" x="0.0" y="0.0" width="393" height="759"/>
+                                                <subviews>
+                                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="Gda-x8-jfF">
+                                                        <rect key="frame" x="178" y="361" width="37" height="37"/>
+                                                        <color key="color" red="0.24313725489999999" green="0.41960784309999999" blue="0.1764705882" alpha="1" colorSpace="calibratedRGB"/>
+                                                    </activityIndicatorView>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Criando comunidade..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="81M-N9-Bbg">
+                                                        <rect key="frame" x="97.666666666666671" y="414" width="197.66666666666663" height="24"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                        <color key="textColor" red="0.24313725489999999" green="0.41960784309999999" blue="0.1764705882" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                                <constraints>
+                                                    <constraint firstItem="81M-N9-Bbg" firstAttribute="top" secondItem="Gda-x8-jfF" secondAttribute="bottom" constant="16" id="6l6-So-Z1X"/>
+                                                    <constraint firstItem="81M-N9-Bbg" firstAttribute="centerX" secondItem="Gda-x8-jfF" secondAttribute="centerX" id="P9q-Pj-c51"/>
+                                                    <constraint firstItem="Gda-x8-jfF" firstAttribute="centerY" secondItem="S7S-US-dIG" secondAttribute="centerY" id="cjV-C5-ZPm"/>
+                                                    <constraint firstItem="Gda-x8-jfF" firstAttribute="centerX" secondItem="S7S-US-dIG" secondAttribute="centerX" id="k8L-HK-Eiz"/>
                                                 </constraints>
                                             </view>
                                         </subviews>
