@@ -150,6 +150,7 @@ class CreateCommunityViewController: UIViewController {
         view.endEditing(true)
 
         if isDataValid(name, tag, description)  {
+            navigationItem.rightBarButtonItem?.isEnabled = false
             let community = Comunidade(
                 description: description,
                 name: name,
