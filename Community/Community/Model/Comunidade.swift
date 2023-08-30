@@ -26,7 +26,11 @@ class Comunidade: CloudKitSchema {
         try data?.write(to: imagePath!)
         return imagePath!
     }
-    
+
+    func updateData() async {
+
+    }
+
     func updateRecordValues() {
         do {
             let asset = CKAsset(fileURL: try getLocalImageUrl())

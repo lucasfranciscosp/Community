@@ -54,6 +54,10 @@ class CreateCommunityViewController: UIViewController {
         descriptionTextField.text = "Descrição"
         descriptionTextField.textColor = UIColor.lightGray
         view.backgroundColor = PaleteColor.color2
+        image.layer.cornerRadius = 10
+        image.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
+        imagePicker.layer.cornerRadius = 10
+        imagePicker.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
     }
     
     private func dismissKeyboardView() {
@@ -71,12 +75,12 @@ class CreateCommunityViewController: UIViewController {
     }
 
     private func showAllert() {
-        let missingInformationAlert = UIAlertController(title: "Imagem",
+        let missingInformationAllert = UIAlertController(title: "Imagem",
                                                        message: "Por favor, preencha todos os campos e selecione uma imagem antes de continuar!",
                                               preferredStyle: .alert)
         let cancelAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
-        missingInformationAlert.addAction(cancelAction)
-        self.present(missingInformationAlert, animated: true, completion: nil)
+        missingInformationAllert.addAction(cancelAction)
+        self.present(missingInformationAllert, animated: true, completion: nil)
     }
 
     private func showLoading () {
