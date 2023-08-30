@@ -12,16 +12,42 @@ import UIKit
 class ProfileViewController: UIViewController {
     
     private let signInButton = ASAuthorizationAppleIDButton()
+    private let label = UILabel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.addSubview(signInButton)
+        view.addSubview(label)
+
+        view.backgroundColor = UIColor(red: 234.0/255, green: 216.0/255, blue: 212.0/255, alpha: 1.0)
         signInButton.addTarget(self, action: #selector(didTapSignIn), for: .touchUpInside)
+        signInButton.cornerRadius = 100
+        title = "Perfil"
+        navigationController?.navigationBar.prefersLargeTitles = true
+        
+        configureLabel()
+        addConstraints()
+        
     }
 
-    override func viewDidLayoutSubviews() {
-        signInButton.frame = CGRect(x: 0, y: 0, width: 250, height: 50)
-        signInButton.center = view.center
+    
+    private func addConstraints() {
+
+        label.translatesAutoresizingMaskIntoConstraints = false
+        signInButton.translatesAutoresizingMaskIntoConstraints = false
+       // Add
+        NSLayoutConstraint.activate([
+            
+            signInButton.topAnchor.constraint(equalTo: label.bottomAnchor, constant: 16),
+            signInButton.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor),
+            signInButton.heightAnchor.constraint(equalToConstant: 50),
+            signInButton.widthAnchor.constraint(equalToConstant: 358),
+            label.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 26.5),
+            label.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -26.5),
+            label.bottomAnchor.constraint(equalTo:  view.safeAreaLayoutGuide.bottomAnchor, constant: -400)
+        
+        ])
+        
     }
  
     @objc func didTapSignIn() {
@@ -35,6 +61,17 @@ class ProfileViewController: UIViewController {
         controller.performRequests()
         
     }
+    
+    private func configureLabel() {
+        label.text = "Entre com o AppleID para criar e salvar Comunidades e Eventos de interesse."
+        label.textAlignment = .center
+        label.font = UIFont.systemFont(ofSize: 18)
+        label.textColor = .black
+        label.numberOfLines = 0
+
+        
+    }
+    
     
 }
 
