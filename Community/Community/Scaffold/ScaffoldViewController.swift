@@ -17,15 +17,15 @@ class ScaffoldViewController: UITabBarController {
 
     private func setupViews() {
         let homeVC = HomeViewController(collectionViewLayout: UICollectionViewFlowLayout())
-        let leafVC = LeafViewController()
+        let eventosVC = EventosViewController()
         let profile = ProfileViewController()
 
         homeVC.setTabBarImage(unSelectedImage: "person.3", selectedImage: "person.3.fill", title: "Comunidades")
-        leafVC.setTabBarImage(unSelectedImage: "party.popper", selectedImage: "party.popper.fill", title: "Eventos")
+        eventosVC.setTabBarImage(unSelectedImage: "party.popper", selectedImage: "party.popper.fill", title: "Eventos")
         profile.setTabBarImage(unSelectedImage: "person.circle", selectedImage: "person.circle.fill", title: "Perfil")
         
         let homeNC = UINavigationController(rootViewController: homeVC)
-        let leafNC = UINavigationController(rootViewController: leafVC)
+        let eventosNC = UINavigationController(rootViewController: eventosVC)
         let profileNC = UINavigationController(rootViewController: profile)
         
         let tabBarList = [homeNC, leafNC, profileNC]
