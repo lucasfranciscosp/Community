@@ -24,6 +24,7 @@
 		F80FDA6D2A94EC4100248123 /* CloudKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = F80FDA6C2A94EC4100248123 /* CloudKit.swift */; };
 		F80FDA6F2A94ECB700248123 /* CloudKitSchema.swift in Sources */ = {isa = PBXBuildFile; fileRef = F80FDA6E2A94ECB700248123 /* CloudKitSchema.swift */; };
 		F821758D2A9F75DE00157B5F /* EventosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F821758C2A9F75DE00157B5F /* EventosViewController.swift */; };
+		F821758F2A9F867B00157B5F /* CardEventoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F821758E2A9F867B00157B5F /* CardEventoView.swift */; };
 		F8AA73E92A8E3C5600AEC8E8 /* HomeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8AA73E52A8E3C5600AEC8E8 /* HomeCollectionViewCell.swift */; };
 		F8AA73EA2A8E3C5600AEC8E8 /* HomeCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F8AA73E62A8E3C5600AEC8E8 /* HomeCollectionViewCell.xib */; };
 		F8AA73EB2A8E3C5600AEC8E8 /* Comunity-Details.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F8AA73E72A8E3C5600AEC8E8 /* Comunity-Details.storyboard */; };
@@ -52,6 +53,7 @@
 		F80FDA6C2A94EC4100248123 /* CloudKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudKit.swift; sourceTree = "<group>"; };
 		F80FDA6E2A94ECB700248123 /* CloudKitSchema.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudKitSchema.swift; sourceTree = "<group>"; };
 		F821758C2A9F75DE00157B5F /* EventosViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventosViewController.swift; sourceTree = "<group>"; };
+		F821758E2A9F867B00157B5F /* CardEventoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardEventoView.swift; sourceTree = "<group>"; };
 		F86F5C9A2A938E52008B7940 /* Community.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Community.entitlements; sourceTree = "<group>"; };
 		F8AA73E52A8E3C5600AEC8E8 /* HomeCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeCollectionViewCell.swift; sourceTree = "<group>"; };
 		F8AA73E62A8E3C5600AEC8E8 /* HomeCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HomeCollectionViewCell.xib; sourceTree = "<group>"; };
@@ -169,9 +171,18 @@
 		F821758B2A9F756C00157B5F /* Eventos */ = {
 			isa = PBXGroup;
 			children = (
+				F82175902A9F868F00157B5F /* Components */,
 				F821758C2A9F75DE00157B5F /* EventosViewController.swift */,
 			);
 			path = Eventos;
+			sourceTree = "<group>";
+		};
+		F82175902A9F868F00157B5F /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				F821758E2A9F867B00157B5F /* CardEventoView.swift */,
+			);
+			path = Components;
 			sourceTree = "<group>";
 		};
 		F8AA73E32A8E3C5600AEC8E8 /* View */ = {
@@ -337,6 +348,7 @@
 				B67C40362A8E4D2D00820A86 /* Localization.swift in Sources */,
 				B67C40342A8E3CEF00820A86 /* API.swift in Sources */,
 				080FE0D92A8E4D1D00F2CBDA /* HomeCollectionViewCell.swift in Sources */,
+				F821758F2A9F867B00157B5F /* CardEventoView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

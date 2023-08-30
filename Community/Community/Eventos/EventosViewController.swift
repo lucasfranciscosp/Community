@@ -9,6 +9,7 @@ import UIKit
 
 class EventosViewController: UICollectionViewController {
     
+    let screenTitle: String
     var refreshControl: UIRefreshControl!
     let communityDataManager = CommunityDataManager()
     let spinner = UIActivityIndicatorView(style: .large)
@@ -18,7 +19,8 @@ class EventosViewController: UICollectionViewController {
     
     let noCommunityFoundView = NoCommunityFoundView()
     
-    init() {
+    init(screenTitle: String) {
+        self.screenTitle = screenTitle
         super.init(collectionViewLayout: UICollectionViewFlowLayout())
     }
     
@@ -45,25 +47,14 @@ extension EventosViewController {
     private func setupAppBar() {
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(add))
         
-        title = "Eventos"
+        title = screenTitle
         navigationController?.navigationBar.prefersLargeTitles = true
         
         
     }
     
     @objc private func add() {
-        Localization().getAddress() { endereco in
-            if let endereco = endereco {
-                // Usar os dados de endereço aqui
-                let storyBoard: UIStoryboard = UIStoryboard(name: "Create-Community", bundle: nil)
-                let storyScreen = storyBoard.instantiateViewController(withIdentifier: "CreateCommunityViewController") as! CreateCommunityViewController
-                storyScreen.fetchedAddress = endereco
-                let navController = UINavigationController(rootViewController: storyScreen)
-                self.present(navController, animated: true, completion: nil)
-            } else {
-                // Caso onde não achar o endereço baseado na latitude e longitude
-            }
-        }
+
     }
     
     func setupPageRefresh() {
@@ -127,39 +118,40 @@ extension EventosViewController {
 extension EventosViewController: UICollectionViewDelegateFlowLayout {
     func collectionViewConfig() {
         // indica o tipo de celula - neste caso e aplicado o padrao UIColletionViewCell
-        collectionView?.register(UINib(nibName: "HomeCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "HomeCollectionViewCell")
+        collectionView?.register(CardEventoView.self, forCellWithReuseIdentifier: "CardEventoView")
         collectionView?.delegate = self
         collectionView.backgroundColor = PaleteColor.color2
     }
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let storyBoard: UIStoryboard = UIStoryboard(name: "Comunity-Details", bundle: nil)
-
-        let storyScreen = storyBoard.instantiateViewController(withIdentifier: "CommunityDescriptionController") as! CommunityDescriptionController
-        storyScreen.comunidade = arrayCommunity[indexPath.row]
-        
-        // Personalize a barra de navegação do controlador de destino (modal)
-        let navigationController = UINavigationController(rootViewController: storyScreen)
-        navigationController.modalPresentationStyle = .automatic  // Define o estilo de apresentação modal (tela cheia)
-        
-        // Crie uma view para simular a linha no bottom da barra de navegação
-        let bottomLineView = UIView(frame: CGRect(x: 0, y: navigationController.navigationBar.frame.height, width: navigationController.navigationBar.frame.width, height: 0.2))
-        bottomLineView.backgroundColor = .lightGray  // Cor da linha
-        
-        //navigationController.navigationBar.addSubview(bottomLineView)
-        
-        
-        // Crie um botão "back" com título
-        let backButton = UIBarButtonItem(title: "Fechar", style: .plain, target: self, action: #selector(backButtonTapped))
-        
-        // Defina o botão "back" como o botão esquerdo da barra de navegação
-        storyScreen.navigationItem.leftBarButtonItem = backButton
-        
-        
-        backButton.target = self
-        backButton.action = #selector(backButtonTapped)
-        
-        self.present(navigationController, animated: true, completion: nil)
+        // *********Action on tap card*********
+        //        let storyBoard: UIStoryboard = UIStoryboard(name: "Comunity-Details", bundle: nil)
+//
+//        let storyScreen = storyBoard.instantiateViewController(withIdentifier: "CommunityDescriptionController") as! CommunityDescriptionController
+//        storyScreen.comunidade = arrayCommunity[indexPath.row]
+//
+//        // Personalize a barra de navegação do controlador de destino (modal)
+//        let navigationController = UINavigationController(rootViewController: storyScreen)
+//        navigationController.modalPresentationStyle = .automatic  // Define o estilo de apresentação modal (tela cheia)
+//
+//        // Crie uma view para simular a linha no bottom da barra de navegação
+//        let bottomLineView = UIView(frame: CGRect(x: 0, y: navigationController.navigationBar.frame.height, width: navigationController.navigationBar.frame.width, height: 0.2))
+//        bottomLineView.backgroundColor = .lightGray  // Cor da linha
+//
+//        //navigationController.navigationBar.addSubview(bottomLineView)
+//
+//
+//        // Crie um botão "back" com título
+//        let backButton = UIBarButtonItem(title: "Fechar", style: .plain, target: self, action: #selector(backButtonTapped))
+//
+//        // Defina o botão "back" como o botão esquerdo da barra de navegação
+//        storyScreen.navigationItem.leftBarButtonItem = backButton
+//
+//
+//        backButton.target = self
+//        backButton.action = #selector(backButtonTapped)
+//
+//        self.present(navigationController, animated: true, completion: nil)
     }
     
     @objc func backButtonTapped() {
@@ -175,20 +167,15 @@ extension EventosViewController: UICollectionViewDelegateFlowLayout {
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard var cell = collectionView.dequeueReusableCell(withReuseIdentifier: "HomeCollectionViewCell", for: indexPath) as? HomeCollectionViewCell else { return UICollectionViewCell() }
+        guard var cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CardEventoView", for: indexPath) as? CardEventoView else { return UICollectionViewCell() }
         
-        cell.setCell(data: HomeCollectionViewCellData(image: arrayCommunity[indexPath.row].image, tags: arrayCommunity[indexPath.row].tags, name: arrayCommunity[indexPath.row].name, location: "\(arrayCommunity[indexPath.row].city), \(arrayCommunity[indexPath.row].city_district)"))
-        
-        if indexPath.row == arrayCommunity.count - 1 {
-            
-        }
 
         return cell
     }
     
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: collectionView.frame.width - 32, height: 550)
+        return CGSize(width: collectionView.frame.width - 32, height: 330)
     }
 }
 

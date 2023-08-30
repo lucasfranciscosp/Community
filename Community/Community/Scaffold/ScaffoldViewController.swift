@@ -17,7 +17,7 @@ class ScaffoldViewController: UITabBarController {
 
     private func setupViews() {
         let homeVC = HomeViewController(collectionViewLayout: UICollectionViewFlowLayout())
-        let eventosVC = EventosViewController()
+        let eventosVC = EventosViewController(screenTitle: "Eventos")
         let profile = ProfileViewController()
 
         homeVC.setTabBarImage(unSelectedImage: "person.3", selectedImage: "person.3.fill", title: "Comunidades")
