@@ -14,9 +14,16 @@ class EditCommunityViewController: UIViewController {
     @IBOutlet weak var addImageView: UIView!
     @IBOutlet weak var image: UIImageView!
     @IBOutlet weak var location: UILabel!
+    @IBOutlet weak var nameView: UIView!
+    @IBOutlet weak var descriptionView: UIView!
+    @IBOutlet weak var descriptionContainerView: UIView!
+    @IBOutlet weak var tagView: UIView!
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var descriptionTextView: UITextView!
     @IBOutlet weak var tagTextField: UITextField!
+    let defaultCornerRadius: CGFloat = 10
+    let topCorners: CACornerMask = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
+    let bottomCorners: CACornerMask = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]
     var comunnity: Comunidade?
     var isSaving: Bool = false {
         didSet {
@@ -39,10 +46,10 @@ class EditCommunityViewController: UIViewController {
         image.image = comunnity.image
         location.text = comunnity.city_district
         nameTextField.text = comunnity.name
-        tagTextField.text = comunnity.tags.replacingOccurrences(of: "$", with: "")
+        tagTextField.text = comunnity.tags.replacingOccurrences(of: "#", with: "")
         descriptionTextView.text = comunnity.description
     }
-    
+
     private func configureScreen() {
         nameTextField.delegate = self
         tagTextField.delegate = self
@@ -60,11 +67,27 @@ class EditCommunityViewController: UIViewController {
         view.backgroundColor = PaleteColor.color2
         image.layer.cornerRadius = 10
         image.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
+        setCorners()
     }
     
     private func addImageAction() {
         let action = UITapGestureRecognizer(target: self, action: #selector(selectImage))
         addImageView.addGestureRecognizer(action)
+    }
+
+    private func setCorners() {
+        nameView.layer.cornerRadius = defaultCornerRadius
+        nameView.layer.maskedCorners = topCorners
+        tagView.layer.cornerRadius = defaultCornerRadius
+        tagView.layer.maskedCorners = bottomCorners
+        descriptionView.layer.cornerRadius = defaultCornerRadius
+        descriptionView.layer.maskedCorners = topCorners
+        descriptionContainerView.layer.cornerRadius = defaultCornerRadius
+        descriptionContainerView.layer.maskedCorners = bottomCorners
+        image.layer.cornerRadius = defaultCornerRadius
+        image.layer.maskedCorners = topCorners
+        addImageView.layer.cornerRadius = defaultCornerRadius
+        addImageView.layer.maskedCorners = topCorners
     }
 
     private func dismissKeyboardView() {
