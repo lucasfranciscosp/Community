@@ -76,11 +76,11 @@ class Comunidade: CloudKitSchema {
             localization = await Localization().getAddress()
         }
 
-        let address = localization!.address
+        let address = localization!
 
     
         city = address.city
-        district = address.cityDistrict
+        district = address.stateDistrict
         country = address.country
         state = address.state
         

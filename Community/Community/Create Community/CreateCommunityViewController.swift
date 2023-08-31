@@ -49,7 +49,7 @@ class CreateCommunityViewController: UIViewController {
     }
     
     private func setLayout() {
-        locationLabel.text = fetchedAddress?.address.cityDistrict
+        locationLabel.text = fetchedAddress?.stateDistrict
         nameTextField.delegate = self
         tagTextField.delegate = self
         descriptionTextView.delegate = self
@@ -183,10 +183,10 @@ class CreateCommunityViewController: UIViewController {
                 name: name,
                 tags: tag,
                 image: image,
-                country: fetchedAddress.address.country,
-                city: fetchedAddress.address.city,
-                state: fetchedAddress.address.state,
-                city_district: fetchedAddress.address.cityDistrict)
+                country: fetchedAddress.country,
+                city: fetchedAddress.city,
+                state: fetchedAddress.state,
+                city_district: fetchedAddress.stateDistrict)
             showReviewAllert() {
                 self.saveCommunity(community)
             }
