@@ -154,23 +154,6 @@ class EventoModalViewController: UIViewController, UIScrollViewDelegate {
             body.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
         ])
          
-        // Crie um botão "back" com título
-        let backButton = UIBarButtonItem(title: "Fechar", style: .plain, target: self, action: #selector(fecharModal))
-        
-        // Defina o botão "back" como o botão esquerdo da barra de navegação
-        navigationItem.leftBarButtonItem = backButton
-        
-        
-        backButton.target = self
-        backButton.action = #selector(fecharModal)
-        
-       
-
-
-    }
-    
-    @objc func fecharModal() {
-        print("fechar!")
     }
     
     override func viewDidLayoutSubviews() {
