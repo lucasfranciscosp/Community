@@ -7,44 +7,47 @@
 
 import UIKit
 import MapKit
+import CoreLocation
 
 class Localization {
 
     var locManager = CLLocationManager()
     var currentLocation: CLLocation!
-    
 
     func getAddress(completion: @escaping (Address?) -> Void) {
         locManager.requestWhenInUseAuthorization()
 
         if CLLocationManager.authorizationStatus() == .authorizedWhenInUse ||
            CLLocationManager.authorizationStatus() == .authorizedAlways {
-            
+
             guard let currentLocation = locManager.location else {
                 completion(nil)
                 return
             }
-            
-            let service = Service()
-            service.getByLatAndLon(latitude: currentLocation.coordinate.latitude, longitude: currentLocation.coordinate.longitude) { result in
-                print(currentLocation.coordinate.latitude)
-                print(currentLocation.coordinate.longitude)
-                DispatchQueue.main.async {
-                    switch result {
-                    case let .failure(error):
-                        print(error)
-                        completion(nil)
-                    case let .success(data):
-                        if let endereco = data as? Address {
-                            completion(endereco)
-                        } else {
-                            completion(nil)
-                        }
-                    }
+
+            let geocoder = CLGeocoder()
+            geocoder.reverseGeocodeLocation(currentLocation) { placemarks, error in
+                if let error = error {
+                    print("Error: \(error)")
+                    completion(nil)
+                    return
                 }
+
+                guard let placemark = placemarks?.first else {
+                    print("No placemark found")
+                    completion(nil)
+                    return
+                }
+
+                let city = placemark.locality ?? ""
+                let state = placemark.administrativeArea ?? ""
+                let country = placemark.country ?? ""
+                let subLocality = placemark.subLocality ?? ""
+                let endereco = Address(lat: currentLocation.coordinate.latitude, lon: currentLocation.coordinate.longitude, country: city, state: state, city: country, stateDistrict: subLocality)
+                completion(endereco)
             }
         } else {
-//            completion(nil)
+            completion(nil)
         }
     }
 
@@ -55,5 +58,4 @@ class Localization {
             }
         }
     }
-    
 }
