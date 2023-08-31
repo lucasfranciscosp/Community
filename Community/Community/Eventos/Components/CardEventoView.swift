@@ -89,12 +89,25 @@ fileprivate func generateDescriptionRow(_ description: String, _ systemImage: St
     text.textColor = .secondaryLabel
     text.translatesAutoresizingMaskIntoConstraints = false
     text.widthAnchor.constraint(equalToConstant: 150).isActive = true
+    
     let image = UIImageView(image: UIImage(systemName: systemImage))
     image.tintColor = .secondaryLabel
-    let stack = UIStackView(arrangedSubviews: [image, text])
+    image.translatesAutoresizingMaskIntoConstraints = false
+    
+    let imageContainer = UIView()
+    imageContainer.translatesAutoresizingMaskIntoConstraints = false
+    imageContainer.addSubview(image)
+    NSLayoutConstraint.activate([
+        imageContainer.widthAnchor.constraint(equalToConstant: 35),
+        
+        image.centerYAnchor.constraint(equalTo: imageContainer.centerYAnchor),
+        image.centerXAnchor.constraint(equalTo: imageContainer.centerXAnchor),
+    ])
+    
+    let stack = UIStackView(arrangedSubviews: [imageContainer, text])
     stack.axis = .horizontal
     stack.distribution = .equalSpacing
     stack.translatesAutoresizingMaskIntoConstraints = false
-    stack.widthAnchor.constraint(equalToConstant: 200).isActive = true
+    stack.widthAnchor.constraint(equalToConstant: 195).isActive = true
     return stack
 }
