@@ -87,6 +87,18 @@ extension UIViewController: ASAuthorizationControllerDelegate {
             let firstName = credentials.fullName?.givenName
             let lastName = credentials.fullName?.familyName
             let email = credentials.email
+            
+            // Criar uma instância da tela de perfil do usuário
+            let profileScreen = LoggedProfileViewController()
+            
+            // Configurar os dados do usuário na tela de perfil, se necessário
+            // profileScreen.firstName = firstName
+            // profileScreen.lastName = lastName
+            // profileScreen.email = email
+            
+            // Empurrar a tela de perfil do usuário para a pilha de visualizações
+            navigationController?.pushViewController(profileScreen, animated: true)
+            
         default:
             break
         }
