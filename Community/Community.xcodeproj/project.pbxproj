@@ -454,7 +454,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Community/Info.plist;
 				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = test2;
-				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = test1;
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "O app precisa da sua localização para mostrar as Comunidades e Eventos próximos de você.";
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Please, allow access to your library!";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
@@ -490,7 +490,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Community/Info.plist;
 				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = test2;
-				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = test1;
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "O app precisa da sua localização para mostrar as Comunidades e Eventos próximos de você.";
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Please, allow access to your library!";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
