@@ -14,6 +14,7 @@ class CardEventoView: UICollectionViewCell {
         vw.backgroundColor = PaleteColor.cardLight
         vw.heightAnchor.constraint(equalToConstant: 330).isActive = true
         vw.layer.cornerRadius = 10.00
+        vw.clipsToBounds = true
         return vw
     }()
     
@@ -21,7 +22,9 @@ class CardEventoView: UICollectionViewCell {
         let vw = UIImageView()
         vw.image = UIImage(named: "Image")
         vw.translatesAutoresizingMaskIntoConstraints = false
-        vw.layer.cornerRadius = 10.00
+        vw.contentMode = .scaleAspectFill
+        vw.clipsToBounds = true
+
         return vw
     }()
     
