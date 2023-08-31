@@ -8,8 +8,11 @@
 import UIKit
 
 class CardEventoView: UICollectionViewCell {
-    let card: UIView = {
-        let vw = UIView()
+    
+    var superView: UICollectionViewController?
+    
+    let card: UIButton = {
+        let vw = UIButton(type: .custom)
         vw.translatesAutoresizingMaskIntoConstraints = false
         vw.backgroundColor = PaleteColor.cardLight
         vw.heightAnchor.constraint(equalToConstant: 330).isActive = true
@@ -58,6 +61,23 @@ class CardEventoView: UICollectionViewCell {
         card.addSubview(title)
         card.addSubview(infosStack)
         
+        setAutoLayout()
+        
+        card.addTarget(self, action: #selector(cardTapped), for: .touchUpInside)
+    }
+    
+    @objc func cardTapped() {
+        let vc = EventoModalViewController()
+        vc.modalPresentationStyle = .formSheet
+        vc.preferredContentSize = .init(width: 500, height: 800)
+        superView?.present(vc, animated: true)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    func setAutoLayout() {
         NSLayoutConstraint.activate([
             card.topAnchor.constraint(equalTo: topAnchor),
             card.leadingAnchor.constraint(equalTo: leadingAnchor),
@@ -78,14 +98,13 @@ class CardEventoView: UICollectionViewCell {
         ])
     }
     
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
     
-
+    func configure(_ collectionView: UICollectionViewController) {
+       superView = collectionView
+    }
 }
 
-fileprivate func generateDescriptionRow(_ description: String, _ systemImage: String) -> UIView {
+func generateDescriptionRow(_ description: String, _ systemImage: String) -> UIView {
     let text = UILabel()
     text.text = description
     text.font = UIFont.preferredFont(forTextStyle: .body)
