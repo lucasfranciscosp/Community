@@ -9,10 +9,15 @@ import CloudKit
 
 class CloudKitSchema {
     let recordName: String
+    var recordId: CKRecord.ID?
     private var recordInstance: CKRecord?
     var record: CKRecord {
         if recordInstance == nil {
-            recordInstance = CKRecord(recordType: recordName)
+            if recordId != nil {
+                recordInstance = CKRecord(recordType: recordName, recordID: recordId!)
+            } else {
+                recordInstance = CKRecord(recordType: recordName)
+            }
         }
         return recordInstance!
     }
