@@ -7,10 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0804CECB2A938C4F003CBA96 /* CreateCommunityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0804CECA2A938C4F003CBA96 /* CreateCommunityViewController.swift */; };
-		0804CECD2A938DDD003CBA96 /* Create-Community.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0804CECC2A938DDD003CBA96 /* Create-Community.storyboard */; };
 		080FE0D82A8E4D1400F2CBDA /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8E7A6812A8D11BC002C686D /* HomeViewController.swift */; };
 		080FE0D92A8E4D1D00F2CBDA /* HomeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8AA73E52A8E3C5600AEC8E8 /* HomeCollectionViewCell.swift */; };
+		085866DA2A9F890200A8A162 /* Create-Community.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 085866D92A9F890200A8A162 /* Create-Community.storyboard */; };
+		086643B12AA0B7B4004EA509 /* CreateCommunityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 086643B02AA0B7B4004EA509 /* CreateCommunityViewController.swift */; };
 		08C0EDEF2A9F593B00DCCA7B /* Edit-Community.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 08C0EDEE2A9F593B00DCCA7B /* Edit-Community.storyboard */; };
 		08C0EDF32A9F5E5300DCCA7B /* EditCommunityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08C0EDF22A9F5E5300DCCA7B /* EditCommunityViewController.swift */; };
 		6144C40C2A8CED4100D562FC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6144C40B2A8CED4100D562FC /* AppDelegate.swift */; };
@@ -33,8 +33,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		0804CECA2A938C4F003CBA96 /* CreateCommunityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateCommunityViewController.swift; sourceTree = "<group>"; };
-		0804CECC2A938DDD003CBA96 /* Create-Community.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Create-Community.storyboard"; sourceTree = "<group>"; };
+		085866D92A9F890200A8A162 /* Create-Community.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Create-Community.storyboard"; sourceTree = "<group>"; };
+		086643B02AA0B7B4004EA509 /* CreateCommunityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateCommunityViewController.swift; sourceTree = "<group>"; };
 		08C0EDEE2A9F593B00DCCA7B /* Edit-Community.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Edit-Community.storyboard"; sourceTree = "<group>"; };
 		08C0EDF22A9F5E5300DCCA7B /* EditCommunityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditCommunityViewController.swift; sourceTree = "<group>"; };
 		6144C4082A8CED4100D562FC /* Community.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Community.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -75,7 +75,7 @@
 		0804CEC92A938C1C003CBA96 /* Create Community */ = {
 			isa = PBXGroup;
 			children = (
-				0804CECA2A938C4F003CBA96 /* CreateCommunityViewController.swift */,
+				086643B02AA0B7B4004EA509 /* CreateCommunityViewController.swift */,
 			);
 			path = "Create Community";
 			sourceTree = "<group>";
@@ -158,8 +158,8 @@
 			children = (
 				F8AA73E42A8E3C5600AEC8E8 /* HomeCollectionViewCell */,
 				F8AA73E72A8E3C5600AEC8E8 /* Comunity-Details.storyboard */,
-				0804CECC2A938DDD003CBA96 /* Create-Community.storyboard */,
 				08C0EDEE2A9F593B00DCCA7B /* Edit-Community.storyboard */,
+				085866D92A9F890200A8A162 /* Create-Community.storyboard */,
 			);
 			path = View;
 			sourceTree = SOURCE_ROOT;
@@ -283,8 +283,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				08C0EDEF2A9F593B00DCCA7B /* Edit-Community.storyboard in Resources */,
-				0804CECD2A938DDD003CBA96 /* Create-Community.storyboard in Resources */,
 				F8AA73EB2A8E3C5600AEC8E8 /* Comunity-Details.storyboard in Resources */,
+				085866DA2A9F890200A8A162 /* Create-Community.storyboard in Resources */,
 				6144C4152A8CED4100D562FC /* Assets.xcassets in Resources */,
 				F8AA73EA2A8E3C5600AEC8E8 /* HomeCollectionViewCell.xib in Resources */,
 			);
@@ -299,6 +299,7 @@
 			files = (
 				6144C42F2A8D2CCC00D562FC /* CommunityDescriptionController.swift in Sources */,
 				F8E8FA732A9CD4CD00A0C177 /* FetchCommunityDelegate.swift in Sources */,
+				086643B12AA0B7B4004EA509 /* CreateCommunityViewController.swift in Sources */,
 				F8B7CA712A8F947B002F2C74 /* Colors.swift in Sources */,
 				F8E8FA772A9E2F9F00A0C177 /* NoCommunityFoundView.swift in Sources */,
 				08C0EDF32A9F5E5300DCCA7B /* EditCommunityViewController.swift in Sources */,
@@ -313,7 +314,6 @@
 				080FE0D82A8E4D1400F2CBDA /* HomeViewController.swift in Sources */,
 				B67C40362A8E4D2D00820A86 /* Localization.swift in Sources */,
 				B67C40342A8E3CEF00820A86 /* API.swift in Sources */,
-				0804CECB2A938C4F003CBA96 /* CreateCommunityViewController.swift in Sources */,
 				080FE0D92A8E4D1D00F2CBDA /* HomeCollectionViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
