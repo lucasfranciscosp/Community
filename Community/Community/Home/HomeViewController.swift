@@ -33,7 +33,7 @@ class HomeViewController: UICollectionViewController {
     }
     
     private func setNotification() {
-        NotificationCenter.default.addObserver(self, selector: #selector(updateScreen), name: NSNotification.Name(rawValue: "DismissingCommunityDetailsScreen"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(updateScreen), name: NSNotification.Name(rawValue: "DismissingScreen"), object: nil)
     }
 }
 
@@ -160,7 +160,7 @@ extension HomeViewController: UICollectionViewDelegateFlowLayout {
     }
 
     @objc func backButtonTapped() {
-        NotificationCenter.default.post(name: NSNotification.Name(rawValue:  "DismissingCommunityDetailsScreen"), object: nil, userInfo: nil)
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue:  "DismissingScreen"), object: nil, userInfo: nil)
         self.dismiss(animated: true, completion: nil)
     }
 
