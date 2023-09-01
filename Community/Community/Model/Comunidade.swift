@@ -9,14 +9,14 @@ import CloudKit
 import UIKit
 
 class Comunidade: CloudKitSchema {
-    let description: String
-    let name: String
-    let tags: String
-    let image: UIImage
-    let country: String
-    let city: String
-    let state: String
-    let city_district: String
+    var description: String
+    var name: String
+    var tags: String
+    var image: UIImage
+    var country: String
+    var city: String
+    var state: String
+    var city_district: String
     
     
     private func getLocalImageUrl() throws -> URL {
@@ -26,9 +26,16 @@ class Comunidade: CloudKitSchema {
         try data?.write(to: imagePath!)
         return imagePath!
     }
-
+    
     func updateData() async {
-
+        updateRecordValues()
+        do {
+            let savedCommunity = try await CloudKit.defaultContainer.publicCloudDatabase.save(record)
+        } catch {
+            print("*******ERRO NO UPDATE DA COMUNIDADE******")
+            print(error)
+        }
+        
     }
 
     func updateRecordValues() {
@@ -100,6 +107,7 @@ class Comunidade: CloudKitSchema {
                 print(failure)
             }
         }
+
         return comunidades
         
     }
@@ -116,7 +124,7 @@ class Comunidade: CloudKitSchema {
         super.init(recordName: "comunidade")
     }
     
-    init(fromCloudKit record: CKRecord) {
+    override init(fromCloudKit record: CKRecord) {
         self.description = record.value(forKey: "description") as! String
         self.name = record.value(forKey: "name") as! String
         self.tags = record.value(forKey: "tags") as! String
@@ -125,6 +133,7 @@ class Comunidade: CloudKitSchema {
         self.state = record.value(forKey: "state") as! String
         self.city_district = record.value(forKey: "city_district") as! String
         
+        
         let imageUrl: URL = (record.value(forKey: "image") as! CKAsset).fileURL!
         if let data = try? Data(contentsOf: imageUrl), let image = UIImage(data: data) {
             self.image = image
@@ -132,7 +141,7 @@ class Comunidade: CloudKitSchema {
             self.image = UIImage(named: "images")!
         }
 
-        super.init(recordName: "comunidade")
+        super.init(fromCloudKit: record)
     }
     
 }
