@@ -105,12 +105,22 @@ class EditCommunityViewController: UIViewController {
 
     private func saveEdition() {
         navigationItem.rightBarButtonItem?.isEnabled = false
+        updateCommunity()
         Task.init(priority: .high) {
             await comunnity?.updateData()
             isSaving = false
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue:  "DismissingScreen"), object: nil, userInfo: nil)
             self.dismiss(animated: true)
         }
         isSaving = true
+    }
+
+    private func updateCommunity() {
+        guard let name = nameTextField.text, let tag = tagTextField.text, let description = descriptionTextView.text, let image = image.image else { return }
+        comunnity?.name = name
+        comunnity?.tags = tag
+        comunnity?.description = description
+        comunnity?.image = image
     }
 
     @objc func dismissKeyboard() {

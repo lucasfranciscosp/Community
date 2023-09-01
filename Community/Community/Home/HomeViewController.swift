@@ -29,20 +29,25 @@ class HomeViewController: UICollectionViewController {
         communityDataManager.fetchCommunities()
         noCommunityFoundView.configure(self)
         collectionView.alwaysBounceVertical = true
+        setNotification()
     }
     
+    private func setNotification() {
+        NotificationCenter.default.addObserver(self, selector: #selector(updateScreen), name: NSNotification.Name(rawValue: "DismissingCommunityDetailsScreen"), object: nil)
+    }
 }
 
 extension HomeViewController {
     private func setupAppBar() {
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(add))
-        
         title = "Comunidades"
         navigationController?.navigationBar.prefersLargeTitles = true
-        
-        
     }
-    
+
+    @objc private func updateScreen() {
+        communityDataManager.refreshCommunities()
+    }
+
     @objc private func add() {
         Localization().getAddress() { endereco in
             if let endereco = endereco {
@@ -153,11 +158,12 @@ extension HomeViewController: UICollectionViewDelegateFlowLayout {
         
         self.present(navigationController, animated: true, completion: nil)
     }
-    
+
     @objc func backButtonTapped() {
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue:  "DismissingCommunityDetailsScreen"), object: nil, userInfo: nil)
         self.dismiss(animated: true, completion: nil)
     }
-    
+
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
@@ -207,6 +213,4 @@ extension HomeViewController: FetchCommunityDelegate {
     func errorFetchingCommunities() {
         //handle errors
     }
-    
-    
 }
