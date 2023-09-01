@@ -20,6 +20,46 @@ class LoggedProfileViewController: UIViewController, UITableViewDelegate, UITabl
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let profileView = UIView()
+        let profileImageView = UIImageView()
+        let labelNomeUsuario = UILabel()
+        //let editProfileButton = UIButton()
+        
+        // Configurar a UIView para a foto de perfil e o botão de edição
+        profileView.translatesAutoresizingMaskIntoConstraints = false
+               view.addSubview(profileView)
+               NSLayoutConstraint.activate([
+                   profileView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 48),
+                   profileView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+                   profileView.heightAnchor.constraint(equalToConstant: 180),
+                   profileView.widthAnchor.constraint(equalToConstant: 180)
+               ])
+        
+        profileView.addSubview(profileImageView)
+
+        // Configurar a UIImageView para a foto de perfil
+        profileImageView.translatesAutoresizingMaskIntoConstraints = false
+        profileImageView.image = UIImage(named: "profile_defalu_image") // Imagem padrão
+        profileImageView.contentMode = .scaleAspectFill
+        profileImageView.layer.cornerRadius = 90 // Corner radius desejado
+        profileImageView.clipsToBounds = true
+        profileView.addSubview(profileImageView)
+        
+        NSLayoutConstraint.activate([
+            profileImageView.leadingAnchor.constraint(equalTo: profileView.leadingAnchor),
+            profileImageView.trailingAnchor.constraint(equalTo: profileView.trailingAnchor),
+            profileImageView.topAnchor.constraint(equalTo: profileView.topAnchor),
+            profileImageView.bottomAnchor.constraint(equalTo: profileView.bottomAnchor)
+        ])
+        
+        // Configurar o botão de edição da foto de perfil
+//        editProfileButton.translatesAutoresizingMaskIntoConstraints = false
+//        editProfileButton.setImage(UIImage(systemName: "camera"), for: .normal) // Ícone de câmera
+//        editProfileButton.addTarget(self, action: #selector(editProfileImage), for: .touchUpInside)
+//        profileView.addSubview(editProfileButton)
+                        
+        
+        
         let customView = CustomView()
         
         customView.translatesAutoresizingMaskIntoConstraints = false
@@ -51,6 +91,20 @@ class LoggedProfileViewController: UIViewController, UITableViewDelegate, UITabl
         tableView.delegate = self
         tableView.dataSource = self
         
+        view.addSubview(labelNomeUsuario)
+        labelNomeUsuario.text = "Fulaninho"
+        labelNomeUsuario.font = UIFont.systemFont(ofSize: 34)
+
+        labelNomeUsuario.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            labelNomeUsuario.topAnchor.constraint(equalTo: profileView.bottomAnchor, constant: 4),
+            labelNomeUsuario.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            labelNomeUsuario.bottomAnchor.constraint(equalTo: customView.topAnchor, constant: -48)
+
+            //labelNomeUsuario.bottomAnchor.constraint(equalTo: customView.topAnchor, constant: -104),
+        ])
+
+        
         view.backgroundColor = UIColor(red: 234.0/255, green: 216.0/255, blue: 212.0/255, alpha: 1.0)
        
         title = "Perfil"
@@ -59,10 +113,11 @@ class LoggedProfileViewController: UIViewController, UITableViewDelegate, UITabl
         navigationItem.hidesBackButton = true
     }
     
-//    override func viewDidLayoutSubviews() {
-//        super.viewDidLayoutSubviews()
-//
-//    }
+    
+    @objc func editProfileImage() {
+            // Implemente a lógica para permitir que o usuário selecione ou edite a foto de perfil aqui
+    }
+
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 2
@@ -82,10 +137,18 @@ class LoggedProfileViewController: UIViewController, UITableViewDelegate, UITabl
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        print("cell tapped")
+       
+        if indexPath.row == 0 {
+            let userCommunitiesVC = UserCommunitiesViewController()
+            
+            navigationController?.pushViewController(userCommunitiesVC, animated: true)
+        }
+        
+        if indexPath.row == 1 {
+            let userEventsVC = UserEventsViewController()
+            navigationController?.pushViewController(userEventsVC, animated: true)
+        }
     }
-
-    
 }
 
 class CustomView: UIView {
