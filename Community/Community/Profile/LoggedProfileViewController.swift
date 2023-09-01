@@ -13,7 +13,7 @@ class LoggedProfileViewController: UIViewController, UITableViewDelegate, UITabl
     let tableView = UITableView()
     
     let tableViewContent = [
-        CellContent(image: "person.3", title: "Minhas Comunidades", description: "Administre as comunidades criadas e salvas"),
+        CellContent(image: "person.3.fill", title: "Minhas Comunidades", description: "Administre as comunidades criadas e salvas"),
         CellContent(image: "party.popper.fill", title: "Meus eventos", description: "Administre os eventos criados e salvos")
     ]
         
@@ -21,6 +21,7 @@ class LoggedProfileViewController: UIViewController, UITableViewDelegate, UITabl
         super.viewDidLoad()
         
         let customView = CustomView()
+        
         customView.translatesAutoresizingMaskIntoConstraints = false
         
         view.addSubview(customView)
@@ -28,12 +29,18 @@ class LoggedProfileViewController: UIViewController, UITableViewDelegate, UITabl
             customView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 321),
             customView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             customView.widthAnchor.constraint(equalToConstant: 358), // Defina a largura desejada
-            customView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -104)
+            customView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -104),
         ])
 
         customView.addSubview(tableView)
-        
+        tableView.frame = view.bounds
+        tableView.register(CustomCell.self, forCellReuseIdentifier: "cell")
+        tableView.rowHeight = 96
         tableView.translatesAutoresizingMaskIntoConstraints = false
+        tableView.backgroundColor = UIColor.clear
+        tableView.layer.cornerRadius = customView.layer.cornerRadius
+        tableView.clipsToBounds = true
+        
         NSLayoutConstraint.activate([
             tableView.leadingAnchor.constraint(equalTo: customView.leadingAnchor),
             tableView.trailingAnchor.constraint(equalTo: customView.trailingAnchor),
@@ -41,7 +48,6 @@ class LoggedProfileViewController: UIViewController, UITableViewDelegate, UITabl
             tableView.bottomAnchor.constraint(equalTo: customView.bottomAnchor)
         ])
         
-        tableView.register(CustomCell.self, forCellReuseIdentifier: "cell")
         tableView.delegate = self
         tableView.dataSource = self
         
@@ -53,10 +59,10 @@ class LoggedProfileViewController: UIViewController, UITableViewDelegate, UITabl
         navigationItem.hidesBackButton = true
     }
     
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        tableView.frame = view.bounds
-    }
+//    override func viewDidLayoutSubviews() {
+//        super.viewDidLayoutSubviews()
+//
+//    }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 2
@@ -64,8 +70,13 @@ class LoggedProfileViewController: UIViewController, UITableViewDelegate, UITabl
 
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        cell.textLabel?.text = "cell \(indexPath.row + 1)"
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! CustomCell
+        
+        let cellContent = tableViewContent[indexPath.row]
+        cell.logoImage.image = UIImage(systemName: cellContent.image)
+        cell.titulo.text = cellContent.title
+        cell.descricao.text = cellContent.description
+        
         return cell
     }
 
@@ -86,9 +97,8 @@ class CustomView: UIView {
     private func setup() {
         
         self.layer.cornerRadius = 100
-        self.layer.backgroundColor = UIColor.white.cgColor
+        self.backgroundColor = UIColor(red:246.0/255, green:238.0/255, blue:233.0/255, alpha: 1.0)
         self.clipsToBounds = true
-        
     }
 }
 
@@ -106,10 +116,34 @@ class CustomCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         addSubview(logoImage)
+        logoImage.translatesAutoresizingMaskIntoConstraints = false
+        logoImage.tintColor = .orange
+        
         addSubview(titulo)
+        titulo.translatesAutoresizingMaskIntoConstraints = false
+        titulo.font = UIFont.boldSystemFont(ofSize: 17)
+
         addSubview(descricao)
+        descricao.translatesAutoresizingMaskIntoConstraints = false
+        descricao.textColor = .lightGray
+        descricao.font = UIFont.systemFont(ofSize: 15)
+        descricao.numberOfLines = 0
+
         
-        
+        NSLayoutConstraint.activate([
+                    logoImage.centerYAnchor.constraint(equalTo: centerYAnchor),
+                    logoImage.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
+                    logoImage.heightAnchor.constraint(equalToConstant: 29),
+                    logoImage.widthAnchor.constraint(equalToConstant: 51),
+
+                    titulo.topAnchor.constraint(equalTo: topAnchor, constant: 14),
+                    titulo.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 80),
+                    
+                    descricao.topAnchor.constraint(equalTo: topAnchor, constant: 38),
+                    descricao.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 80),
+                    descricao.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -36)
+        ])
+
     }
     
     required init?(coder: NSCoder) {
