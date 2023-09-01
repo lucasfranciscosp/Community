@@ -49,7 +49,8 @@ class Comunidade: CloudKitSchema {
                 "country": country,
                 "city": city,
                 "state": state,
-                "city_district": city_district
+                "city_district": city_district,
+                "approved": false
             ])
         } catch {
             print("***ERRO ao dar update no record***")
@@ -91,7 +92,7 @@ class Comunidade: CloudKitSchema {
         country = address.country
         state = address.state
         
-        let predicate = NSPredicate(format: "city == %@ AND city_district == %@ AND country == %@ AND state == %@", argumentArray: [city, district, country, state])
+        let predicate = NSPredicate(format: "city == %@ AND city_district == %@ AND country == %@ AND state == %@ AND approved == true", argumentArray: [city, district, country, state])
         let query = CKQuery(recordType: "comunidade", predicate: predicate)
         let fetchResult = try await CloudKit.defaultContainer.publicCloudDatabase.records(matching: query)
        var comunidades = [Comunidade]()

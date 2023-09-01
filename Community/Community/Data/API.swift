@@ -14,5 +14,5 @@ struct Address: Codable {
     let state: String
     let city: String
     let stateDistrict: String// Nested "address" dictionary
-    
+    var approved: Bool
 }

@@ -55,7 +55,7 @@ class Localization: NSObject {
                 let state = placemark.administrativeArea ?? ""
                 let country = placemark.country ?? ""
                 let subLocality = placemark.subLocality ?? ""
-                let endereco = Address(lat: currentLocation.coordinate.latitude, lon: currentLocation.coordinate.longitude, country: country, state: state, city: city, stateDistrict: subLocality)
+                let endereco = Address(lat: currentLocation.coordinate.latitude, lon: currentLocation.coordinate.longitude, country: country, state: state, city: city, stateDistrict: subLocality, approved: false)
                 completion(endereco)
             }
         } else {
