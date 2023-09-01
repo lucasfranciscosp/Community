@@ -9,15 +9,10 @@ import CloudKit
 
 class CloudKitSchema {
     let recordName: String
-    var recordId: CKRecord.ID?
     private var recordInstance: CKRecord?
     var record: CKRecord {
         if recordInstance == nil {
-            if recordId != nil {
-                recordInstance = CKRecord(recordType: recordName, recordID: recordId!)
-            } else {
                 recordInstance = CKRecord(recordType: recordName)
-            }
         }
         return recordInstance!
     }
@@ -29,4 +24,11 @@ class CloudKitSchema {
     init(recordName: String) {
         self.recordName = recordName
     }
+    
+    init(fromCloudKit record: CKRecord) {
+        self.recordInstance = record
+        recordName = record.recordType
+    }
+    
+    
 }

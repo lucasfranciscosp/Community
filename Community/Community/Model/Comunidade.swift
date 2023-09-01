@@ -107,13 +107,7 @@ class Comunidade: CloudKitSchema {
                 print(failure)
             }
         }
-//        comunidades.forEach { c in
-//            c.name = "a"
-//            Task(priority: .high) {
-//                
-//            await c.updateData()
-//            }
-//        }
+
         return comunidades
         
     }
@@ -130,7 +124,7 @@ class Comunidade: CloudKitSchema {
         super.init(recordName: "comunidade")
     }
     
-    init(fromCloudKit record: CKRecord) {
+    override init(fromCloudKit record: CKRecord) {
         self.description = record.value(forKey: "description") as! String
         self.name = record.value(forKey: "name") as! String
         self.tags = record.value(forKey: "tags") as! String
@@ -147,8 +141,7 @@ class Comunidade: CloudKitSchema {
             self.image = UIImage(named: "images")!
         }
 
-        super.init(recordName: "comunidade")
-        self.recordId = recordId
+        super.init(fromCloudKit: record)
     }
     
 }
