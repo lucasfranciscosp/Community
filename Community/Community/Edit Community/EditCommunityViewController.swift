@@ -41,6 +41,10 @@ class EditCommunityViewController: UIViewController {
         dismissKeyboardView() 
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        scroll.contentSize = CGSize(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height+300)
+    }
+
     func setData() {
         guard let comunnity = comunnity else { return }
         image.image = comunnity.image
@@ -105,12 +109,22 @@ class EditCommunityViewController: UIViewController {
 
     private func saveEdition() {
         navigationItem.rightBarButtonItem?.isEnabled = false
+        updateCommunity()
         Task.init(priority: .high) {
             await comunnity?.updateData()
             isSaving = false
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue:  "DismissingScreen"), object: nil, userInfo: nil)
             self.dismiss(animated: true)
         }
         isSaving = true
+    }
+
+    private func updateCommunity() {
+        guard let name = nameTextField.text, let tag = tagTextField.text, let description = descriptionTextView.text, let image = image.image else { return }
+        comunnity?.name = name
+        comunnity?.tags = tag
+        comunnity?.description = description
+        comunnity?.image = image
     }
 
     @objc func dismissKeyboard() {
@@ -126,6 +140,7 @@ class EditCommunityViewController: UIViewController {
     }
 
     @objc private func cancel() {
+        dismissKeyboard()
         self.dismiss(animated: true)
     }
     
@@ -139,6 +154,7 @@ class EditCommunityViewController: UIViewController {
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
         reviewAllert.addAction(confirmAction)
         reviewAllert.addAction(cancelAction)
+        dismissKeyboard()
         self.present(reviewAllert, animated: true, completion: nil)
     }
 }

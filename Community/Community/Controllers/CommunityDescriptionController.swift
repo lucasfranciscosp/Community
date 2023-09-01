@@ -20,6 +20,7 @@ class CommunityDescriptionController: UIViewController {
         configureView()
         configureLayout()
         configureNavigationBar()
+        setNotification()
     }
     
     private func configureNavigationBar() {
@@ -41,7 +42,15 @@ class CommunityDescriptionController: UIViewController {
         localLabel.text = comunidade.city_district
         descricaoLabel.text = comunidade.description
     }
-    
+
+    private func setNotification() {
+        NotificationCenter.default.addObserver(self, selector: #selector(updateScreen), name: NSNotification.Name(rawValue: "DismissingScreen"), object: nil)
+    }
+
+    @objc private func updateScreen() {
+        configureView()
+    }
+
     @objc private func editCommunity() {
         let storyBoard: UIStoryboard = UIStoryboard(name: "Edit-Community", bundle: nil)
         let storyScreen = storyBoard.instantiateViewController(withIdentifier: "EditCommunityViewController") as! EditCommunityViewController
