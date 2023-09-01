@@ -13,7 +13,7 @@ class CommunityDescriptionController: UIViewController {
     @IBOutlet weak var descritivoLabel: UILabel!
     @IBOutlet weak var localLabel: UILabel!
     @IBOutlet weak var descricaoLabel: UILabel!
-    var isEditableByUser: Bool = false
+    var isEditableByUser: Bool = true
     var comunidade: Comunidade?
     
     override func viewDidLoad() {
