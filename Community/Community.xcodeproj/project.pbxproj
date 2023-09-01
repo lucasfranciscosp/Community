@@ -59,7 +59,6 @@
 		F8E7A67D2A8D074C002C686D /* UIViewControllerUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerUtil.swift; sourceTree = "<group>"; };
 		F8E7A6812A8D11BC002C686D /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		F8E8FA722A9CD4CD00A0C177 /* FetchCommunityDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchCommunityDelegate.swift; sourceTree = "<group>"; };
-		F8E8FA742A9E15E600A0C177 /* Location.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Location.gpx; sourceTree = "<group>"; };
 		F8E8FA762A9E2F9F00A0C177 /* NoCommunityFoundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoCommunityFoundView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -205,7 +204,6 @@
 			isa = PBXGroup;
 			children = (
 				F8E7A67C2A8D0738002C686D /* Utils */,
-				F8E8FA742A9E15E600A0C177 /* Location.gpx */,
 			);
 			name = Files;
 			sourceTree = "<group>";
@@ -469,6 +467,7 @@
 				DEVELOPMENT_TEAM = A7BY7494NB;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Community/Info.plist;
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = Description;
 				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = test2;
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "O app precisa da sua localização para mostrar as Comunidades e Eventos próximos de você.";
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Please, allow access to your library!";
@@ -505,6 +504,7 @@
 				DEVELOPMENT_TEAM = A7BY7494NB;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Community/Info.plist;
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = Description;
 				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = test2;
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "O app precisa da sua localização para mostrar as Comunidades e Eventos próximos de você.";
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Please, allow access to your library!";
