@@ -11,13 +11,13 @@ class EventosViewController: UICollectionViewController {
     
     let screenTitle: String
     var refreshControl: UIRefreshControl!
-    let communityDataManager = CommunityDataManager()
+    let eventDataManager = EventDataManager()
     let spinner = UIActivityIndicatorView(style: .large)
-    var arrayCommunity: [Comunidade] {
-        communityDataManager.communitiesArray
+    var arrayCommunity: [Evento] {
+        eventDataManager.eventsArray
     }
     
-    let noCommunityFoundView = NoCommunityFoundView()
+    let noEventFoundView = NoEventFoundView()
     
     init(screenTitle: String) {
         self.screenTitle = screenTitle
@@ -35,9 +35,9 @@ class EventosViewController: UICollectionViewController {
         setupAppBar()
         collectionViewConfig()
         setupPageRefresh()
-        communityDataManager.delegate = self
-        communityDataManager.fetchCommunities()
-        //noCommunityFoundView.configure(self)
+        eventDataManager.delegate = self
+        eventDataManager.fetchEvents()
+        noEventFoundView.configure(self)
         collectionView.alwaysBounceVertical = true
     }
     
@@ -64,14 +64,14 @@ extension EventosViewController {
     }
     
     @objc func refreshData() {
-        removeNoCommunityFoundText()
-        communityDataManager.refreshCommunities()
+        removeNoEventFoundView()
+        eventDataManager.refreshEvents()
     }
     
     @objc func refreshDataFromButtom() {
-        removeNoCommunityFoundText()
+        removeNoEventFoundView()
         insertSpinner()
-        communityDataManager.refreshCommunities()
+        eventDataManager.refreshEvents()
     }
     
     
@@ -95,7 +95,7 @@ extension EventosViewController {
     }
     
     func insertNoCommunityFoundText() {
-        let vw = noCommunityFoundView
+        let vw = noEventFoundView
         vw.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(vw)
         NSLayoutConstraint.activate([
@@ -106,8 +106,8 @@ extension EventosViewController {
         ])
     }
     
-    func removeNoCommunityFoundText() {
-        noCommunityFoundView.removeFromSuperview()
+    func removeNoEventFoundView() {
+        noEventFoundView.removeFromSuperview()
     }
     
     
@@ -150,26 +150,26 @@ extension EventosViewController: UICollectionViewDelegateFlowLayout {
 }
 
 // MARK: - Data handling
-extension EventosViewController: FetchCommunityDelegate {
-    func didRefreshCommunities(communities: [Comunidade]) {
+extension EventosViewController: FetchEventDelegate {
+    func didRefreshEvents(events: [Evento]) {
         collectionView.reloadData()
         refreshControl.endRefreshing()
-        if communities.isEmpty {
+        if events.isEmpty {
             removeSpinner()
             insertNoCommunityFoundText()
         }
     }
     
-    func didInitialFetchCommunities(communities: [Comunidade]) {
-        removeNoCommunityFoundText()
+    func didInitialFetchEvents(events: [Evento]) {
+        removeNoEventFoundView()
         removeSpinner()
         collectionView.reloadData()
-        if communities.isEmpty {
+        if events.isEmpty {
             insertNoCommunityFoundText()
         }
     }
     
-    func errorFetchingCommunities() {
+    func errorFetchingEvents() {
         //handle errors
     }
     
