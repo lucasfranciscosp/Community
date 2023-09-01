@@ -9,10 +9,20 @@ import UIKit
 import MapKit
 import CoreLocation
 
-class Localization {
+class Localization: NSObject {
 
     var locManager = CLLocationManager()
     var currentLocation: CLLocation!
+    
+    override init() {
+            super.init() // Chame o init da superclasse NSObject
+            setupLocationManager()
+        }
+        func setupLocationManager() {
+            locManager.delegate = self
+            locManager.requestWhenInUseAuthorization()
+            locManager.startUpdatingLocation() // Inicia a obtenção de atualizações de localização
+        }
 
     func getAddress(completion: @escaping (Address?) -> Void) {
         locManager.requestWhenInUseAuthorization()
@@ -38,6 +48,8 @@ class Localization {
                     completion(nil)
                     return
                 }
+                print(currentLocation.coordinate.latitude)
+                print(currentLocation.coordinate.longitude)
 
                 let city = placemark.locality ?? ""
                 let state = placemark.administrativeArea ?? ""
@@ -57,5 +69,22 @@ class Localization {
                 continuation.resume(returning: endereco)
             }
         }
+    }
+    
+}
+
+extension Localization: CLLocationManagerDelegate {
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        if let newLocation = locations.last {
+            currentLocation = newLocation
+            // Você pode chamar a função de obtenção de endereço aqui se desejar
+            // getAddress { address in
+            //     // Processar o endereço retornado
+            // }
+        }
+    }
+
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        print("Location manager error: \(error)")
     }
 }
