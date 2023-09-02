@@ -9,14 +9,14 @@ import CloudKit
 import UIKit
 
 class Comunidade: CloudKitSchema {
-    let description: String
-    let name: String
-    let tags: String
-    let image: UIImage
-    let country: String
-    let city: String
-    let state: String
-    let city_district: String
+    var description: String
+    var name: String
+    var tags: String
+    var image: UIImage
+    var country: String
+    var city: String
+    var state: String
+    var city_district: String
     
     
     private func getLocalImageUrl() throws -> URL {
@@ -27,6 +27,17 @@ class Comunidade: CloudKitSchema {
         return imagePath!
     }
     
+    func updateData() async {
+        updateRecordValues()
+        do {
+            let savedCommunity = try await CloudKit.defaultContainer.publicCloudDatabase.save(record)
+        } catch {
+            print("*******ERRO NO UPDATE DA COMUNIDADE******")
+            print(error)
+        }
+        
+    }
+
     func updateRecordValues() {
         do {
             let asset = CKAsset(fileURL: try getLocalImageUrl())
@@ -59,7 +70,29 @@ class Comunidade: CloudKitSchema {
     }
     
     static func fetchNearCommunities() async throws -> [Comunidade]{
-        let query = CKQuery(recordType: "comunidade", predicate: NSPredicate(value: true))
+        var city: String = ""
+        var district: String = ""
+        var country: String = ""
+        var state: String = ""
+        var localization: Address?
+        
+        localization = await Localization().getAddress()
+        
+        while localization == nil {
+            try await Task.sleep(nanoseconds: 2_000_000_000)
+            localization = await Localization().getAddress()
+        }
+
+        let address = localization!
+
+    
+        city = address.city
+        district = address.stateDistrict
+        country = address.country
+        state = address.state
+        
+        let predicate = NSPredicate(format: "city == %@ AND city_district == %@ AND country == %@ AND state == %@", argumentArray: [city, district, country, state])
+        let query = CKQuery(recordType: "comunidade", predicate: predicate)
         let fetchResult = try await CloudKit.defaultContainer.publicCloudDatabase.records(matching: query)
        var comunidades = [Comunidade]()
         // [(CKRecord.ID, Result<CKRecord, Error>)]
@@ -74,6 +107,7 @@ class Comunidade: CloudKitSchema {
                 print(failure)
             }
         }
+
         return comunidades
         
     }
@@ -90,7 +124,7 @@ class Comunidade: CloudKitSchema {
         super.init(recordName: "comunidade")
     }
     
-    init(fromCloudKit record: CKRecord) {
+    override init(fromCloudKit record: CKRecord) {
         self.description = record.value(forKey: "description") as! String
         self.name = record.value(forKey: "name") as! String
         self.tags = record.value(forKey: "tags") as! String
@@ -99,6 +133,7 @@ class Comunidade: CloudKitSchema {
         self.state = record.value(forKey: "state") as! String
         self.city_district = record.value(forKey: "city_district") as! String
         
+        
         let imageUrl: URL = (record.value(forKey: "image") as! CKAsset).fileURL!
         if let data = try? Data(contentsOf: imageUrl), let image = UIImage(data: data) {
             self.image = image
@@ -106,13 +141,8 @@ class Comunidade: CloudKitSchema {
             self.image = UIImage(named: "images")!
         }
 
-        super.init(recordName: "comunidade")
+        super.init(fromCloudKit: record)
     }
     
 }
-
-var mockComunidades = [
-    Comunidade(description: "Imagens teste", name: "Rei do Gado", tags: "Gadisse", image: UIImage(named: "Image")!, country: "Brazil", city: "Campinas", state: "São Paulo", city_district: "Barão Geraldo"),
-    Comunidade(description: "Os reis do gado juntos reunidos", name: "Rei do Gado", tags: "Gadisse", image: UIImage(named: "Image")!, country: "Brazil", city: "Campinas", state: "São Paulo", city_district: "Barão Geraldo")
-]
 

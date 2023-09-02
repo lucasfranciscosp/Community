@@ -17,20 +17,26 @@ struct HomeCollectionViewCellData {
 
 class HomeCollectionViewCell: UICollectionViewCell {
 
+    @IBOutlet weak var comunnityReviewSize: NSLayoutConstraint!
+    @IBOutlet weak var spacing: NSLayoutConstraint!
+    @IBOutlet weak var gradientView: UIView!
     @IBOutlet weak var name: UILabel!
     @IBOutlet weak var tags: UILabel!
+    @IBOutlet weak var communityReview: UIStackView!
     @IBOutlet weak var image: UIImageView!
     @IBOutlet weak var view: UIView!
     @IBOutlet weak var location: UILabel!
+    private var communityInReview: Bool = false
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
     }
 
     func setCell(data: HomeCollectionViewCellData) {
         setCellData(data)
         setCellLayout()
+        setComunnityReview()
+        setGradient()
     }
     
     private func setCellData(_ data: HomeCollectionViewCellData) {
@@ -42,6 +48,23 @@ class HomeCollectionViewCell: UICollectionViewCell {
     
     private func setCellLayout() {
         self.layer.cornerRadius = 15
-        self.layer.borderWidth = 1
+    }
+
+    private func setComunnityReview() {
+        if !communityInReview {
+            communityReview.isHidden = true
+            comunnityReviewSize.constant = 0
+            spacing.constant = 0
+        }
+    }
+
+    private func setGradient() {
+        let gradient = CAGradientLayer()
+        gradient.colors = [UIColor.clear.cgColor, UIColor.black.cgColor]
+        gradient.locations = [0.0 , 1.0]
+        gradient.startPoint = CGPoint(x : 0.0, y : 0.6)
+        gradient.endPoint = CGPoint(x :0.0, y: 1.0)
+        gradient.frame = gradientView.bounds
+        self.gradientView.layer.addSublayer(gradient)
     }
 }

@@ -13,36 +13,49 @@ class CommunityDescriptionController: UIViewController {
     @IBOutlet weak var descritivoLabel: UILabel!
     @IBOutlet weak var localLabel: UILabel!
     @IBOutlet weak var descricaoLabel: UILabel!
-
-    
+    var isEditableByUser: Bool = false
     var comunidade: Comunidade?
     
     override func viewDidLoad() {
-        configuraView()
+        configureView()
+        configureLayout()
+        configureNavigationBar()
+        setNotification()
+    }
+    
+    private func configureNavigationBar() {
+        if isEditableByUser {
+            navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Editar", style: .plain, target: self, action: #selector(editCommunity))
+        }
+    }
+
+    private func configureLayout() {
         communityImage.layer.cornerRadius = 10
         communityImage.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
     }
-    
-    func configuraView() {
-        
-        
+
+    private func configureView() {
         guard let comunidade = comunidade else { return }
-        
-//        communityImage.image = arrayCommunity[indexPath.row].image
-        
         communityImage.image = comunidade.image
         tituloLabel.text = comunidade.name
         descritivoLabel.text = comunidade.tags
         localLabel.text = comunidade.city_district
         descricaoLabel.text = comunidade.description
-        
-//
-        
-        
-//        sfSymbolImagemView.tintColor = UIColor(red: CGFloat(62)/255.0, green: CGFloat(107)/255.0, blue: CGFloat(45)/255.0, alpha: 1.0)
-        
     }
-    
-    
-    
+
+    private func setNotification() {
+        NotificationCenter.default.addObserver(self, selector: #selector(updateScreen), name: NSNotification.Name(rawValue: "DismissingScreen"), object: nil)
+    }
+
+    @objc private func updateScreen() {
+        configureView()
+    }
+
+    @objc private func editCommunity() {
+        let storyBoard: UIStoryboard = UIStoryboard(name: "Edit-Community", bundle: nil)
+        let storyScreen = storyBoard.instantiateViewController(withIdentifier: "EditCommunityViewController") as! EditCommunityViewController
+        storyScreen.comunnity = comunidade
+        let navController = UINavigationController(rootViewController: storyScreen)
+        self.present(navController, animated: true, completion: nil)
+    }
 }
