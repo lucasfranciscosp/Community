@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import CloudKit
+
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
@@ -17,9 +19,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         window = UIWindow(frame: windowScene.coordinateSpace.bounds)
         window?.windowScene = windowScene
-        window?.backgroundColor = .systemBackground
+        window?.backgroundColor = PaleteColor.color4
         window?.rootViewController = ScaffoldViewController()
         window?.makeKeyAndVisible()
+
     }
 
 }
