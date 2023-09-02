@@ -28,7 +28,8 @@ class ScaffoldViewController: UITabBarController {
         let leafNC = UINavigationController(rootViewController: leafVC)
         let profileNC = UINavigationController(rootViewController: profile)
         
-        let tabBarList = [homeNC, leafNC, profileNC]
+        let tabBarList = [homeNC]
+        //        let tabBarList = [homeNC, leafNC, profileNC]
 
         viewControllers = tabBarList
 
