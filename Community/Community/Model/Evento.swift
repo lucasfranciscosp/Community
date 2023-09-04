@@ -142,3 +142,10 @@ class Evento: CloudKitSchema {
     
 }
 
+//Eventos mockados para o usuario usar
+
+var mockEventos = [
+    
+    Evento(description: "Bora nadar", name: "Nadar na cachoeira", tags: "#Natureza", image: UIImage(named: "images")!, country: "Brazil", city: "Campinas", state: "SP", city_district: "Cidade Universitaria"),
+    Evento(description: "Tornei de Xadrez", name: "Torneio dos Cria", tags: "#Xadrez", image: UIImage(named: "images")!, country: "Brazil", city: "Campinas", state: "SP", city_district: "Cidade Universitaria")    
+]

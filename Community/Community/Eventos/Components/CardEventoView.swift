@@ -104,6 +104,12 @@ class CardEventoView: UICollectionViewCell {
     func configure(_ collectionView: UICollectionViewController) {
        superView = collectionView
     }
+    
+    func setDataCell(evento: Evento) {
+        self.title.text = evento.name
+        self.cover.image = evento.image
+        
+    }
 }
 
 func generateDescriptionRow(_ description: String, _ systemImage: String) -> UIView {

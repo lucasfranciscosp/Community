@@ -157,7 +157,7 @@ class LoggedProfileViewController: UIViewController, UITableViewDelegate, UITabl
         }
         
         if indexPath.row == 1 {
-            let userEventsVC = UserEventsViewController()
+            let userEventsVC = UserEventsViewController(collectionViewLayout: UICollectionViewFlowLayout())
             navigationController?.pushViewController(userEventsVC, animated: true)
         }
     }

@@ -28,6 +28,10 @@ class ProfileViewController: UIViewController {
         configureLabel()
         addConstraints()
         
+        if checkUserAuthentication() {
+                    redirectToLoggedProfileViewController()
+        }
+        
     }
 
     
@@ -72,6 +76,19 @@ class ProfileViewController: UIViewController {
         
     }
     
+    func storeUserAuthentication() {
+            UserDefaults.standard.set(true, forKey: "isAuthenticated")
+            // Você pode armazenar outras informações relevantes aqui, como o token de autenticação.
+        }
+
+        func checkUserAuthentication() -> Bool {
+            return UserDefaults.standard.bool(forKey: "isAuthenticated")
+        }
+        
+        func redirectToLoggedProfileViewController() {
+            let loggedProfileViewController = LoggedProfileViewController() // Substitua pelo nome da sua classe real de tela logada
+            navigationController?.pushViewController(loggedProfileViewController, animated: false)
+        }
     
 }
 

@@ -41,15 +41,14 @@ class UserCommunitiesViewController: UICollectionViewController {
             if let endereco = endereco {
                 // Usar os dados de endereço aqui
                 self.addressBegin = endereco
-                print(endereco.address.city)
-                print(endereco.address.cityDistrict)
+                //print(endereco.address.city)
+                //print(endereco.address.cityDistrict)
             } else {
                 // Caso onde não achar o endereço baseado na latitude e longitude
             }
         }
     }
 }
-
 
 
 //MARK: - Styling
