@@ -139,7 +139,7 @@ extension EventosViewController: UICollectionViewDelegateFlowLayout {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CardEventoView", for: indexPath) as? CardEventoView else { return UICollectionViewCell() }
         cell.contentView.isUserInteractionEnabled = false
 
-        cell.configure(self)
+        cell.configure(self, arrayCommunity[indexPath.row])
         return cell
     }
     

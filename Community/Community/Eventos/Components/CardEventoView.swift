@@ -11,59 +11,70 @@ class CardEventoView: UICollectionViewCell {
     
     var superView: UICollectionViewController?
     
+    var eventTitle: String = ""
+    var bairro: String = ""
+    var dataHorario: String = ""
+    var nomeComunidade: String = ""
+    var descricao: String = ""
+    
 
     
-    let card: UIButton = {
-        let vw = UIButton(type: .custom)
-        vw.translatesAutoresizingMaskIntoConstraints = false
-        vw.backgroundColor = PaleteColor.cardLight
-        vw.heightAnchor.constraint(equalToConstant: 330).isActive = true
-        vw.layer.cornerRadius = 10.00
-        vw.clipsToBounds = true
-        return vw
-    }()
-    
-    let cover: UIImageView = {
-        let vw = UIImageView()
-        vw.image = UIImage(named: "Image")
-        vw.translatesAutoresizingMaskIntoConstraints = false
-        vw.contentMode = .scaleAspectFill
-        vw.clipsToBounds = true
 
-        return vw
-    }()
-    
-    let title: UILabel = {
-        let text = UILabel()
-        text.text = "Campeonato"
-        text.font = UIFont.preferredFont(forTextStyle: .title1)
-        text.translatesAutoresizingMaskIntoConstraints = false
-        return text
-    }()
-    
-    
-    
-    let infosStack: UIStackView = {
-        let stack = UIStackView()
-        stack.translatesAutoresizingMaskIntoConstraints = false
-        stack.axis = .vertical
-        stack.alignment = .leading
-        stack.distribution = .equalCentering
-        
-        stack.addArrangedSubview(generateDescriptionRow("Rua dos Cocais", "location"))
-        stack.addArrangedSubview(generateDescriptionRow("07/09 14:00h", "clock"))
-        stack.addArrangedSubview(generateDescriptionRow("Rainha do Bairro", "person.3"))
-        return stack
-    }()
     
     override init(frame: CGRect) {
         super.init(frame: .zero)
+    }
+    
+    func setUpCell() {
+        let card: UIButton = {
+            let vw = UIButton(type: .custom)
+            vw.translatesAutoresizingMaskIntoConstraints = false
+            vw.backgroundColor = PaleteColor.cardLight
+            vw.heightAnchor.constraint(equalToConstant: 330).isActive = true
+            vw.layer.cornerRadius = 10.00
+            vw.clipsToBounds = true
+            return vw
+        }()
+        
+        let cover: UIImageView = {
+            let vw = UIImageView()
+            vw.image = UIImage(named: "Image")
+            vw.translatesAutoresizingMaskIntoConstraints = false
+            vw.contentMode = .scaleAspectFill
+            vw.clipsToBounds = true
+
+            return vw
+        }()
+        
+        let title: UILabel = {
+            let text = UILabel()
+            text.text = eventTitle
+            text.font = UIFont.preferredFont(forTextStyle: .title1)
+            text.translatesAutoresizingMaskIntoConstraints = false
+            return text
+        }()
+        
+        
+        
+        let infosStack: UIStackView = {
+            let stack = UIStackView()
+            stack.translatesAutoresizingMaskIntoConstraints = false
+            stack.axis = .vertical
+            stack.alignment = .leading
+            stack.distribution = .equalCentering
+            
+            stack.addArrangedSubview(generateDescriptionRow("Rua dos Cocais", "location"))
+            stack.addArrangedSubview(generateDescriptionRow("07/09 14:00h", "clock"))
+            stack.addArrangedSubview(generateDescriptionRow("Rainha do Bairro", "person.3"))
+            return stack
+        }()
+        
         addSubview(card)
         card.addSubview(cover)
         card.addSubview(title)
         card.addSubview(infosStack)
         
-        setAutoLayout()
+        setAutoLayout(card: card, cover: cover, title: title, infosStack: infosStack)
         
         card.addTarget(self, action: #selector(cardTapped), for: .touchUpInside)
     }
@@ -79,7 +90,7 @@ class CardEventoView: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func setAutoLayout() {
+    func setAutoLayout(card: UIView, cover: UIView, title: UIView, infosStack: UIView) {
         NSLayoutConstraint.activate([
             card.topAnchor.constraint(equalTo: topAnchor),
             card.leadingAnchor.constraint(equalTo: leadingAnchor),
@@ -100,9 +111,15 @@ class CardEventoView: UICollectionViewCell {
         ])
     }
     
-    
-    func configure(_ collectionView: UICollectionViewController) {
+    func configure(_ collectionView: UICollectionViewController, _ evento: Evento) {
        superView = collectionView
+        self.eventTitle = evento.name
+        self.bairro = evento.city_district
+        self.dataHorario = "falta colocar o horario no modelo de evento"
+        self.nomeComunidade = "falta colocar o nome da comunidade no modelo"
+        self.descricao = evento.description
+        
+        setUpCell()
     }
 }
 
