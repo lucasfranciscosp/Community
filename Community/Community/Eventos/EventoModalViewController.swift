@@ -30,24 +30,31 @@ class EventoModalViewController: UIViewController, UIScrollViewDelegate {
         let stack = UIStackView()
         let fechar = UIButton(type: .system)
         fechar.setTitle("Fechar", for: .normal)
+        fechar.addTarget(self, action: #selector(popView), for: .touchUpInside)
         let btnPadding = UIStackView()
         btnPadding.addArrangedSubview(fechar)
         btnPadding.axis = .horizontal
         btnPadding.distribution = .equalCentering
         
-        NSLayoutConstraint.activate([
-            btnPadding.widthAnchor.constraint(equalToConstant: 70),
-        ])
         
         let evento = UILabel()
         evento.text = "Evento"
         evento.font = UIFont.systemFont(ofSize: 17, weight: .semibold)
         let rightPad = UIView()
+    
+        NSLayoutConstraint.activate([
+            btnPadding.widthAnchor.constraint(equalToConstant: 70),
+            rightPad.widthAnchor.constraint(equalToConstant: 70)
+        ])
+        
         [btnPadding, evento, rightPad].forEach {stack.addArrangedSubview($0)}
         stack.axis = .horizontal
         stack.distribution = .equalCentering
         stack.heightAnchor.constraint(equalToConstant: 40).isActive = true
         
+//        rightPad.backgroundColor = .red
+//        evento.backgroundColor = .blue
+//        btnPadding.backgroundColor = .yellow
         return stack
     }()
     
@@ -194,6 +201,10 @@ class EventoModalViewController: UIViewController, UIScrollViewDelegate {
         scrollView.centerYAnchor.constraint(equalTo: layout.centerYAnchor).isActive = true
         scrollView.widthAnchor.constraint(equalTo: layout.widthAnchor).isActive = true
         scrollView.heightAnchor.constraint(equalTo: layout.heightAnchor).isActive = true
+    }
+    
+    @objc func popView() {
+        self.dismiss(animated: true)
     }
 }
 
