@@ -11,6 +11,8 @@ class CardEventoView: UICollectionViewCell {
     
     var superView: UICollectionViewController?
     
+
+    
     let card: UIButton = {
         let vw = UIButton(type: .custom)
         vw.translatesAutoresizingMaskIntoConstraints = false

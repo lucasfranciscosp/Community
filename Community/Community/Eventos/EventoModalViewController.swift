@@ -26,6 +26,31 @@ class EventoModalViewController: UIViewController, UIScrollViewDelegate {
         return view
     }()
     
+    let appbar: UIView = {
+        let stack = UIStackView()
+        let fechar = UIButton(type: .system)
+        fechar.setTitle("Fechar", for: .normal)
+        let btnPadding = UIStackView()
+        btnPadding.addArrangedSubview(fechar)
+        btnPadding.axis = .horizontal
+        btnPadding.distribution = .equalCentering
+        
+        NSLayoutConstraint.activate([
+            btnPadding.widthAnchor.constraint(equalToConstant: 70),
+        ])
+        
+        let evento = UILabel()
+        evento.text = "Evento"
+        evento.font = UIFont.systemFont(ofSize: 17, weight: .semibold)
+        let rightPad = UIView()
+        [btnPadding, evento, rightPad].forEach {stack.addArrangedSubview($0)}
+        stack.axis = .horizontal
+        stack.distribution = .equalCentering
+        stack.heightAnchor.constraint(equalToConstant: 40).isActive = true
+        
+        return stack
+    }()
+    
     lazy var divider: UIView = {
         let vw = UIView()
         vw.backgroundColor = .separator
@@ -108,27 +133,32 @@ class EventoModalViewController: UIViewController, UIScrollViewDelegate {
     
     
     lazy var eventDescription: UIView = {
-      let vw = UILabel()
-        vw.numberOfLines = 0
-        vw.translatesAutoresizingMaskIntoConstraints = false
+      let description = UILabel()
+        description.numberOfLines = 0
+        description.translatesAutoresizingMaskIntoConstraints = false
         
         var lorem = ""
         for _ in 0...333 {
             lorem += " lorem"
         }
         
-        vw.text = lorem
+        description.text = lorem
         
-        let padding = UIView()
-        padding.translatesAutoresizingMaskIntoConstraints = false
-        padding.addSubview(vw)
-
+        let leftPad = UIView()
+        leftPad.translatesAutoresizingMaskIntoConstraints = false
+        let rightPad = UIView()
+        rightPad.translatesAutoresizingMaskIntoConstraints = false
+        
         NSLayoutConstraint.activate([
-            vw.leadingAnchor.constraint(equalTo: padding.leadingAnchor, constant: 15),
-            vw.trailingAnchor.constraint(equalTo: padding.trailingAnchor, constant: -4),
-            vw.topAnchor.constraint(equalToSystemSpacingBelow: padding.topAnchor, multiplier: 1),
-            padding.heightAnchor.constraint(equalTo: vw.heightAnchor, constant: 20)
+            leftPad.widthAnchor.constraint(equalToConstant: 15),
+            rightPad.widthAnchor.constraint(equalToConstant: 15),
         ])
+        
+        let padding = UIStackView()
+        padding.axis = .horizontal
+        padding.addArrangedSubview(leftPad)
+        padding.addArrangedSubview(description)
+        padding.addArrangedSubview(rightPad)
 
         return padding
     }()
@@ -139,7 +169,8 @@ class EventoModalViewController: UIViewController, UIScrollViewDelegate {
         view.backgroundColor = PaleteColor.color2
         view.addSubview(scrollView)
         scrollView.addSubview(body)
-        
+       
+        body.addArrangedSubview(appbar)
         body.addArrangedSubview(card)
         body.addArrangedSubview(divider)
         body.addArrangedSubview(eventDescription)
