@@ -16,6 +16,7 @@ class CardEventoView: UICollectionViewCell {
     var dataHorario: String = ""
     var nomeComunidade: String = ""
     var descricao: String = ""
+    var evento: Evento?
     
 
     
@@ -63,9 +64,9 @@ class CardEventoView: UICollectionViewCell {
             stack.alignment = .leading
             stack.distribution = .equalCentering
             
-            stack.addArrangedSubview(generateDescriptionRow("Rua dos Cocais", "location"))
-            stack.addArrangedSubview(generateDescriptionRow("07/09 14:00h", "clock"))
-            stack.addArrangedSubview(generateDescriptionRow("Rainha do Bairro", "person.3"))
+            stack.addArrangedSubview(generateDescriptionRow(bairro, "location"))
+            stack.addArrangedSubview(generateDescriptionRow(dataHorario, "clock"))
+            stack.addArrangedSubview(generateDescriptionRow(nomeComunidade, "person.3"))
             return stack
         }()
         
@@ -81,6 +82,7 @@ class CardEventoView: UICollectionViewCell {
     
     @objc func cardTapped() {
         let vc = EventoModalViewController()
+        vc.setEvento(evento!)
         vc.modalPresentationStyle = .formSheet
         vc.preferredContentSize = .init(width: 500, height: 800)
         superView?.present(vc, animated: true)
@@ -115,9 +117,10 @@ class CardEventoView: UICollectionViewCell {
        superView = collectionView
         self.eventTitle = evento.name
         self.bairro = evento.city_district
-        self.dataHorario = "falta colocar o horario no modelo de evento"
-        self.nomeComunidade = "falta colocar o nome da comunidade no modelo"
+        self.dataHorario = evento.dataHorario
+        self.nomeComunidade = evento.nomeComunidade
         self.descricao = evento.description
+        self.evento = evento
         
         setUpCell()
     }
@@ -129,8 +132,7 @@ func generateDescriptionRow(_ description: String, _ systemImage: String) -> UIV
     text.font = UIFont.preferredFont(forTextStyle: .body)
     text.textColor = .secondaryLabel
     text.translatesAutoresizingMaskIntoConstraints = false
-    text.widthAnchor.constraint(equalToConstant: 150).isActive = true
-    
+    text.widthAnchor.constraint(equalToConstant: 180).isActive = true
     let image = UIImageView(image: UIImage(systemName: systemImage))
     image.tintColor = .secondaryLabel
     image.translatesAutoresizingMaskIntoConstraints = false

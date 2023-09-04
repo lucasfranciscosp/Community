@@ -16,6 +16,8 @@ class Evento: CloudKitSchema {
     var city: String
     var state: String
     var city_district: String
+    var nomeComunidade: String
+    var dataHorario: String
     
     
     private func getLocalImageUrl() throws -> URL {
@@ -110,7 +112,7 @@ class Evento: CloudKitSchema {
         
     }
     
-    init(description: String, name: String, tags: String, image: UIImage, country: String, city: String, state: String, city_district: String) {
+    init(description: String, name: String, tags: String, image: UIImage, country: String, city: String, state: String, city_district: String, nomeComunidade: String, dataHorario: String) {
         self.description = description
         self.name = name
         self.image = image
@@ -118,6 +120,8 @@ class Evento: CloudKitSchema {
         self.city = city
         self.state = state
         self.city_district = city_district
+        self.nomeComunidade = nomeComunidade
+        self.dataHorario = dataHorario
         super.init(recordName: "comunidade")
     }
     
@@ -128,6 +132,8 @@ class Evento: CloudKitSchema {
         self.city = record.value(forKey: "city") as! String
         self.state = record.value(forKey: "state") as! String
         self.city_district = record.value(forKey: "city_district") as! String
+        self.nomeComunidade = record.value(forKey: "nomeComunidade") as! String
+        self.dataHorario = record.value(forKey: "dataHorario") as! String
         
         
         let imageUrl: URL = (record.value(forKey: "image") as! CKAsset).fileURL!
