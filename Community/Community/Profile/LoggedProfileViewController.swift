@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-class LoggedProfileViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class LoggedProfileViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIImagePickerControllerDelegate {
 
     let tableView = UITableView()
     
@@ -17,23 +17,26 @@ class LoggedProfileViewController: UIViewController, UITableViewDelegate, UITabl
         CellContent(image: "party.popper.fill", title: "Meus eventos", description: "Administre os eventos criados e salvos")
     ]
         
+    
+    let profileView = UIView()
+    let profileImageView = UIImageView()
+    let imagePicker = UIImagePickerController()
+    let labelNomeUsuario = UILabel()
+    //let selectImageButton = UIButton()
+    let customView = CustomView()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        let profileView = UIView()
-        let profileImageView = UIImageView()
-        let labelNomeUsuario = UILabel()
-        //let editProfileButton = UIButton()
-        
+        customView.setup()
         // Configurar a UIView para a foto de perfil e o botão de edição
         profileView.translatesAutoresizingMaskIntoConstraints = false
-               view.addSubview(profileView)
-               NSLayoutConstraint.activate([
-                   profileView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 48),
-                   profileView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-                   profileView.heightAnchor.constraint(equalToConstant: 180),
-                   profileView.widthAnchor.constraint(equalToConstant: 180)
-               ])
+        view.addSubview(profileView)
+        NSLayoutConstraint.activate([
+            profileView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 48),
+            profileView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            profileView.heightAnchor.constraint(equalToConstant: 180),
+            profileView.widthAnchor.constraint(equalToConstant: 180)
+        ])
         
         profileView.addSubview(profileImageView)
 
@@ -52,16 +55,11 @@ class LoggedProfileViewController: UIViewController, UITableViewDelegate, UITabl
             profileImageView.bottomAnchor.constraint(equalTo: profileView.bottomAnchor)
         ])
         
-        // Configurar o botão de edição da foto de perfil
-//        editProfileButton.translatesAutoresizingMaskIntoConstraints = false
-//        editProfileButton.setImage(UIImage(systemName: "camera"), for: .normal) // Ícone de câmera
-//        editProfileButton.addTarget(self, action: #selector(editProfileImage), for: .touchUpInside)
-//        profileView.addSubview(editProfileButton)
-                        
-        
-        
-        let customView = CustomView()
-        
+//        selectImageButton.translatesAutoresizingMaskIntoConstraints = false
+//        selectImageButton.setTitle("Selecionar Imagem", for: .normal)
+//        selectImageButton.addTarget(self, action: #selector(selectImageFromGallery), for: .touchUpInside)
+//        profileView.addSubview(selectImageButton)
+//
         customView.translatesAutoresizingMaskIntoConstraints = false
         
         view.addSubview(customView)
@@ -101,9 +99,23 @@ class LoggedProfileViewController: UIViewController, UITableViewDelegate, UITabl
             labelNomeUsuario.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             labelNomeUsuario.bottomAnchor.constraint(equalTo: customView.topAnchor, constant: -48)
 
-            //labelNomeUsuario.bottomAnchor.constraint(equalTo: customView.topAnchor, constant: -104),
         ])
 
+//        profileView.addSubview(selectImageButton)
+//        selectImageButton.translatesAutoresizingMaskIntoConstraints = false
+//        selectImageButton.setTitle("Selecionar Imagem", for: .normal)
+//        selectImageButton.addTarget(self, action: #selector(selectImageFromGallery), for: .touchUpInside)
+        
+        // Configurar as restrições para a UIImageView e o botão
+        NSLayoutConstraint.activate([
+            profileImageView.centerXAnchor.constraint(equalTo: profileView.centerXAnchor),
+            profileImageView.centerYAnchor.constraint(equalTo: profileView.centerYAnchor),
+            profileImageView.widthAnchor.constraint(equalToConstant: 180), // Tamanho da imagem
+            profileImageView.heightAnchor.constraint(equalToConstant: 180),
+                    
+//            selectImageButton.topAnchor.constraint(equalTo: profileImageView.bottomAnchor, constant: 16),
+//            selectImageButton.centerXAnchor.constraint(equalTo: profileView.centerXAnchor),
+        ])
         
         view.backgroundColor = UIColor(red: 234.0/255, green: 216.0/255, blue: 212.0/255, alpha: 1.0)
        
@@ -114,7 +126,7 @@ class LoggedProfileViewController: UIViewController, UITableViewDelegate, UITabl
     }
     
     
-    @objc func editProfileImage() {
+    @objc func selectImageFromGallery() {
             // Implemente a lógica para permitir que o usuário selecione ou edite a foto de perfil aqui
     }
 
@@ -139,7 +151,7 @@ class LoggedProfileViewController: UIViewController, UITableViewDelegate, UITabl
         tableView.deselectRow(at: indexPath, animated: true)
        
         if indexPath.row == 0 {
-            let userCommunitiesVC = UserCommunitiesViewController()
+            let userCommunitiesVC = UserCommunitiesViewController(collectionViewLayout: UICollectionViewFlowLayout())
             
             navigationController?.pushViewController(userCommunitiesVC, animated: true)
         }
@@ -157,9 +169,9 @@ class CustomView: UIView {
         setup()
     }
     
-    private func setup() {
+    func setup() {
         
-        self.layer.cornerRadius = 100
+        self.layer.cornerRadius = 10
         self.backgroundColor = UIColor(red:246.0/255, green:238.0/255, blue:233.0/255, alpha: 1.0)
         self.clipsToBounds = true
     }
