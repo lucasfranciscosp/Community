@@ -45,15 +45,9 @@ class EventosViewController: UICollectionViewController {
 
 extension EventosViewController {
     private func setupAppBar() {
-        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(add))
-        
         title = screenTitle
         navigationController?.navigationBar.prefersLargeTitles = true
         
-        
-    }
-    
-    @objc private func add() {
         
     }
     

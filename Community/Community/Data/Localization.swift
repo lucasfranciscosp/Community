@@ -66,6 +66,9 @@ class Localization: NSObject {
     func getAddress() async -> Address? {
         return await withCheckedContinuation { continuation in
             getAddress { endereco in
+                print(endereco?.city)
+                print(endereco?.state)
+                print(endereco?.stateDistrict)
                 continuation.resume(returning: endereco)
             }
         }

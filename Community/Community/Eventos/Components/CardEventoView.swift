@@ -39,7 +39,7 @@ class CardEventoView: UICollectionViewCell {
         
         let cover: UIImageView = {
             let vw = UIImageView()
-            vw.image = UIImage(named: "Image")
+            vw.image = evento?.image
             vw.translatesAutoresizingMaskIntoConstraints = false
             vw.contentMode = .scaleAspectFill
             vw.clipsToBounds = true
