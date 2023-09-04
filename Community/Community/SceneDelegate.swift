@@ -21,6 +21,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window?.windowScene = windowScene
         window?.backgroundColor = PaleteColor.color4
         window?.rootViewController = ScaffoldViewController()
+//        window?.rootViewController = EventoModalViewController()
         window?.makeKeyAndVisible()
 
     }
