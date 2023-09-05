@@ -42,16 +42,13 @@ extension HomeViewController {
     
     func checkLocationAuthorization() {
             locManager.delegate = self
-            
-            switch CLLocationManager.authorizationStatus() {
-            case .authorizedWhenInUse, .authorizedAlways:
-                locNotAllowed(num: 0)
-            case .denied, .restricted:
-                locNotAllowed(num: 1)
-            default:
-                break
-            }
+        
+        if CLLocationManager().authorizationStatus == .denied ||  CLLocationManager().authorizationStatus == .restricted {
+            locNotAllowed(num: 1)
+        } else if CLLocationManager().authorizationStatus == .authorizedAlways || CLLocationManager().authorizationStatus == .authorizedWhenInUse {
+            locNotAllowed(num: 0)
         }
+    }
     
     private func setupAppBar() {
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(add))
