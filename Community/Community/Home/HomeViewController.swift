@@ -6,8 +6,9 @@
 //
 
 import UIKit
+import CoreLocation
 
-class HomeViewController: UICollectionViewController {
+class HomeViewController: UICollectionViewController, CLLocationManagerDelegate {
     
     var refreshControl: UIRefreshControl!
     let communityDataManager = CommunityDataManager()
@@ -15,13 +16,17 @@ class HomeViewController: UICollectionViewController {
     var arrayCommunity: [Comunidade] {
         communityDataManager.communitiesArray
     }
-    
+    var enderecoaux : Address?
     let noCommunityFoundView = NoCommunityFoundView()
+    let button = UIButton()
+    var locManager = CLLocationManager()
+    var lastAuthorizationStatus: CLAuthorizationStatus?
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        insertSpinner()
+        //insertSpinner()
         setupAppBar()
         collectionViewConfig()
         setupPageRefresh()
@@ -29,6 +34,7 @@ class HomeViewController: UICollectionViewController {
         communityDataManager.fetchCommunities()
         noCommunityFoundView.configure(self)
         collectionView.alwaysBounceVertical = true
+        checkLocationAuthorization()
         setNotification()
     }
     
@@ -38,6 +44,27 @@ class HomeViewController: UICollectionViewController {
 }
 
 extension HomeViewController {
+    
+    func checkLocationAuthorization() {
+        locManager.delegate = self
+        let currentStatus = CLLocationManager.authorizationStatus()
+        
+        if currentStatus != lastAuthorizationStatus {
+                    lastAuthorizationStatus = currentStatus
+                    
+                    if currentStatus == .denied || currentStatus == .restricted {
+                        locNotAllowed(num: 1)
+                    } else if currentStatus == .authorizedAlways || currentStatus == .authorizedWhenInUse {
+                        locNotAllowed(num: 0)
+                    }
+                }
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+            // Quando a autorização de localização muda, verifique o status e atualize o texto
+            checkLocationAuthorization()
+    }
+    
     private func setupAppBar() {
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(add))
         title = "Comunidades"
@@ -60,6 +87,7 @@ extension HomeViewController {
             } else {
                 // Caso onde não achar o endereço baseado na latitude e longitude
             }
+            
         }
     }
     
@@ -112,6 +140,30 @@ extension HomeViewController {
         ])
     }
     
+    func locNotAllowed(num: Int) {
+        if num == 1 {
+            let labelText = "Para usar o app por favor permita o uso da localização dele em ajustes"
+            let label = UILabel()
+            label.translatesAutoresizingMaskIntoConstraints = false
+            label.text = labelText
+            label.textAlignment = .center // Centralize o texto horizontalmente
+            label.numberOfLines = 0 // Permita várias linhas
+            view.addSubview(label)
+            
+            NSLayoutConstraint.activate([
+                label.widthAnchor.constraint(equalTo: view.widthAnchor),
+                label.heightAnchor.constraint(equalToConstant: 65),
+                label.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+                label.centerYAnchor.constraint(equalTo: view.centerYAnchor)
+            ])
+            
+            
+        } else {
+            // Faça o que você quiser quando num não for igual a 1.
+        }
+    }
+
+
     func removeNoCommunityFoundText() {
         noCommunityFoundView.removeFromSuperview()
     }
