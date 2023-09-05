@@ -27,7 +27,8 @@ class HomeCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var view: UIView!
     @IBOutlet weak var location: UILabel!
     private var communityInReview: Bool = false
-    
+    private var didSetGradient = false
+
     override func awakeFromNib() {
         super.awakeFromNib()
     }
@@ -59,6 +60,7 @@ class HomeCollectionViewCell: UICollectionViewCell {
     }
 
     private func setGradient() {
+        guard !didSetGradient else { return }
         let gradient = CAGradientLayer()
         gradient.colors = [UIColor.clear.cgColor, UIColor.black.cgColor]
         gradient.locations = [0.0 , 1.0]
@@ -66,5 +68,6 @@ class HomeCollectionViewCell: UICollectionViewCell {
         gradient.endPoint = CGPoint(x :0.0, y: 1.0)
         gradient.frame = gradientView.bounds
         self.gradientView.layer.addSublayer(gradient)
+        didSetGradient = true
     }
 }
