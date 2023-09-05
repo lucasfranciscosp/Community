@@ -35,8 +35,12 @@ class HomeViewController: UICollectionViewController, CLLocationManagerDelegate 
         noCommunityFoundView.configure(self)
         collectionView.alwaysBounceVertical = true
         checkLocationAuthorization()
+        setNotification()
     }
     
+    private func setNotification() {
+        NotificationCenter.default.addObserver(self, selector: #selector(updateScreen), name: NSNotification.Name(rawValue: "DismissingScreen"), object: nil)
+    }
 }
 
 extension HomeViewController {
@@ -63,13 +67,14 @@ extension HomeViewController {
     
     private func setupAppBar() {
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(add))
-        
         title = "Comunidades"
         navigationController?.navigationBar.prefersLargeTitles = true
-        
-        
     }
-    
+
+    @objc private func updateScreen() {
+        communityDataManager.refreshCommunities()
+    }
+
     @objc private func add() {
         Localization().getAddress() { endereco in
             if let endereco = endereco {
@@ -205,11 +210,12 @@ extension HomeViewController: UICollectionViewDelegateFlowLayout {
         
         self.present(navigationController, animated: true, completion: nil)
     }
-    
+
     @objc func backButtonTapped() {
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue:  "DismissingScreen"), object: nil, userInfo: nil)
         self.dismiss(animated: true, completion: nil)
     }
-    
+
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
@@ -223,10 +229,6 @@ extension HomeViewController: UICollectionViewDelegateFlowLayout {
         
         cell.setCell(data: HomeCollectionViewCellData(image: arrayCommunity[indexPath.row].image, tags: arrayCommunity[indexPath.row].tags, name: arrayCommunity[indexPath.row].name, location: "\(arrayCommunity[indexPath.row].city), \(arrayCommunity[indexPath.row].city_district)"))
         
-        if indexPath.row == arrayCommunity.count - 1 {
-            
-        }
-
         return cell
     }
     
@@ -242,9 +244,9 @@ extension HomeViewController: FetchCommunityDelegate {
         collectionView.reloadData()
         refreshControl.endRefreshing()
         if communities.isEmpty {
-            removeSpinner()
             insertNoCommunityFoundText()
         }
+        removeSpinner()
     }
     
     func didInitialFetchCommunities(communities: [Comunidade]) {
@@ -259,6 +261,4 @@ extension HomeViewController: FetchCommunityDelegate {
     func errorFetchingCommunities() {
         //handle errors
     }
-    
-    
 }

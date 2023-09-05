@@ -30,7 +30,7 @@ extension UIColor {
 class PaleteColor {
     static var accentLight: UIColor = UIColor(hex: 0x3E6B2D)
     static var accentDark: UIColor = UIColor(hex: 0x55943E)
-    static var color1: UIColor = UIColor(hex: 0xF6EEE9)
+    static var cardLight: UIColor = UIColor(hex: 0xF6EEE9)
     static var color2: UIColor = UIColor(hex: 0xEAD8D4)
     static var color3: UIColor = UIColor(hex: 0x928684)
     static var color4: UIColor = UIColor(hex: 0x221E1E)
