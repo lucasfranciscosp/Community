@@ -34,6 +34,7 @@
 		F8AA73E92A8E3C5600AEC8E8 /* HomeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8AA73E52A8E3C5600AEC8E8 /* HomeCollectionViewCell.swift */; };
 		F8AA73EA2A8E3C5600AEC8E8 /* HomeCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F8AA73E62A8E3C5600AEC8E8 /* HomeCollectionViewCell.xib */; };
 		F8AA73EB2A8E3C5600AEC8E8 /* Comunity-Details.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F8AA73E72A8E3C5600AEC8E8 /* Comunity-Details.storyboard */; };
+		F8B0B8B72AA74E2F00E3CE3D /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8B0B8B62AA74E2F00E3CE3D /* User.swift */; };
 		F8B7CA712A8F947B002F2C74 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8B7CA702A8F947B002F2C74 /* Colors.swift */; };
 		F8DC1C312AA0C41000822DD2 /* EventoModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8DC1C302AA0C41000822DD2 /* EventoModalViewController.swift */; };
 		F8E7A67B2A8CF135002C686D /* ScaffoldViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8E7A67A2A8CF135002C686D /* ScaffoldViewController.swift */; };
@@ -71,6 +72,7 @@
 		F8AA73E52A8E3C5600AEC8E8 /* HomeCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeCollectionViewCell.swift; sourceTree = "<group>"; };
 		F8AA73E62A8E3C5600AEC8E8 /* HomeCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HomeCollectionViewCell.xib; sourceTree = "<group>"; };
 		F8AA73E82A8E3C5600AEC8E8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = "Base.lproj/Comunity-Details.storyboard"; sourceTree = "<group>"; };
+		F8B0B8B62AA74E2F00E3CE3D /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		F8B7CA702A8F947B002F2C74 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		F8DC1C302AA0C41000822DD2 /* EventoModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventoModalViewController.swift; sourceTree = "<group>"; };
 		F8E7A67A2A8CF135002C686D /* ScaffoldViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScaffoldViewController.swift; sourceTree = "<group>"; };
@@ -162,6 +164,7 @@
 				F80FDA6E2A94ECB700248123 /* CloudKitSchema.swift */,
 				F80FDA6C2A94EC4100248123 /* CloudKit.swift */,
 				F83877782AA2120500EEB557 /* Evento.swift */,
+				F8B0B8B62AA74E2F00E3CE3D /* User.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -357,6 +360,7 @@
 				F8B7CA712A8F947B002F2C74 /* Colors.swift in Sources */,
 				F8E8FA772A9E2F9F00A0C177 /* NoCommunityFoundView.swift in Sources */,
 				08C0EDF32A9F5E5300DCCA7B /* EditCommunityViewController.swift in Sources */,
+				F8B0B8B72AA74E2F00E3CE3D /* User.swift in Sources */,
 				F8E7A67B2A8CF135002C686D /* ScaffoldViewController.swift in Sources */,
 				6173C6442A9F743500A45C4D /* LoggedProfileViewController.swift in Sources */,
 				6173C6482AA2125400A45C4D /* UserEventsViewController.swift in Sources */,
@@ -374,7 +378,6 @@
 				F83877772AA2117D00EEB557 /* FetchEventDelegate.swift in Sources */,
 				B67C40362A8E4D2D00820A86 /* Localization.swift in Sources */,
 				B67C40342A8E3CEF00820A86 /* API.swift in Sources */,
-				0804CECB2A938C4F003CBA96 /* CreateCommunityViewController.swift in Sources */,
 				6173C6462AA20C0800A45C4D /* UserCommunitiesViewController.swift in Sources */,
 				080FE0D92A8E4D1D00F2CBDA /* HomeCollectionViewCell.swift in Sources */,
 				F821758F2A9F867B00157B5F /* CardEventoView.swift in Sources */,
