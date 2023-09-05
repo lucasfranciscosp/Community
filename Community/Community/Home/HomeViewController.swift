@@ -177,10 +177,6 @@ extension HomeViewController: UICollectionViewDelegateFlowLayout {
         
         cell.setCell(data: HomeCollectionViewCellData(image: arrayCommunity[indexPath.row].image, tags: arrayCommunity[indexPath.row].tags, name: arrayCommunity[indexPath.row].name, location: "\(arrayCommunity[indexPath.row].city), \(arrayCommunity[indexPath.row].city_district)"))
         
-        if indexPath.row == arrayCommunity.count - 1 {
-            
-        }
-
         return cell
     }
     
@@ -196,9 +192,9 @@ extension HomeViewController: FetchCommunityDelegate {
         collectionView.reloadData()
         refreshControl.endRefreshing()
         if communities.isEmpty {
-            removeSpinner()
             insertNoCommunityFoundText()
         }
+        removeSpinner()
     }
     
     func didInitialFetchCommunities(communities: [Comunidade]) {
