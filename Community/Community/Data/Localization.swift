@@ -60,6 +60,7 @@ class Localization: NSObject {
             }
         } else {
             // tem que mostrar a tela com o botao pedindo loc dnv
+            
             completion(nil)
         }
     }
