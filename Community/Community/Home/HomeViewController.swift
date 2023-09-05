@@ -20,6 +20,7 @@ class HomeViewController: UICollectionViewController, CLLocationManagerDelegate 
     let noCommunityFoundView = NoCommunityFoundView()
     let button = UIButton()
     var locManager = CLLocationManager()
+    var lastAuthorizationStatus: CLAuthorizationStatus?
 
     
     override func viewDidLoad() {
@@ -41,13 +42,23 @@ class HomeViewController: UICollectionViewController, CLLocationManagerDelegate 
 extension HomeViewController {
     
     func checkLocationAuthorization() {
-            locManager.delegate = self
+        locManager.delegate = self
+        let currentStatus = CLLocationManager.authorizationStatus()
         
-        if CLLocationManager().authorizationStatus == .denied ||  CLLocationManager().authorizationStatus == .restricted {
-            locNotAllowed(num: 1)
-        } else if CLLocationManager().authorizationStatus == .authorizedAlways || CLLocationManager().authorizationStatus == .authorizedWhenInUse {
-            locNotAllowed(num: 0)
-        }
+        if currentStatus != lastAuthorizationStatus {
+                    lastAuthorizationStatus = currentStatus
+                    
+                    if currentStatus == .denied || currentStatus == .restricted {
+                        locNotAllowed(num: 1)
+                    } else if currentStatus == .authorizedAlways || currentStatus == .authorizedWhenInUse {
+                        locNotAllowed(num: 0)
+                    }
+                }
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+            // Quando a autorização de localização muda, verifique o status e atualize o texto
+            checkLocationAuthorization()
     }
     
     private func setupAppBar() {
