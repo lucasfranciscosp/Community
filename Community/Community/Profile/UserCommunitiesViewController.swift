@@ -130,10 +130,10 @@ extension UserCommunitiesViewController: UICollectionViewDelegateFlowLayout {
     }
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let storyBoard: UIStoryboard = UIStoryboard(name: "Comunity-Details", bundle: nil)
+        let storyBoard: UIStoryboard = UIStoryboard(name: "Edit-Community", bundle: nil)
 
-        let storyScreen = storyBoard.instantiateViewController(withIdentifier: "CommunityDescriptionController") as! CommunityDescriptionController
-        storyScreen.comunidade = arrayCommunity[indexPath.row]
+        let storyScreen = storyBoard.instantiateViewController(withIdentifier: "EditCommunityViewController") as! EditCommunityViewController
+        storyScreen.comunnity = arrayCommunity[indexPath.row]
         
         // Personalize a barra de navegação do controlador de destino (modal)
         let navigationController = UINavigationController(rootViewController: storyScreen)
