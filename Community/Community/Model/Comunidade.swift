@@ -74,7 +74,7 @@ class Comunidade: CloudKitSchema {
         }
     }
     
-    static func fetchNearCommunities() async throws -> [Comunidade]{
+    static func fetchNearCommunities(_ onlyUserCommunities: Bool = false) async throws -> [Comunidade]{
         var city: String = ""
         var district: String = ""
         var country: String = ""
@@ -96,7 +96,13 @@ class Comunidade: CloudKitSchema {
         country = address.country
         state = address.state
         
-        let predicate = NSPredicate(format: "city == %@ AND city_district == %@ AND country == %@ AND state == %@", argumentArray: [city, district, country, state])
+        var predicate = NSPredicate(format: "city == %@ AND city_district == %@ AND country == %@ AND state == %@", argumentArray: [city, district, country, state])
+       
+        if onlyUserCommunities {
+            let userId = await User.instance().id.recordName
+            predicate = NSPredicate(format: "city == %@ AND city_district == %@ AND country == %@ AND state == %@ AND userId == %@", argumentArray: [city, district, country, state, userId])
+        }
+        
         let query = CKQuery(recordType: "comunidade", predicate: predicate)
         let fetchResult = try await CloudKit.defaultContainer.publicCloudDatabase.records(matching: query)
        var comunidades = [Comunidade]()

@@ -31,6 +31,7 @@ class ProfileViewController: UIViewController {
         if checkUserAuthentication() {
                     redirectToLoggedProfileViewController()
         }
+
         
     }
 
@@ -105,6 +106,7 @@ extension UIViewController: ASAuthorizationControllerDelegate {
             let lastName = credentials.fullName?.familyName
             let email = credentials.email
             
+
             // Criar uma instância da tela de perfil do usuário
             let profileScreen = LoggedProfileViewController()
             

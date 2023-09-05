@@ -35,6 +35,7 @@
 		F8AA73EA2A8E3C5600AEC8E8 /* HomeCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F8AA73E62A8E3C5600AEC8E8 /* HomeCollectionViewCell.xib */; };
 		F8AA73EB2A8E3C5600AEC8E8 /* Comunity-Details.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F8AA73E72A8E3C5600AEC8E8 /* Comunity-Details.storyboard */; };
 		F8B0B8B72AA74E2F00E3CE3D /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8B0B8B62AA74E2F00E3CE3D /* User.swift */; };
+		F8B0B8BA2AA75A2500E3CE3D /* NoUserCommunitiesFound.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8B0B8B92AA75A2500E3CE3D /* NoUserCommunitiesFound.swift */; };
 		F8B7CA712A8F947B002F2C74 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8B7CA702A8F947B002F2C74 /* Colors.swift */; };
 		F8DC1C312AA0C41000822DD2 /* EventoModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8DC1C302AA0C41000822DD2 /* EventoModalViewController.swift */; };
 		F8E7A67B2A8CF135002C686D /* ScaffoldViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8E7A67A2A8CF135002C686D /* ScaffoldViewController.swift */; };
@@ -73,6 +74,7 @@
 		F8AA73E62A8E3C5600AEC8E8 /* HomeCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HomeCollectionViewCell.xib; sourceTree = "<group>"; };
 		F8AA73E82A8E3C5600AEC8E8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = "Base.lproj/Comunity-Details.storyboard"; sourceTree = "<group>"; };
 		F8B0B8B62AA74E2F00E3CE3D /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		F8B0B8B92AA75A2500E3CE3D /* NoUserCommunitiesFound.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoUserCommunitiesFound.swift; sourceTree = "<group>"; };
 		F8B7CA702A8F947B002F2C74 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		F8DC1C302AA0C41000822DD2 /* EventoModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventoModalViewController.swift; sourceTree = "<group>"; };
 		F8E7A67A2A8CF135002C686D /* ScaffoldViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScaffoldViewController.swift; sourceTree = "<group>"; };
@@ -172,6 +174,7 @@
 		6173C6402A98C38A00A45C4D /* Profile */ = {
 			isa = PBXGroup;
 			children = (
+				F8B0B8B82AA759EC00E3CE3D /* Components */,
 				6173C6412A98D05B00A45C4D /* ProfileViewController.swift */,
 				6173C6432A9F743500A45C4D /* LoggedProfileViewController.swift */,
 				6173C6452AA20C0800A45C4D /* UserCommunitiesViewController.swift */,
@@ -226,6 +229,14 @@
 				F8AA73E62A8E3C5600AEC8E8 /* HomeCollectionViewCell.xib */,
 			);
 			path = HomeCollectionViewCell;
+			sourceTree = "<group>";
+		};
+		F8B0B8B82AA759EC00E3CE3D /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				F8B0B8B92AA75A2500E3CE3D /* NoUserCommunitiesFound.swift */,
+			);
+			path = Components;
 			sourceTree = "<group>";
 		};
 		F8E7A6792A8CF10E002C686D /* Scaffold */ = {
@@ -360,6 +371,7 @@
 				F8B7CA712A8F947B002F2C74 /* Colors.swift in Sources */,
 				F8E8FA772A9E2F9F00A0C177 /* NoCommunityFoundView.swift in Sources */,
 				08C0EDF32A9F5E5300DCCA7B /* EditCommunityViewController.swift in Sources */,
+				F8B0B8BA2AA75A2500E3CE3D /* NoUserCommunitiesFound.swift in Sources */,
 				F8B0B8B72AA74E2F00E3CE3D /* User.swift in Sources */,
 				F8E7A67B2A8CF135002C686D /* ScaffoldViewController.swift in Sources */,
 				6173C6442A9F743500A45C4D /* LoggedProfileViewController.swift in Sources */,

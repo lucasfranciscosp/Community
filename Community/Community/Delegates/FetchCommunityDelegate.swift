@@ -16,14 +16,19 @@ protocol FetchCommunityDelegate {
 class CommunityDataManager {
     private var community: [Comunidade] = []
     var delegate: FetchCommunityDelegate?
+    var isUserOnlyCommunities: Bool
     var communitiesArray: [Comunidade] {
         return community
+    }
+    
+    init(_ isUserOnlyCommunities: Bool = false) {
+        self.isUserOnlyCommunities = isUserOnlyCommunities
     }
     
     
     private func fetchCommunitiesInternal() async {
         do {
-            community = try await Comunidade.fetchNearCommunities()
+            community = try await Comunidade.fetchNearCommunities(isUserOnlyCommunities)
             DispatchQueue.main.async {
                 self.delegate?.didInitialFetchCommunities(communities: self.community)
             }
@@ -34,7 +39,7 @@ class CommunityDataManager {
     
     private func refreshCommunitiesInternal() async {
         do {
-            community = try await Comunidade.fetchNearCommunities()
+            community = try await Comunidade.fetchNearCommunities(isUserOnlyCommunities)
             DispatchQueue.main.async {
                 self.delegate?.didRefreshCommunities(communities: self.community)
             }
