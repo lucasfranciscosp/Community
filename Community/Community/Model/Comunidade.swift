@@ -17,6 +17,7 @@ class Comunidade: CloudKitSchema {
     var city: String
     var state: String
     var city_district: String
+    var userId: String?
     
     
     private func getLocalImageUrl() throws -> URL {
@@ -28,7 +29,7 @@ class Comunidade: CloudKitSchema {
     }
     
     func updateData() async {
-        updateRecordValues()
+        await updateRecordValues()
         do {
             let savedCommunity = try await CloudKit.defaultContainer.publicCloudDatabase.save(record)
         } catch {
@@ -38,7 +39,10 @@ class Comunidade: CloudKitSchema {
         
     }
 
-    func updateRecordValues() {
+    func updateRecordValues() async {
+        if userId == nil {
+            userId = await User.instance().id.recordName
+        }
         do {
             let asset = CKAsset(fileURL: try getLocalImageUrl())
             super.setRecordValues([
@@ -49,7 +53,8 @@ class Comunidade: CloudKitSchema {
                 "country": country,
                 "city": city,
                 "state": state,
-                "city_district": city_district
+                "city_district": city_district,
+                "userId": userId
             ])
         } catch {
             print("***ERRO ao dar update no record***")
@@ -59,7 +64,7 @@ class Comunidade: CloudKitSchema {
     }
     
     func saveInDatabase() async {
-        updateRecordValues()
+        await updateRecordValues()
         do {
             let savedCommunity = try await CloudKit.defaultContainer.publicCloudDatabase.save(record)
         } catch {
@@ -132,6 +137,7 @@ class Comunidade: CloudKitSchema {
         self.city = record.value(forKey: "city") as! String
         self.state = record.value(forKey: "state") as! String
         self.city_district = record.value(forKey: "city_district") as! String
+        self.userId = record.value(forKey: "userId") as! String?
         
         
         let imageUrl: URL = (record.value(forKey: "image") as! CKAsset).fileURL!
