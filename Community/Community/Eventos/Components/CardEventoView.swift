@@ -1,10 +1,3 @@
-//
-//  CardEventoView.swift
-//  Community
-//
-//  Created by Caio Melloni dos Santos on 30/08/23.
-//
-
 import UIKit
 
 class CardEventoView: UICollectionViewCell {
@@ -123,12 +116,6 @@ class CardEventoView: UICollectionViewCell {
         self.evento = evento
         
         setUpCell()
-    }
-    
-    func setDataCell(evento: Evento) {
-        self.title.text = evento.name
-        self.cover.image = evento.image
-        
     }
 }
 

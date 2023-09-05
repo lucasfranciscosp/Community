@@ -151,7 +151,8 @@ class Evento: CloudKitSchema {
 //Eventos mockados para o usuario usar
 
 var mockEventos = [
-    
-    Evento(description: "Bora nadar", name: "Nadar na cachoeira", tags: "#Natureza", image: UIImage(named: "images")!, country: "Brazil", city: "Campinas", state: "SP", city_district: "Cidade Universitaria"),
-    Evento(description: "Tornei de Xadrez", name: "Torneio dos Cria", tags: "#Xadrez", image: UIImage(named: "images")!, country: "Brazil", city: "Campinas", state: "SP", city_district: "Cidade Universitaria")    
+    Evento(description: "Um bom lugar para curtir", name: "Good Vibes", tags: "#Paz", image: UIImage(named: "images")!, country: "Brasil", city: "Campinas", state: "SP", city_district: "Cidade Universitaria", nomeComunidade: "Green Peace", dataHorario: "17/04/2023 - 14:00"),
+    Evento(description: "Um bom lugar para curtir", name: "Good Vibes", tags: "#Paz", image: UIImage(named: "images")!, country: "Brasil", city: "Campinas", state: "SP", city_district: "Cidade Universitaria", nomeComunidade: "Green Peace", dataHorario: "17/04/2023 - 14:00"),
+    Evento(description: "Um bom lugar para curtir", name: "Good Vibes", tags: "#Paz", image: UIImage(named: "images")!, country: "Brasil", city: "Campinas", state: "SP", city_district: "Cidade Universitaria", nomeComunidade: "Green Peace", dataHorario: "17/04/2023 - 14:00"),
+
 ]

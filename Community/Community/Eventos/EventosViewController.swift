@@ -13,7 +13,7 @@ class EventosViewController: UICollectionViewController {
     var refreshControl: UIRefreshControl!
     let eventDataManager = EventDataManager()
     let spinner = UIActivityIndicatorView(style: .large)
-    var arrayCommunity: [Evento] {
+    var arrayEvento: [Evento] {
         eventDataManager.eventsArray
     }
     
@@ -126,14 +126,14 @@ extension EventosViewController: UICollectionViewDelegateFlowLayout {
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return arrayCommunity.count
+        return arrayEvento.count
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CardEventoView", for: indexPath) as? CardEventoView else { return UICollectionViewCell() }
         cell.contentView.isUserInteractionEnabled = false
 
-        cell.configure(self, arrayCommunity[indexPath.row])
+        cell.configure(self, arrayEvento[indexPath.row])
         return cell
     }
     

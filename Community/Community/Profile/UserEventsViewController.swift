@@ -14,11 +14,7 @@ class UserEventsViewController: UICollectionViewController {
     
     var addressBegin: Address?
     
-    var mockEventos = [
-        
-        Evento(description: "Bora nadar", name: "Nadar na cachoeira", tags: "#Natureza", image: UIImage(named: "images")!, country: "Brazil", city: "Campinas", state: "SP", city_district: "Cidade Universitaria"),
-        Evento(description: "Tornei de Xadrez", name: "Torneio dos Cria", tags: "#Xadrez", image: UIImage(named: "images")!, country: "Brazil", city: "Campinas", state: "SP", city_district: "Cidade Universitaria")
-    ]
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -88,9 +84,7 @@ extension UserEventsViewController: UICollectionViewDelegateFlowLayout {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CardEventoView", for: indexPath) as? CardEventoView else { return UICollectionViewCell() }
         cell.contentView.isUserInteractionEnabled = false
 
-        cell.configure(self)
-        cell.setDataCell(evento: mockEventos[indexPath.row])
-        
+        cell.configure(self, mockEventos[indexPath.row])
         return cell
     }
     
