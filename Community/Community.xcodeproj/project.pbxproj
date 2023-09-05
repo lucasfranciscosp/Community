@@ -19,6 +19,9 @@
 		6144C42F2A8D2CCC00D562FC /* CommunityDescriptionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6144C42E2A8D2CCC00D562FC /* CommunityDescriptionController.swift */; };
 		6144C4372A8E52F300D562FC /* Comunidade.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6144C4362A8E52F300D562FC /* Comunidade.swift */; };
 		6173C6422A98D05B00A45C4D /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6173C6412A98D05B00A45C4D /* ProfileViewController.swift */; };
+		6173C6442A9F743500A45C4D /* LoggedProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6173C6432A9F743500A45C4D /* LoggedProfileViewController.swift */; };
+		6173C6462AA20C0800A45C4D /* UserCommunitiesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6173C6452AA20C0800A45C4D /* UserCommunitiesViewController.swift */; };
+		6173C6482AA2125400A45C4D /* UserEventsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6173C6472AA2125300A45C4D /* UserEventsViewController.swift */; };
 		B67C40342A8E3CEF00820A86 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = B67C40332A8E3CEF00820A86 /* API.swift */; };
 		B67C40362A8E4D2D00820A86 /* Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = B67C40352A8E4D2D00820A86 /* Localization.swift */; };
 		F80FDA6D2A94EC4100248123 /* CloudKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = F80FDA6C2A94EC4100248123 /* CloudKit.swift */; };
@@ -52,6 +55,9 @@
 		6144C42E2A8D2CCC00D562FC /* CommunityDescriptionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityDescriptionController.swift; sourceTree = "<group>"; };
 		6144C4362A8E52F300D562FC /* Comunidade.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comunidade.swift; sourceTree = "<group>"; };
 		6173C6412A98D05B00A45C4D /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		6173C6432A9F743500A45C4D /* LoggedProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoggedProfileViewController.swift; sourceTree = "<group>"; };
+		6173C6452AA20C0800A45C4D /* UserCommunitiesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCommunitiesViewController.swift; sourceTree = "<group>"; };
+		6173C6472AA2125300A45C4D /* UserEventsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserEventsViewController.swift; sourceTree = "<group>"; };
 		B67C40332A8E3CEF00820A86 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		B67C40352A8E4D2D00820A86 /* Localization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Localization.swift; sourceTree = "<group>"; };
 		F80FDA6C2A94EC4100248123 /* CloudKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudKit.swift; sourceTree = "<group>"; };
@@ -164,6 +170,9 @@
 			isa = PBXGroup;
 			children = (
 				6173C6412A98D05B00A45C4D /* ProfileViewController.swift */,
+				6173C6432A9F743500A45C4D /* LoggedProfileViewController.swift */,
+				6173C6452AA20C0800A45C4D /* UserCommunitiesViewController.swift */,
+				6173C6472AA2125300A45C4D /* UserEventsViewController.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -349,6 +358,8 @@
 				F8E8FA772A9E2F9F00A0C177 /* NoCommunityFoundView.swift in Sources */,
 				08C0EDF32A9F5E5300DCCA7B /* EditCommunityViewController.swift in Sources */,
 				F8E7A67B2A8CF135002C686D /* ScaffoldViewController.swift in Sources */,
+				6173C6442A9F743500A45C4D /* LoggedProfileViewController.swift in Sources */,
+				6173C6482AA2125400A45C4D /* UserEventsViewController.swift in Sources */,
 				F80FDA6F2A94ECB700248123 /* CloudKitSchema.swift in Sources */,
 				F8DC1C312AA0C41000822DD2 /* EventoModalViewController.swift in Sources */,
 				6144C40C2A8CED4100D562FC /* AppDelegate.swift in Sources */,
@@ -363,6 +374,8 @@
 				F83877772AA2117D00EEB557 /* FetchEventDelegate.swift in Sources */,
 				B67C40362A8E4D2D00820A86 /* Localization.swift in Sources */,
 				B67C40342A8E3CEF00820A86 /* API.swift in Sources */,
+				0804CECB2A938C4F003CBA96 /* CreateCommunityViewController.swift in Sources */,
+				6173C6462AA20C0800A45C4D /* UserCommunitiesViewController.swift in Sources */,
 				080FE0D92A8E4D1D00F2CBDA /* HomeCollectionViewCell.swift in Sources */,
 				F821758F2A9F867B00157B5F /* CardEventoView.swift in Sources */,
 			);
@@ -503,7 +516,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Community/Community.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_TEAM = A7BY7494NB;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Community/Info.plist;
@@ -540,7 +553,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Community/Community.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_TEAM = A7BY7494NB;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Community/Info.plist;

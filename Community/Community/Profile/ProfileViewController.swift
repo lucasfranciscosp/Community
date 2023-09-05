@@ -28,6 +28,10 @@ class ProfileViewController: UIViewController {
         configureLabel()
         addConstraints()
         
+        if checkUserAuthentication() {
+                    redirectToLoggedProfileViewController()
+        }
+        
     }
 
     
@@ -72,6 +76,19 @@ class ProfileViewController: UIViewController {
         
     }
     
+    func storeUserAuthentication() {
+            UserDefaults.standard.set(true, forKey: "isAuthenticated")
+            // Você pode armazenar outras informações relevantes aqui, como o token de autenticação.
+        }
+
+        func checkUserAuthentication() -> Bool {
+            return UserDefaults.standard.bool(forKey: "isAuthenticated")
+        }
+        
+        func redirectToLoggedProfileViewController() {
+            let loggedProfileViewController = LoggedProfileViewController() // Substitua pelo nome da sua classe real de tela logada
+            navigationController?.pushViewController(loggedProfileViewController, animated: false)
+        }
     
 }
 
@@ -87,6 +104,18 @@ extension UIViewController: ASAuthorizationControllerDelegate {
             let firstName = credentials.fullName?.givenName
             let lastName = credentials.fullName?.familyName
             let email = credentials.email
+            
+            // Criar uma instância da tela de perfil do usuário
+            let profileScreen = LoggedProfileViewController()
+            
+            // Configurar os dados do usuário na tela de perfil, se necessário
+            // profileScreen.firstName = firstName
+            // profileScreen.lastName = lastName
+            // profileScreen.email = email
+            
+            // Empurrar a tela de perfil do usuário para a pilha de visualizações
+            navigationController?.pushViewController(profileScreen, animated: true)
+            
         default:
             break
         }
