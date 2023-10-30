@@ -1,4 +1,4 @@
-# PercyJackson
+# Community
 
 This was a challenge we encountered at the Apple Developer Academy, where we aimed to create an app that would make a positive impact on the world.
 
